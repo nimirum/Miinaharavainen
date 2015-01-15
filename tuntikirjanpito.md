@@ -1,2 +1,2 @@
-14.1.2015 klo 22-00
-15.1.2015 klo 9-10 ja klo 21.00-22.00
+-14.1.2015 klo 22-00 GitHub-repositorio
+-15.1.2015 klo 9-10 ja klo 21.00-22.00 Projektin eka push, aihemäärittely
