@@ -1,13 +1,16 @@
 #Aihemäärittely 
 
 ##Miinaharava peli
-Miinaharavassa käytössä on pelilauta, jonka ruudut ei aluksi kerro mitään tietoa. Ensimmäinen klikkaus on aina tyhjä ruutu ja kenttä generoituu sen jälkeen. Vieressä oleviin ruutuihin ilmestyy tietoa kuinka monta miinaa on viereisissä ruuduissa. Paikat jossa pelaaja epäilee miinan olevan, merkitään lipuilla. Jos pelaaja klikkaa miinaan, peli päättyyy. Jos pelaaja voittaa niin tuloksena näkyy käytetty aika.
+Aluksi on ikkuna, josta valitaan kentän koko, oletuksena 9x9 ja miinojen määrä 10. Kentän sivun pituus pitää olla väliltä 3-50. Miinojen määrä on 1-(ruutujen määrä-1). Pelaaja ei voi valita miinojen määrää.
+Miinaharavassa käytössä on pelilauta, jonka ruudut ei aluksi kerro mitään tietoa. Ensimmäinen klikkaus on aina tyhjä ruutu ja kenttä generoituu sen jälkeen. Ruutuja avataan hiiren oikealla klikkauksella. Vieressä oleviin ruutuihin ilmestyy tietoa kuinka monta miinaa on viereisissä ruuduissa. Paikat jossa pelaaja epäilee miinan olevan, merkitään lipuilla eli vasemmalla hiiren klikkauksella. Jos pelaaja klikkaa miinaan, peli päättyyy. Jos pelaaja voittaa niin tuloksena näkyy käytetty aika.
+Peli pitää kirjaa ennätysajoista ja kentän koosta.
 
 ##Käyttäjät: Pelaaja
 
 ###Toiminnot
 
-* pelialustan koon valinta
-* miinojen määrän valinta
+* pelilaudan koon valinta
+* miinojen määrä automaattisesti kentän koon mukaan
 * miinojen liputtamien
 * ruutujen klikkaaminen, kunnes osuu miinaan tai löytää kaikki miinoittamat ruudut
+* peli tallentaa ennätysajat tiedostoon
