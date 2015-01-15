@@ -7,10 +7,7 @@ Miinaharavassa käytössä on pelilauta, jonka ruudut ei aluksi kerro mitään t
 
 ###Toiminnot
 
-*pelialustan koon valinta
-
-*miinojen määrän valinta
-
-*miinojen liputtamien
-
-*ruutujen klikkaaminen, kunnes osuu miinaan tai löytää kaikki miinoittamat ruudut
+* pelialustan koon valinta
+* miinojen määrän valinta
+* miinojen liputtamien
+* ruutujen klikkaaminen, kunnes osuu miinaan tai löytää kaikki miinoittamat ruudut
