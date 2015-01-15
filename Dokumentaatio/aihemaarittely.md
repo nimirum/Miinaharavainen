@@ -10,5 +10,7 @@ Oikealla näppäimellä pelaaja voi merkitä lipulla paljastamattoman ruudun, jo
 ###Toiminnot
 
 *pelialustan koon valinta
+
 *miinojen liputtamien
+
 *pelaaminen, kunnes osuu miinaan tai löytää kaikki miinoittamat ruudut
