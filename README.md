@@ -1,2 +1,2 @@
 # Miinaharavainen
-mo
+Oma versio miinaharavasta
