@@ -4,5 +4,6 @@ Käyttäjät: Pelaaja
 
 Kaikkien käyttäjien toiminnot:
 
-pelialustan koon valinta
-pelaaminen, kunnes osuu miinaan tai voittaa
+-pelialustan koon valinta
+
+-pelaaminen, kunnes osuu miinaan tai voittaa
