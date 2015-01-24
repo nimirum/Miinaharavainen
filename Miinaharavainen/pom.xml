@@ -41,6 +41,14 @@
 				<groupId>org.pitest</groupId>
 				<artifactId>pitest-maven</artifactId>
 				<version>0.30</version>
+				<configuration>
+					<targetClasses>
+						<param>nimirum.Miinaharavainen.logiikka.*</param>
+					</targetClasses>
+					<targetTests>
+						<param>nimirum.Miinaharavainen.logiikka.*</param>
+					</targetTests>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

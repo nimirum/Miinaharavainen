@@ -1,2 +1,2 @@
 # Miinaharavainen
-Oma versio miinaharavasta
+Ohjelmoinnin harjoitustyö 2015 - Oma versio Miinaharavasta
