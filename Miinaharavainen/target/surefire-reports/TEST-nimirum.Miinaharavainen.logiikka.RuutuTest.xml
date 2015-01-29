@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.007" errors="0" skipped="0" tests="4" name="nimirum.Miinaharavainen.logiikka.RuutuTest">
+<testsuite failures="0" time="0.013" errors="0" skipped="0" tests="6" name="nimirum.Miinaharavainen.logiikka.RuutuTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.7.0_67\jre\bin"/>
@@ -63,8 +63,10 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase time="0" classname="nimirum.Miinaharavainen.logiikka.RuutuTest" name="viereistenMiinojenMaaraTulostuuOikein"/>
+  <testcase time="0" classname="nimirum.Miinaharavainen.logiikka.RuutuTest" name="ruudussaNegatiivinenArvoMiinojenmaaraTulostuuOikein"/>
+  <testcase time="0.001" classname="nimirum.Miinaharavainen.logiikka.RuutuTest" name="viereistenMiinojenMaaraTulostuuOikein"/>
+  <testcase time="0" classname="nimirum.Miinaharavainen.logiikka.RuutuTest" name="ruudussaLiikaaViereisiaMiinojaTulostuuOikein"/>
   <testcase time="0" classname="nimirum.Miinaharavainen.logiikka.RuutuTest" name="ruudussaEiAluksiMiinaJaMiinanLisaysOnnistuu"/>
-  <testcase time="0" classname="nimirum.Miinaharavainen.logiikka.RuutuTest" name="tyhjaRuutuTulostuuOikein"/>
   <testcase time="0" classname="nimirum.Miinaharavainen.logiikka.RuutuTest" name="ruudussaMiinaTulostuuOikein"/>
+  <testcase time="0" classname="nimirum.Miinaharavainen.logiikka.RuutuTest" name="tyhjaRuutuTulostuuOikein"/>
 </testsuite>

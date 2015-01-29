@@ -60,6 +60,19 @@ public class PelilautaTest {
     }
 
     @Test
+    public void miinaOikeaReunaLaskuriToimii() {
+        Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
+        Pelilauta lauta = miinaharava.getPelilauta();
+        lauta.setMiina(5, 9);
+        lauta.laskeNumerot();
+        assertEquals(lauta.getRuutu(4, 9).getViereistenMiinojenMaara(), 1);
+        assertEquals(lauta.getRuutu(6, 9).getViereistenMiinojenMaara(), 1);
+        assertEquals(lauta.getRuutu(4, 8).getViereistenMiinojenMaara(), 1);
+        assertEquals(lauta.getRuutu(5, 8).getViereistenMiinojenMaara(), 1);
+        assertEquals(lauta.getRuutu(6, 8).getViereistenMiinojenMaara(), 1);
+    }
+
+    @Test
     public void miinaVasenAlanurkkaLaskuriToimii() {
         Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
         Pelilauta lauta = miinaharava.getPelilauta();
@@ -69,8 +82,21 @@ public class PelilautaTest {
         assertEquals(lauta.getRuutu(8, 1).getViereistenMiinojenMaara(), 1);
         assertEquals(lauta.getRuutu(9, 1).getViereistenMiinojenMaara(), 1);
     }
-    
-      @Test
+
+    @Test
+    public void miinaVasenReunaLaskuriToimii() {
+        Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
+        Pelilauta lauta = miinaharava.getPelilauta();
+        lauta.setMiina(5, 0);
+        lauta.laskeNumerot();
+        assertEquals(lauta.getRuutu(5, 1).getViereistenMiinojenMaara(), 1);
+        assertEquals(lauta.getRuutu(6, 1).getViereistenMiinojenMaara(), 1);
+        assertEquals(lauta.getRuutu(4, 1).getViereistenMiinojenMaara(), 1);
+        assertEquals(lauta.getRuutu(4, 0).getViereistenMiinojenMaara(), 1);
+        assertEquals(lauta.getRuutu(6, 0).getViereistenMiinojenMaara(), 1);
+    }
+
+    @Test
     public void miinaAlareunaLaskuriToimii() {
         Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
         Pelilauta lauta = miinaharava.getPelilauta();
@@ -82,16 +108,42 @@ public class PelilautaTest {
         assertEquals(lauta.getRuutu(8, 5).getViereistenMiinojenMaara(), 1);
         assertEquals(lauta.getRuutu(8, 6).getViereistenMiinojenMaara(), 1);
     }
-    
+
+    @Test
+    public void kaksiMiinaaLaskuriToimii() {
+        Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
+        Pelilauta lauta = miinaharava.getPelilauta();
+        lauta.setMiina(4, 5);
+        lauta.setMiina(6, 5);
+        lauta.laskeNumerot();
+        assertEquals(lauta.getRuutu(5, 5).getViereistenMiinojenMaara(), 2);
+    }
+
+    @Test
+    public void miinaKeskellaLaskuriToimii() {
+        Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
+        Pelilauta lauta = miinaharava.getPelilauta();
+        lauta.setMiina(5, 5);
+        lauta.laskeNumerot();
+        assertEquals(lauta.getRuutu(4, 4).getViereistenMiinojenMaara(), 1);
+        assertEquals(lauta.getRuutu(4, 5).getViereistenMiinojenMaara(), 1);
+        assertEquals(lauta.getRuutu(4, 6).getViereistenMiinojenMaara(), 1);
+        assertEquals(lauta.getRuutu(6, 5).getViereistenMiinojenMaara(), 1);
+        assertEquals(lauta.getRuutu(4, 5).getViereistenMiinojenMaara(), 1);
+        assertEquals(lauta.getRuutu(6, 4).getViereistenMiinojenMaara(), 1);
+        assertEquals(lauta.getRuutu(6, 5).getViereistenMiinojenMaara(), 1);
+        assertEquals(lauta.getRuutu(6, 6).getViereistenMiinojenMaara(), 1);
+    }
+
     @Test
     public void miinaOikeaAlanurkkaLaskuriToimii() {
         Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
         Pelilauta lauta = miinaharava.getPelilauta();
-        lauta.setMiina(9, 0);
+        lauta.setMiina(9, 9);
         lauta.laskeNumerot();
-        assertEquals(lauta.getRuutu(8, 0).getViereistenMiinojenMaara(), 1);
-        assertEquals(lauta.getRuutu(8, 1).getViereistenMiinojenMaara(), 1);
-        assertEquals(lauta.getRuutu(9, 1).getViereistenMiinojenMaara(), 1);
+        assertEquals(lauta.getRuutu(8, 8).getViereistenMiinojenMaara(), 1);
+        assertEquals(lauta.getRuutu(8, 9).getViereistenMiinojenMaara(), 1);
+        assertEquals(lauta.getRuutu(9, 8).getViereistenMiinojenMaara(), 1);
     }
 
     @BeforeClass

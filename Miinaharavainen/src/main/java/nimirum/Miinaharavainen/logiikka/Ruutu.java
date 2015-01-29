@@ -9,8 +9,6 @@ public class Ruutu {
 
     //Ruutu voi olla miina, tyhjä tai
     //numero, joka kertoo vieressä olevien miinojen määrän
-    public Ruutu() {
-    }
 
     public Ruutu(int x, int y) {
         this.x = x;

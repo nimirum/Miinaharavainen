@@ -1,11 +1,5 @@
 package nimirum.Miinaharavainen.logiikka;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import nimirum.Miinaharavainen.logiikka.Ruutu;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -41,6 +35,22 @@ public class RuutuTest {
     }
 
     @Test
+    public void ruudussaLiikaaViereisiaMiinojaTulostuuOikein() {
+        //väliaikainen
+        Ruutu ruutu = new Ruutu(1, 1);
+        ruutu.setViereistenMiinojenMaara(9);
+        assertEquals(ruutu.toString(), " .");
+    }
+
+       @Test
+    public void ruudussaNegatiivinenArvoMiinojenmaaraTulostuuOikein() {
+        //väliaikainen
+        Ruutu ruutu = new Ruutu(1, 1);
+        ruutu.setViereistenMiinojenMaara(-1);
+        assertEquals(ruutu.toString(), " .");
+    }
+    
+    @Test
     public void viereistenMiinojenMaaraTulostuuOikein() {
         //väliaikainen
         Ruutu ruutu = new Ruutu(1, 1);
@@ -48,8 +58,8 @@ public class RuutuTest {
         assertEquals(ruutu.getViereistenMiinojenMaara(), 3);
         assertEquals(ruutu.toString(), " 3");
     }
-    
-     @Test
+
+    @Test
     public void tyhjaRuutuTulostuuOikein() {
         //väliaikainen
         Ruutu ruutu = new Ruutu(1, 1);
@@ -73,9 +83,4 @@ public class RuutuTest {
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }

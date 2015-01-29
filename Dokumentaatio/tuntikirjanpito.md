@@ -7,3 +7,5 @@
 22.1. klo 13-14 ja klo 21-23 Pelilaudan tulostus, miinojen generointi ja testejä
 
 23.1. klo 19-20 Viereisten miinojen laskeminen, lisää testejä
+
+26.1. klo 20-21 Kayttöliittymän menun tekoa ja klikkaustenkuuntelija

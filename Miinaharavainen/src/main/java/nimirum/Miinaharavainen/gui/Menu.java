@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package nimirum.Miinaharavainen.gui;
 
 import java.awt.event.ActionListener;
@@ -36,12 +32,8 @@ public class Menu extends JFrame {
         JMenuItem newMenuItem = new JMenuItem("New Game", icon);
         newMenuItem.setMnemonic(KeyEvent.VK_E);
         newMenuItem.setToolTipText("New Game");
-//        eMenuItem.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent event) {
-//                System.exit(0);
-//            }
-//        });
+        exitMenuItem.addActionListener(new Klikkaustenkuuntelija() {
+        });
         file.add(newMenuItem);
         file.add(exitMenuItem);
 
