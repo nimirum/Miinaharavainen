@@ -5,6 +5,7 @@
  */
 package nimirum.Miinaharavainen;
 
+import nimirum.Miinaharavainen.gui.Menu;
 import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
 
 /**
@@ -17,5 +18,8 @@ public class Main {
         Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
         miinaharava.miinoitaLauta();
         miinaharava.tulostaLauta();
-    }
+        
+        Menu ex = new Menu();
+                ex.setVisible(true);
+  }
 }

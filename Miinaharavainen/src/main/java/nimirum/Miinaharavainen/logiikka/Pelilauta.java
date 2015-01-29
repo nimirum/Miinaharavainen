@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Pelilauta {
 
-    //muodostuu ruuduista, ruutujen alla on sisältöä, miina, tyhjä tai numero
+    //muodostuu ruuduista, ruutujen alla on sisÃ¤ltÃ¶Ã¤, miina, tyhjÃ¤ tai numero
     //Ruutuja x*y kappaletta
     private int x;
     private int y;
@@ -21,7 +21,7 @@ public class Pelilauta {
                 pelilauta[i][j] = new Ruutu(i, j);
             }
         }
-        System.out.println("Pelilaudan luominen onnistui");
+      //  System.out.println("Pelilaudan luominen onnistui");
     }
 
     public Ruutu getRuutu(int x, int y) {
@@ -43,7 +43,7 @@ public class Pelilauta {
     }
 
     public int miinoita() {
-        //lisää randomisti miinat ja laske numeroarvot
+        //lisÃ¤Ã¤ randomisti miinat ja laske numeroarvot
         int miinojenMaara = (int) (0.15 * this.x * this.y);
  
         Random rand = new Random();
@@ -58,12 +58,12 @@ public class Pelilauta {
             if (!ruutu.getOnkoMiina()) {
                 ruutu.setOnkoMiina(true);
             } else {
-                //jos ruudussa jo miina, arvontojen määrää lisätään yhdellä
+                //jos ruudussa jo miina, arvontojen mÃ¤Ã¤rÃ¤Ã¤ lisÃ¤tÃ¤Ã¤n yhdellÃ¤
                 i--;
             }
         }
         laskeNumerot();
-        System.out.println("\nMiinoittaminen onnistui");
+        //System.out.println("\nMiinoittaminen onnistui");
         return miinojenMaara;
     }
 
@@ -72,14 +72,14 @@ public class Pelilauta {
             for (int j = 0; j < this.y; j++) {
                 if (pelilauta[i][j].getOnkoMiina()) {
                     if (i == 0 && j == 0) {
-                        //vasen ylänurkka
+                        //vasen ylÃ¤nurkka
                         alas(i, j);
                         oikeaAlas(i, j);
                         oikea(i, j);
                         continue;
                     }
                     if (i == 0 && 0 < j && j < this.y - 1) {
-                        //yläreuna
+                        //ylÃ¤reuna
                         vasen(i, j);
                         vasenAlas(i, j);
                         alas(i, j);
@@ -88,7 +88,7 @@ public class Pelilauta {
                         continue;
                     }
                     if (i == 0 && j == this.y - 1) {
-                        //oikea ylänurkka
+                        //oikea ylÃ¤nurkka
                         vasen(i, j);
                         vasenAlas(i, j);
                         alas(i, j);

@@ -23,7 +23,7 @@ public class Miinaharavainen {
 
     public void tulostaLauta(){
         //väliaikainen tulostus
-        System.out.println("\nTulostetaan pelilautaa");
+        //System.out.println("\nTulostetaan pelilautaa");
         for (int i = 0; i < pelilauta.getX(); i++) {
             for (int j = 0; j < pelilauta.getY(); j++) {
                 Ruutu ruutu = pelilauta.getRuutu(i, j);
