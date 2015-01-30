@@ -21,7 +21,7 @@ public class Pelilauta {
                 pelilauta[i][j] = new Ruutu(i, j);
             }
         }
-      //  System.out.println("Pelilaudan luominen onnistui");
+        //  System.out.println("Pelilaudan luominen onnistui");
     }
 
     public Ruutu getRuutu(int x, int y) {
@@ -45,7 +45,7 @@ public class Pelilauta {
     public int miinoita() {
         //lisÃ¤Ã¤ randomisti miinat ja laske numeroarvot
         int miinojenMaara = (int) (0.15 * this.x * this.y);
- 
+
         Random rand = new Random();
         int min = 0;
         int maxX = this.x - 1;
@@ -68,84 +68,45 @@ public class Pelilauta {
     }
 
     public void laskeNumerot() {
+        //käy koko pelilaudan läpi ja numeroi viereiset miinat
         for (int i = 0; i < this.x; i++) {
             for (int j = 0; j < this.y; j++) {
                 if (pelilauta[i][j].getOnkoMiina()) {
+
                     if (i == 0 && j == 0) {
-                        //vasen ylÃ¤nurkka
-                        alas(i, j);
-                        oikeaAlas(i, j);
-                        oikea(i, j);
+                        vasenYlanurkka(i, j);
                         continue;
                     }
                     if (i == 0 && 0 < j && j < this.y - 1) {
-                        //ylÃ¤reuna
-                        vasen(i, j);
-                        vasenAlas(i, j);
-                        alas(i, j);
-                        oikeaAlas(i, j);
-                        oikea(i, j);
+                        ylareuna(i, j);
                         continue;
                     }
                     if (i == 0 && j == this.y - 1) {
-                        //oikea ylÃ¤nurkka
-                        vasen(i, j);
-                        vasenAlas(i, j);
-                        alas(i, j);
+                        oikeaYlanurkka(i, j);
                         continue;
                     }
                     if (0 < i && i < this.x - 1 && j == 0) {
-                        //vasen renua
-                        ylos(i, j);
-                        oikeaYlos(i, j);
-                        oikea(i, j);
-                        oikeaAlas(i, j);
-                        alas(i, j);
+                        vasenReuna(i, j);
                         continue;
                     }
                     if (0 < i && i < this.x - 1 && 0 < j && j < this.y - 1) {
-                        //keskialueet, ei koske reunoihin
-                        oikeaYlos(i, j);
-                        ylos(i, j);
-                        vasenYlos(i, j);
-                        vasen(i, j);
-                        vasenAlas(i, j);
-                        alas(i, j);
-                        oikeaAlas(i, j);
-                        oikea(i, j);
+                        keskialue(i, j);
                         continue;
                     }
                     if (0 < i && i < this.x - 1 && j == this.y - 1) {
-                        //oikea reuna
-                        ylos(i, j);
-                        vasenYlos(i, j);
-                        vasen(i, j);
-                        vasenAlas(i, j);
-                        alas(i, j);
+                        oikeaReuna(i, j);
                         continue;
                     }
                     if (i == this.x - 1 && 0 < j && j < this.y - 1) {
-                        //alareuna
-                        oikeaYlos(i, j);
-                        ylos(i, j);
-                        vasenYlos(i, j);
-                        vasen(i, j);
-                        oikea(i, j);
+                        alareuna(i, j);
                         continue;
                     }
                     if (i == this.x - 1 && j == this.y - 1) {
-                        // oikea alanurkka                       
-                        ylos(i, j);
-                        vasenYlos(i, j);
-                        vasen(i, j);
+                        oikeaAlanurkka(i, j);
                         continue;
                     }
                     if (i == this.x - 1 && j == 0) {
-                        //vasen alanurkka
-                        oikeaYlos(i, j);
-                        ylos(i, j);
-                        oikea(i, j);
-                        continue;
+                        vasenAlanurkka(i, j);
                     }
                 }
             }
@@ -182,6 +143,73 @@ public class Pelilauta {
 
     private void vasenYlos(int i, int j) {
         pelilauta[i - 1][j - 1].addViereistenMiinojenMaaraa();
+    }
+
+    private void vasenYlanurkka(int i, int j) {
+        alas(i, j);
+        oikeaAlas(i, j);
+        oikea(i, j);
+    }
+
+    private void ylareuna(int i, int j) {
+        vasen(i, j);
+        vasenAlas(i, j);
+        alas(i, j);
+        oikeaAlas(i, j);
+        oikea(i, j);
+    }
+
+    private void oikeaYlanurkka(int i, int j) {
+        vasen(i, j);
+        vasenAlas(i, j);
+        alas(i, j);
+    }
+
+    private void vasenReuna(int i, int j) {
+        ylos(i, j);
+        oikeaYlos(i, j);
+        oikea(i, j);
+        oikeaAlas(i, j);
+        alas(i, j);
+    }
+
+    private void keskialue(int i, int j) {
+        oikeaYlos(i, j);
+        ylos(i, j);
+        vasenYlos(i, j);
+        vasen(i, j);
+        vasenAlas(i, j);
+        alas(i, j);
+        oikeaAlas(i, j);
+        oikea(i, j);
+    }
+
+    private void oikeaReuna(int i, int j) {
+        ylos(i, j);
+        vasenYlos(i, j);
+        vasen(i, j);
+        vasenAlas(i, j);
+        alas(i, j);
+    }
+
+    private void alareuna(int i, int j) {
+        oikeaYlos(i, j);
+        ylos(i, j);
+        vasenYlos(i, j);
+        vasen(i, j);
+        oikea(i, j);
+    }
+
+    private void oikeaAlanurkka(int i, int j) {
+        ylos(i, j);
+        vasenYlos(i, j);
+        vasen(i, j);
+    }
+
+    private void vasenAlanurkka(int i, int j) {
+        oikeaYlos(i, j);
+        ylos(i, j);
+        oikea(i, j);
     }
 
 }

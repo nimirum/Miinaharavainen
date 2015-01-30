@@ -15,7 +15,7 @@ public class Main {
         miinaharava.miinoitaLauta();
         miinaharava.tulostaLauta();
         
-        Menu ex = new Menu();
-                ex.setVisible(true);
+        //Menu ex = new Menu();
+        //        ex.setVisible(true);
   }
 }
