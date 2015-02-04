@@ -8,12 +8,17 @@ public class Miinaharavainen {
     private int miinojenMaara=0;
 
     public Miinaharavainen(int x, int y) {
-        if (8 <= x && x <= 50 && 8 <= y && y <= 50) {
+        setPelilaudanKoko(x, y);
+    }
+    
+    public void setPelilaudanKoko(int x, int y){
+         if (8 <= x && x <= 50 && 8 <= y && y <= 50) {
             pelilauta = new Pelilauta(x, y);
         }else{
             pelilauta = new Pelilauta(10, 10);
-        }       
+        }  
     }
+            
 
     public void miinoitaLauta(){
         // ensimmäinen klikkaus eli (x,y) koordinaatti johon ei tule miinaa (MYÖHEMMIN LISÄTTÄVÄ)

@@ -2,15 +2,24 @@ package nimirum.Miinaharavainen.logiikka;
 
 import java.util.Random;
 
+/**
+ *
+ * @author nexu770
+ */
 public class Pelilauta {
 
-    //muodostuu ruuduista, ruutujen alla on sisÃ¤ltÃ¶Ã¤, miina, tyhjÃ¤ tai numero
+    //muodostuu ruuduista, ruutujen alla on sisÃƒÂ¤ltÃƒÂ¶ÃƒÂ¤, miina, tyhjÃƒÂ¤ tai numero
     //Ruutuja x*y kappaletta
     private int x;
     private int y;
 
     Ruutu pelilauta[][];
 
+    /**
+     *
+     * @param x
+     * @param y
+     */
     public Pelilauta(int x, int y) {
         this.x = x;
         this.y = y;
@@ -24,26 +33,49 @@ public class Pelilauta {
         //  System.out.println("Pelilaudan luominen onnistui");
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @return Pelilauta
+     */
     public Ruutu getRuutu(int x, int y) {
         return pelilauta[x][y];
     }
 
+    /**
+     *
+     * @return
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getY() {
         return y;
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     */
     public void setMiina(int x, int y) {
         //testausta varten
         Ruutu ruutu = pelilauta[x][y];
         ruutu.setOnkoMiina(true);
     }
 
+    /**
+     *
+     * @return
+     */
     public int miinoita() {
-        //lisÃ¤Ã¤ randomisti miinat ja laske numeroarvot
+        //lisÃƒÂ¤ÃƒÂ¤ randomisti miinat ja laske numeroarvot
         int miinojenMaara = (int) (0.15 * this.x * this.y);
 
         Random rand = new Random();
@@ -58,7 +90,7 @@ public class Pelilauta {
             if (!ruutu.getOnkoMiina()) {
                 ruutu.setOnkoMiina(true);
             } else {
-                //jos ruudussa jo miina, arvontojen mÃ¤Ã¤rÃ¤Ã¤ lisÃ¤tÃ¤Ã¤n yhdellÃ¤
+                //jos ruudussa jo miina, arvontojen mÃƒÂ¤ÃƒÂ¤rÃƒÂ¤ÃƒÂ¤ lisÃƒÂ¤tÃƒÂ¤ÃƒÂ¤n yhdellÃƒÂ¤
                 i--;
             }
         }
@@ -67,8 +99,11 @@ public class Pelilauta {
         return miinojenMaara;
     }
 
+    /**
+     *
+     */
     public void laskeNumerot() {
-        //käy koko pelilaudan läpi ja numeroi viereiset miinat
+        //kÃ¤y koko pelilaudan lÃ¤pi ja numeroi viereiset miinat
         for (int i = 0; i < this.x; i++) {
             for (int j = 0; j < this.y; j++) {
                 if (pelilauta[i][j].getOnkoMiina()) {

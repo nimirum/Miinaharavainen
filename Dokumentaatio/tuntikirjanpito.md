@@ -8,4 +8,6 @@
 
 23.1. klo 19-20 Viereisten miinojen laskeminen, lisää testejä
 
-26.1. klo 20-21 Kayttöliittymän menun tekoa ja klikkaustenkuuntelija
+26.1. klo 20-21 Kayttöliittymän menun tekoa ja klikkaustenkuuntelija, lisää testejä
+
+30.1. klo 14.45-15.00 laskeArvot() metodin siistimistä
