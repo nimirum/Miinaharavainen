@@ -11,3 +11,9 @@
 26.1. klo 20-21 Kayttöliittymän menun tekoa ja klikkaustenkuuntelija, lisää testejä
 
 30.1. klo 14.45-15.00 laskeArvot() metodin siistimistä
+
+1.2. klo 12-13 Javadociin perehtmistä ja aloittelua
+
+4.2. klo 14-15 Käyttöliittymän teon aloittelua, javadocin kirjoittamista
+
+5.2. klo 15-16 Javadoc enimmäkseen valmis, metodien kuvaksia puuttuu enää, käyttäliittymä aiheuttaa tuskaa

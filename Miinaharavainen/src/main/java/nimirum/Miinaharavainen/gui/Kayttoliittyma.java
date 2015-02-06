@@ -26,8 +26,8 @@ public class Kayttoliittyma implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("Miinaharavainen");
-        int leveys = (miinaharava.getPelilauta().getX()) * 100;
-        int korkeus = (miinaharava.getPelilauta().getY()) * 100;
+        int leveys = (miinaharava.getPelilauta().getX()) * 40;
+        int korkeus = (miinaharava.getPelilauta().getY()) * 40;
 
         frame.setPreferredSize(new Dimension(leveys, korkeus));
 
@@ -37,18 +37,20 @@ public class Kayttoliittyma implements Runnable {
         //--Ohjan perus kayttoliittyma
 
         //Ruutuja
-        frame.setLayout(new GridLayout(2, 2));
+        GridLayout grid = new GridLayout(miinaharava.getPelilauta().getX(),miinaharava.getPelilauta().getY());
+        frame.setLayout(grid);
         taulukko = new JButton[miinaharava.getPelilauta().getX()][miinaharava.getPelilauta().getY()];
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                JButton nappula = new JButton(i + ", " + j);
+        for (int i = 0; i < miinaharava.getPelilauta().getX(); i++) {
+            for (int j = 0; j < miinaharava.getPelilauta().getY(); j++) {
+                JButton nappula = new JButton();
+                //JButton nappula = new JButton(i + ", " + j);
                 frame.add(nappula);
             }
         }
 
         RuutujenPoistaja poistaja = new RuutujenPoistaja(taulukko);
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
 //                taulukko[i][j].addActionListener(poistaja);
             }
         }
