@@ -54,6 +54,15 @@ public class Kayttoliittyma implements Runnable {
 //                taulukko[i][j].addActionListener(poistaja);
             }
         }
+//
+//        frame.add(new JButton("Button 2"));
+//        frame.add(new JButton("Button 3"));
+//        frame.add(new JButton("Button 4"));
+//        frame.add(new JButton("Button 5"));
+//        frame.add(new JButton("Button 6"));
+//        frame.add(new JButton("Button 7"));
+//        frame.add(new JButton("Button 8"));
+//        frame.add(new JButton("Button 9"));
 
         frame.pack();
         frame.setVisible(true);
