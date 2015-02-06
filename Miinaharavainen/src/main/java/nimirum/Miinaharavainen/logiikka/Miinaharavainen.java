@@ -1,16 +1,30 @@
 package nimirum.Miinaharavainen.logiikka;
 
-import nimirum.Miinaharavainen.logiikka.Pelilauta;
-import nimirum.Miinaharavainen.logiikka.Ruutu;
-
+/**
+ * Miinharava peli luokka, joka luo pelilaudan
+ * @author nimirum
+ */
 public class Miinaharavainen {
     private Pelilauta pelilauta;
     private int miinojenMaara=0;
 
-    public Miinaharavainen(int x, int y) {
-        setPelilaudanKoko(x, y);
+    /**
+     *Miinaharavan konstruktori, missä luodaan pelilauta annetuista arvoista
+     * 
+     * @param leveys Pelilaudan leveys
+     * @param korkeus Pelilaudan korkeus
+     */
+    public Miinaharavainen(int leveys, int korkeus) {
+        setPelilaudanKoko(leveys, korkeus);
     }
     
+    /**
+     * Pelilaudan koko pitää olla väliltä 8-50 korkeus- ja leveyssuunnassa.
+     * Jos koko on väärä, niin luodaan automaattisesti 10*10 pelilauta.
+     *
+     * @param x Pelilaudan leveys
+     * @param y Pelilaudan korkeus
+     */
     public void setPelilaudanKoko(int x, int y){
          if (8 <= x && x <= 50 && 8 <= y && y <= 50) {
             pelilauta = new Pelilauta(x, y);
@@ -19,16 +33,22 @@ public class Miinaharavainen {
         }  
     }
             
-
+    /**
+     * Miinoittaa pelilaudan random lukujen avulla.
+     * Asetttaa miinojen määrän muistiin, jota tarvitsee pelin voittamiseen. 
+     * Ajanoton pitäisi alkaa tämän metodin käynnistämisen jälkeen
+     *
+     */
     public void miinoitaLauta(){
-        // ensimmäinen klikkaus eli (x,y) koordinaatti johon ei tule miinaa (MYÖHEMMIN LISÄTTÄVÄ)
-        //ajanotto alkaa myös samalla hetkellä       
+        // ensimmäinen klikkaus eli (x,y) koordinaatti johon ei tule miinaa (MYÖHEMMIN LISÄTTÄVÄ) 
         miinojenMaara = pelilauta.miinoita();
     }
 
+    /**
+     * Väliaikainen tulostusmetodi pelilaudan testausta varten.
+     *
+     */
     public void tulostaLauta(){
-        //väliaikainen tulostus
-        //System.out.println("\nTulostetaan pelilautaa");
         for (int i = 0; i < pelilauta.getX(); i++) {
             for (int j = 0; j < pelilauta.getY(); j++) {
                 Ruutu ruutu = pelilauta.getRuutu(i, j);
@@ -38,10 +58,18 @@ public class Miinaharavainen {
         }
     }
     
+    /**
+     *
+     * @return Pelilaudan miinojen määrä
+     */
     public int getMiinojenMaara() {
         return miinojenMaara;
     }
 
+    /**
+     *
+     * @return Pelilauta
+     */
     public Pelilauta getPelilauta() {
         return pelilauta;
     }   

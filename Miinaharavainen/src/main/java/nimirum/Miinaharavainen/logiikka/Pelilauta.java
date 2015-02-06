@@ -3,8 +3,8 @@ package nimirum.Miinaharavainen.logiikka;
 import java.util.Random;
 
 /**
- *
- * @author nexu770
+ * Muodostaa Pelilaudan, joka muodostuu ruuduista(x,y), miinoittaa ja laskee numero arvot.
+ * @author nimirum
  */
 public class Pelilauta {
 
@@ -71,11 +71,11 @@ public class Pelilauta {
     }
 
     /**
-     *
+     *Lisää randomisti miinat  ja laskeNumerot()
+     * 
      * @return
      */
     public int miinoita() {
-        //lisÃƒÂ¤ÃƒÂ¤ randomisti miinat ja laske numeroarvot
         int miinojenMaara = (int) (0.15 * this.x * this.y);
 
         Random rand = new Random();
@@ -95,15 +95,13 @@ public class Pelilauta {
             }
         }
         laskeNumerot();
-        //System.out.println("\nMiinoittaminen onnistui");
         return miinojenMaara;
     }
 
     /**
-     *
+     *Käy koko pelilaudan läpi ja numeroi viereisiin ruutuihin viereisten miinojen määrät
      */
     public void laskeNumerot() {
-        //kÃ¤y koko pelilaudan lÃ¤pi ja numeroi viereiset miinat
         for (int i = 0; i < this.x; i++) {
             for (int j = 0; j < this.y; j++) {
                 if (pelilauta[i][j].getOnkoMiina()) {

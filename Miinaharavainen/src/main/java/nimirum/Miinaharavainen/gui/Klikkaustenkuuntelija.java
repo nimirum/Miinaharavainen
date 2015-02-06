@@ -5,8 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- *
- * @author nexu770
+ * Kuuntelee käyttäjän klikkauksia
+ * @author nimirum
  */
 public class Klikkaustenkuuntelija implements ActionListener {
 

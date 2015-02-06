@@ -39,17 +39,19 @@ public class RuutuTest {
         //väliaikainen
         Ruutu ruutu = new Ruutu(1, 1);
         ruutu.setViereistenMiinojenMaara(9);
+        assertEquals(ruutu.getViereistenMiinojenMaara(),0);
         assertEquals(ruutu.toString(), " .");
     }
 
-       @Test
+    @Test
     public void ruudussaNegatiivinenArvoMiinojenmaaraTulostuuOikein() {
         //väliaikainen
         Ruutu ruutu = new Ruutu(1, 1);
         ruutu.setViereistenMiinojenMaara(-1);
+        assertEquals(ruutu.getViereistenMiinojenMaara(),0);
         assertEquals(ruutu.toString(), " .");
     }
-    
+
     @Test
     public void viereistenMiinojenMaaraTulostuuOikein() {
         //väliaikainen
