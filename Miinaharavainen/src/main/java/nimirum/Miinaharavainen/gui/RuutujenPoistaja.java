@@ -17,9 +17,14 @@ import javax.swing.JButton;
 public class RuutujenPoistaja implements ActionListener{
  
     private JButton taulukko[][];
+    private JButton nappi;
 
     public RuutujenPoistaja(JButton[][] taulukko) {
         this.taulukko = taulukko;
+    }
+    
+    public RuutujenPoistaja(JButton nappi) {
+        this.nappi = nappi;
     }
     
     @Override

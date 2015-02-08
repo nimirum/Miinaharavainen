@@ -26,8 +26,8 @@ public class Kayttoliittyma implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("Miinaharavainen");
-        int leveys = (miinaharava.getPelilauta().getX()) * 40;
-        int korkeus = (miinaharava.getPelilauta().getY()) * 40;
+        int leveys = (miinaharava.getPelilauta().getX()) * 24;
+        int korkeus = (miinaharava.getPelilauta().getY()) * 24;
 
         frame.setPreferredSize(new Dimension(leveys, korkeus));
 
@@ -54,15 +54,6 @@ public class Kayttoliittyma implements Runnable {
 //                taulukko[i][j].addActionListener(poistaja);
             }
         }
-//
-//        frame.add(new JButton("Button 2"));
-//        frame.add(new JButton("Button 3"));
-//        frame.add(new JButton("Button 4"));
-//        frame.add(new JButton("Button 5"));
-//        frame.add(new JButton("Button 6"));
-//        frame.add(new JButton("Button 7"));
-//        frame.add(new JButton("Button 8"));
-//        frame.add(new JButton("Button 9"));
 
         frame.pack();
         frame.setVisible(true);
