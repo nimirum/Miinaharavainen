@@ -11,8 +11,7 @@ public class Ruutu {
     private int viereistenMiinojenMaara = 0; //8 lähintä ruutua
     private int x;
     private int y;
-
-    
+    private boolean onkoRuutuNakyva = true;
 
     /**
      *
@@ -34,6 +33,24 @@ public class Ruutu {
     public void setOnkoMiina(boolean onkoMiina) {
         this.onkoMiina = onkoMiina;
     }
+
+    public boolean getOnkoRuutuNakyva() {
+        return onkoRuutuNakyva;
+    }
+
+    public void setOnkoRuutuNakyva(boolean onkoRuutuNakyva) {
+        this.onkoRuutuNakyva = onkoRuutuNakyva;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+    
+    
 
     /**
      *

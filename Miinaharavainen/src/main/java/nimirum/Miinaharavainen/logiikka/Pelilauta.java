@@ -43,6 +43,11 @@ public class Pelilauta {
         return pelilauta[x][y];
     }
 
+    public Ruutu[][] getPelilauta() {
+        return pelilauta;
+    }
+
+    
     /**
      *
      * @return

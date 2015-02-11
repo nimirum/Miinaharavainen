@@ -1,20 +1,29 @@
 
 package nimirum.Miinaharavainen.gui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.List;
+
+import java.awt.event.MouseEvent;
+import javax.swing.event.MouseInputAdapter;
+import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
 
 /**
- * Kuuntelee käyttäjän klikkauksia
+ * Kuuntelee käyttäjän hiirenklikkauksia
  * @author nimirum
  */
-public class Klikkaustenkuuntelija implements ActionListener {
+public class Klikkaustenkuuntelija extends MouseInputAdapter {
+    
+    private Miinaharavainen miinaharavainen;
+    private Piirtaja piirtaja;
+    //private List<TapahtumaAlue> tapahtumaalueet;
 
     public Klikkaustenkuuntelija() {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        
+    public void mouseClicked(MouseEvent e) {
+        super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
     }
+
+  
 }

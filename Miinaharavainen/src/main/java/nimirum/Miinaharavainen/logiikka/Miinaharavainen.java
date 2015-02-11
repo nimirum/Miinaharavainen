@@ -48,7 +48,7 @@ public class Miinaharavainen {
      * Väliaikainen tulostusmetodi pelilaudan testausta varten.
      *
      */
-    public void tulostaLauta(){
+    private void tulostaLauta(){
         for (int i = 0; i < pelilauta.getX(); i++) {
             for (int j = 0; j < pelilauta.getY(); j++) {
                 Ruutu ruutu = pelilauta.getRuutu(i, j);

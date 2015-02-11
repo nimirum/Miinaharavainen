@@ -10,6 +10,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.JPanel;
 import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
+import nimirum.Miinaharavainen.logiikka.Ruutu;
 
 /**
  * Luokka piirtää pelikentän
@@ -34,11 +35,28 @@ public class Piirtaja extends JPanel {
     }
 
     private void piirraRuudut(Graphics g) {
-        
-         for (int i = 0; i < miinaharava.getPelilauta().getX()*24; i=i+24) {
-            for (int j = 0; j < miinaharava.getPelilauta().getY()*24; j=j+24) {
-                Image kuva = kuvat.GetImage("Tile");
-               g.drawImage(kuva, i, j, null);
+
+        for (int i = 0; i < miinaharava.getPelilauta().getX() * 24; i = i + 24) {
+            for (int j = 0; j < miinaharava.getPelilauta().getY() * 24; j = j + 24) {
+                Ruutu ruutu = miinaharava.getPelilauta().getRuutu(i/24, j/24);
+                if (!ruutu.getOnkoRuutuNakyva()) {
+                    Image kuva = kuvat.GetImage("Tile");
+                    g.drawImage(kuva, i, j, null);
+                } else {
+                    if (ruutu.getOnkoMiina()) {
+                        Image kuva = kuvat.GetImage("Mine");
+                        g.drawImage(kuva, i, j, null);
+                    }
+                    if (!ruutu.getOnkoMiina() && ruutu.getViereistenMiinojenMaara() > 0) {
+                        String numero = String.valueOf(ruutu.getViereistenMiinojenMaara());
+                        Image kuva = kuvat.GetImage(numero);
+                        g.drawImage(kuva, i, j, null);
+                    }
+                     if (!ruutu.getOnkoMiina() && ruutu.getViereistenMiinojenMaara() == 0) {
+                        Image kuva = kuvat.GetImage("Empty");
+                        g.drawImage(kuva, i, j, null);
+                    }
+                }
             }
         }
     }
