@@ -8,6 +8,8 @@ package nimirum.Miinaharavainen.gui;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
@@ -23,12 +25,32 @@ public class KuvienLataaja {
     private BufferedImage numeroRuutu;
     private BufferedImage tyhjaRuutu;
 
-    public KuvienLataaja() throws IOException {
-        ulkoRuutu = ImageIO.read(new File("graphics/tile24x24.png"));
-        miinaRuutu = ImageIO.read(new File("graphics/mine24x24.png"));
-        tyhjaRuutu = ImageIO.read(new File("graphics/empty24x24.png"));
-        liputettuRuutu = ImageIO.read(new File("graphics/flagtile24x24.png"));
-        numeroRuutu = ImageIO.read(new File("graphics/empty24x24.png")); //KESKEN
+    public KuvienLataaja() {
+        try {
+            ulkoRuutu = ImageIO.read(new File("graphics/tile24x24.png"));
+        } catch (IOException ex) {
+            System.out.println("Kuvan lataus epäonnistui");
+        }
+        try {
+            miinaRuutu = ImageIO.read(new File("graphics/mine24x24.png"));
+        } catch (IOException ex) {
+            System.out.println("Kuvan lataus epäonnistui");
+        }
+        try {
+            tyhjaRuutu = ImageIO.read(new File("graphics/empty24x24.png"));
+        } catch (IOException ex) {
+            System.out.println("Kuvan lataus epäonnistui");
+        }
+        try {
+            liputettuRuutu = ImageIO.read(new File("graphics/flagtile24x24.png"));
+        } catch (IOException ex) {
+            System.out.println("Kuvan lataus epäonnistui");
+        }
+        try {
+            numeroRuutu = ImageIO.read(new File("graphics/empty24x24.png")); //KESKEN
+        } catch (IOException ex) {
+            System.out.println("Kuvan lataus epäonnistui");
+        }
     }
 
     public BufferedImage GetImage(String name) {

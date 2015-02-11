@@ -1,10 +1,10 @@
 package nimirum.Miinaharavainen.gui;
 
-import java.awt.BorderLayout;
+
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.KeyEvent;
+
 import javax.swing.*;
 import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
 
@@ -18,13 +18,22 @@ public class Kayttoliittyma implements Runnable {
     private JFrame frame;
     private Miinaharavainen miinaharava;
     private JButton taulukko[][];
+    //private KuvienLataaja kuvat;
 
-    public Kayttoliittyma(Miinaharavainen miinaharava) {
+    /**
+     *Kayttoliittyma luo pelin Miinaharavan 
+     * @param miinaharava
+     */
+  
+   public Kayttoliittyma(Miinaharavainen miinaharava) {
         this.miinaharava = miinaharava;
     }
+    
+    
 
     @Override
     public void run() {
+        
         frame = new JFrame("Miinaharavainen");
         int leveys = (miinaharava.getPelilauta().getX()) * 24;
         int korkeus = (miinaharava.getPelilauta().getY()) * 24;
@@ -34,53 +43,18 @@ public class Kayttoliittyma implements Runnable {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         luoKomponentit(frame.getContentPane());
-        //--Ohjan perus kayttoliittyma
-
-        //Ruutuja
-        GridLayout grid = new GridLayout(miinaharava.getPelilauta().getX(),miinaharava.getPelilauta().getY());
-        frame.setLayout(grid);
-        taulukko = new JButton[miinaharava.getPelilauta().getX()][miinaharava.getPelilauta().getY()];
-        for (int i = 0; i < miinaharava.getPelilauta().getX(); i++) {
-            for (int j = 0; j < miinaharava.getPelilauta().getY(); j++) {
-                JButton nappula = new JButton();
-                //JButton nappula = new JButton(i + ", " + j);
-                frame.add(nappula);
-            }
-        }
-
-        RuutujenPoistaja poistaja = new RuutujenPoistaja(taulukko);
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-//                taulukko[i][j].addActionListener(poistaja);
-            }
-        }
 
         frame.pack();
         frame.setVisible(true);
     }
 
     public void luoKomponentit(Container container) {
-        container.setLayout(new BorderLayout());
-        /* Menun kanssa taistelua
-        
-         JMenuBar menubar = new JMenuBar();
-         ImageIcon icon = new ImageIcon("exit.png");
-
-         JMenu file = new JMenu("File");
-         file.setMnemonic(KeyEvent.VK_F);
-
-         JMenuItem newMenuItem = new JMenuItem("New Game", icon);
-         newMenuItem.setMnemonic(KeyEvent.VK_E);
-         newMenuItem.setToolTipText("New Game");
-         // newMenuItem.addActionListener(new Klikkaustenkuuntelija() {
-         // });
-         file.add(newMenuItem);
-
-         menubar.add(file);
-         container.add(menubar, BorderLayout.NORTH);
-         */
-
-        //Klikkaustenkuuntelija ei toimi vielä
-        //frame.addMouseListener(new Klikkaustenkuuntelija());
+           Piirtaja piirtoalusta = new Piirtaja(miinaharava);
+           
+           container.add(piirtoalusta);
+    }
+    
+      public JFrame getFrame() {
+        return frame;
     }
 }
