@@ -25,6 +25,14 @@ public class PelilautaTest {
     }
 
     @Test
+    public void palauttaaOikeanKokoisenPelilaudan() {
+        Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
+        Pelilauta lauta = miinaharava.getPelilauta();
+        assertEquals(10, lauta.getX());
+        assertEquals(10, lauta.getY());
+    }
+
+    @Test
     public void miinaVasenYlanurkkaLaskuriToimii() {
         Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
         Pelilauta lauta = miinaharava.getPelilauta();

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package nimirum.Miinaharavainen.gui;
 
 import java.awt.image.BufferedImage;
@@ -15,7 +11,7 @@ import javax.imageio.ImageIO;
 /**
  * Lataa pelin kuvat, jotka ovat kokoa 24x24
  *
- * @author nexu770
+ * @author nimirum
  */
 public class KuvienLataaja {
 

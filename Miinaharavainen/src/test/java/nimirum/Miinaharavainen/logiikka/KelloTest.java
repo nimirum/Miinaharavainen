@@ -33,4 +33,15 @@ public class KelloTest {
     public void tearDown() {
     }
 
+    @Test
+    public void KellonAloitusarvoNolla(){
+        Kello kello = new Kello();
+        assertEquals(0, kello.getSekunti());
+    }
+    @Test
+    public void KellonaikaKasvaa(){
+        Kello kello = new Kello();
+        kello.kasvataKelloa();
+        assertEquals(1, kello.getSekunti());
+    }
 }

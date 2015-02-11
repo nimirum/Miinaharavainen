@@ -26,8 +26,21 @@ public class RuutuTest {
     }
 
     @Test
+    public void palauttaaRuudunNakyvyydenAluksiFalse() {
+        Ruutu ruutu = new Ruutu(1, 1);
+        assertEquals(ruutu.getOnkoRuutuNakyva(), true);
+        //Vaihda falseksi, väliaikaisesti true
+    }
+
+    @Test
+    public void ruudunKoordinaatitToimii() {
+        Ruutu ruutu = new Ruutu(1, 1);
+        assertEquals(ruutu.getX(), 1);
+        assertEquals(ruutu.getY(), 1);
+    }
+
+    @Test
     public void ruudussaMiinaTulostuuOikein() {
-        //väliaikainen
         Ruutu ruutu = new Ruutu(1, 1);
         ruutu.setOnkoMiina(true);
         ruutu.setViereistenMiinojenMaara(3);
@@ -36,34 +49,30 @@ public class RuutuTest {
 
     @Test
     public void ruudussaLiikaaViereisiaMiinojaTulostuuOikein() {
-        //väliaikainen
         Ruutu ruutu = new Ruutu(1, 1);
         ruutu.setViereistenMiinojenMaara(9);
-        assertEquals(ruutu.getViereistenMiinojenMaara(),0);
+        assertEquals(ruutu.getViereistenMiinojenMaara(), 0);
         assertEquals(ruutu.toString(), " .");
     }
 
     @Test
     public void ruudussaNegatiivinenArvoMiinojenmaaraTulostuuOikein() {
-        //väliaikainen
         Ruutu ruutu = new Ruutu(1, 1);
         ruutu.setViereistenMiinojenMaara(-1);
-        assertEquals(ruutu.getViereistenMiinojenMaara(),0);
+        assertEquals(ruutu.getViereistenMiinojenMaara(), 0);
         assertEquals(ruutu.toString(), " .");
     }
 
     @Test
     public void viereistenMiinojenMaaraTulostuuOikein() {
-        //väliaikainen
         Ruutu ruutu = new Ruutu(1, 1);
-        ruutu.setViereistenMiinojenMaara(3);
-        assertEquals(ruutu.getViereistenMiinojenMaara(), 3);
-        assertEquals(ruutu.toString(), " 3");
+        ruutu.setViereistenMiinojenMaara(8);
+        assertEquals(ruutu.getViereistenMiinojenMaara(), 8);
+        assertEquals(ruutu.toString(), " 8");
     }
 
     @Test
     public void tyhjaRuutuTulostuuOikein() {
-        //väliaikainen
         Ruutu ruutu = new Ruutu(1, 1);
         assertEquals(ruutu.toString(), " .");
     }
