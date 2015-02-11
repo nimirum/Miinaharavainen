@@ -16,7 +16,7 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
-        Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
+        Miinaharavainen miinaharava = new Miinaharavainen(15, 15);
         miinaharava.miinoitaLauta();
         //miinoittaminen pitäisi siirtää käyttöliittymään jossain vaiheessa
          

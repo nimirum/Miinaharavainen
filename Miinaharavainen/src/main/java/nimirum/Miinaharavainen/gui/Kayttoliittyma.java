@@ -35,8 +35,8 @@ public class Kayttoliittyma implements Runnable {
     public void run() {
         
         frame = new JFrame("Miinaharavainen");
-        int leveys = ((miinaharava.getPelilauta().getX())) * 24;
-        int korkeus = ((miinaharava.getPelilauta().getY())) * 24 ;
+        int leveys = ((miinaharava.getPelilauta().getX()) * 24) +16;
+        int korkeus = ((miinaharava.getPelilauta().getY()) * 24) +39;
 
         frame.setPreferredSize(new Dimension(leveys, korkeus));
 
