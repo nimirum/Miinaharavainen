@@ -7,6 +7,7 @@ package nimirum.Miinaharavainen.gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import javax.swing.JPanel;
 import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
 
@@ -33,9 +34,11 @@ public class Piirtaja extends JPanel {
     }
 
     private void piirraRuudut(Graphics g) {
-         for (int i = 0; i < miinaharava.getPelilauta().getX(); i++) {
-            for (int j = 0; j < miinaharava.getPelilauta().getY(); j++) {
-               g.drawImage(kuvat.GetImage("Tile"), i, j, null);
+        
+         for (int i = 0; i < miinaharava.getPelilauta().getX()*24; i=i+24) {
+            for (int j = 0; j < miinaharava.getPelilauta().getY()*24; j=j+24) {
+                Image kuva = kuvat.GetImage("Tile");
+               g.drawImage(kuva, i, j, null);
             }
         }
     }

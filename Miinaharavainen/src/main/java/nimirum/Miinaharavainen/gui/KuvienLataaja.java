@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
- * Lataa pelin kuvat
+ * Lataa pelin kuvat, jotka ovat kokoa 24x24
  *
  * @author nexu770
  */
