@@ -1,8 +1,8 @@
-14.1 klo 22-00 GitHub -repositorio
+14.1. klo 22-00 GitHub -repositorio
 
-15.1 klo 9-10 ja klo 21.00-22.00 Projektin eka push, aihemäärittely
+15.1. klo 9-10 ja klo 21.00-22.00 Projektin eka push, aihemäärittely
 
-20.1 klo 19.30-21.00 Ensimmäiset luokat, Pelilauta ja ruutu, luokkakaavio
+20.1. klo 19.30-21.00 Ensimmäiset luokat, Pelilauta ja ruutu, luokkakaavio
 
 22.1. klo 13-14 ja klo 21-23 Pelilaudan tulostus, miinojen generointi ja testejä
 
@@ -17,3 +17,7 @@
 4.2. klo 14-15 Käyttöliittymän teon aloittelua, javadocin kirjoittamista
 
 5.2. klo 15-16 Javadoc enimmäkseen valmis, metodien kuvaksia puuttuu enää, käyttäliittymä aiheuttaa tuskaa
+
+8.2. klo 20-21 Kello ja Kuvienlataaja
+
+11.2 klo 14-15 ja 21-24 Käyttöliittymä kuvapohjaiseksi, ruudut piirtyvät oikein, klikkaustenkuuntelijan toiminnallisuutta lisää, lisää testejä
