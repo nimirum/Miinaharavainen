@@ -8,17 +8,16 @@ import java.util.Random;
  */
 public class Pelilauta {
 
-    //muodostuu ruuduista, ruutujen alla on sisÃƒÂ¤ltÃƒÂ¶ÃƒÂ¤, miina, tyhjÃƒÂ¤ tai numero
-    //Ruutuja x*y kappaletta
     private int x;
     private int y;
 
     Ruutu pelilauta[][];
 
     /**
-     *
-     * @param x
-     * @param y
+     *Muodostaa pelilaudan johon kuuluu x*y määrä ruutuja
+     * 
+     * @param x pelilaudan leveys
+     * @param y pelilaudan korkeus
      */
     public Pelilauta(int x, int y) {
         this.x = x;
@@ -35,14 +34,18 @@ public class Pelilauta {
 
     /**
      *
-     * @param x
-     * @param y
-     * @return Pelilauta
+     * @param x leveys koordinaatti
+     * @param y korkeus koordinaatti
+     * @return Ruutu
      */
     public Ruutu getRuutu(int x, int y) {
         return pelilauta[x][y];
     }
 
+    /**
+     *
+     * @return Pelilauta
+     */
     public Ruutu[][] getPelilauta() {
         return pelilauta;
     }
@@ -50,7 +53,7 @@ public class Pelilauta {
     
     /**
      *
-     * @return
+     * @return Pelilaudan leveys
      */
     public int getX() {
         return x;
@@ -58,16 +61,17 @@ public class Pelilauta {
 
     /**
      *
-     * @return
+     * @return Pelilaudan korkeus
      */
     public int getY() {
         return y;
     }
 
     /**
-     *
-     * @param x
-     * @param y
+     *Asettaa pelilaudan ruudulle(x,y) miinan
+     * 
+     * @param x leveys koordinaatti
+     * @param y korkeus koordinaatti
      */
     public void setMiina(int x, int y) {
         //testausta varten
@@ -76,9 +80,9 @@ public class Pelilauta {
     }
 
     /**
-     *Lisää randomisti miinat  ja laskeNumerot()
+     *Lisää randomisti miinat  ja lopuksi laskeNumerot()
      * 
-     * @return
+     * @return Miinojen määrä miinoittamisen jälkeen
      */
     public int miinoita() {
         int miinojenMaara = (int) (0.15 * this.x * this.y);

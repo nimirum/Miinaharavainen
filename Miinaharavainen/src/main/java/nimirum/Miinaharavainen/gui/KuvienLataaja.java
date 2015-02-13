@@ -21,6 +21,9 @@ public class KuvienLataaja {
     private BufferedImage numeroRuutu;
     private BufferedImage tyhjaRuutu;
 
+    /**
+     *Lataa kaikki ennalta määritellyt kuvat käytettäväksi
+     */
     public KuvienLataaja() {
         try {
             ulkoRuutu = ImageIO.read(new File("graphics/tile24x24.png"));
@@ -49,6 +52,12 @@ public class KuvienLataaja {
         }
     }
 
+    /**
+     *Kuvien kutsumismetodi, palauttaa halutun kuvan
+     * 
+     * @param name
+     * @return
+     */
     public BufferedImage GetImage(String name) {
         switch (name) {
             case "Tile":

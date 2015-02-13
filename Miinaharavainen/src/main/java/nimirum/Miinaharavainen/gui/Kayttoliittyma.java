@@ -48,13 +48,23 @@ public class Kayttoliittyma implements Runnable {
         frame.setVisible(true);
     }
 
+    /**
+     *Luo käyttöliittymään kuuluvat elementit, eli piirtoalustan
+     * 
+     * @param container
+     */
     public void luoKomponentit(Container container) {
            Piirtaja piirtoalusta = new Piirtaja(miinaharava);
            
            container.add(piirtoalusta);
     }
     
-      public JFrame getFrame() {
+    /**
+     *Palauttaa ikkunan
+     * 
+     * @return
+     */
+    public JFrame getFrame() {
         return frame;
     }
 }

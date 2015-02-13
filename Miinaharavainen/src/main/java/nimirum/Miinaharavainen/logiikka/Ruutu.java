@@ -27,52 +27,66 @@ public class Ruutu {
     }
 
     /**
-     *
+     *Ruudulle voi asettaa tai poistaa miinan
      * @param onkoMiina
      */
     public void setOnkoMiina(boolean onkoMiina) {
         this.onkoMiina = onkoMiina;
     }
 
+    /**
+     *
+     * @return onko ruutu näkyvä, eli onko sen päällä klikattava ruutu
+     */
     public boolean getOnkoRuutuNakyva() {
         return onkoRuutuNakyva;
     }
 
+    /**
+     * Asettaa ruudnu näkyvyysarvon Piirtäjää varten
+     *
+     * @param onkoRuutuNakyva
+     */
     public void setOnkoRuutuNakyva(boolean onkoRuutuNakyva) {
         this.onkoRuutuNakyva = onkoRuutuNakyva;
     }
 
+    /**
+     *
+     * @return Ruudun sijainti x suunnassa
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     *
+     * @return Ruudun sijainti y suunnassa
+     */
     public int getY() {
         return y;
     }
     
-    
-
     /**
      *
-     * @return
+     * @return onkoMiina
      */
     public boolean getOnkoMiina() {
         return onkoMiina;
     }
 
     /**
-     *
+     * Ruudulle asetetan viereisten miinojen määrä, arvo voi olla väliltä 0-8
      * @param viereistenMiinojenMaara
      */
     public void setViereistenMiinojenMaara(int viereistenMiinojenMaara) {
-        //arvot väliltä 0-8
         if (0 <= viereistenMiinojenMaara && viereistenMiinojenMaara <= 8) {
             this.viereistenMiinojenMaara = viereistenMiinojenMaara;
         }
     }
 
     /**
-     *
+     *Lisää viereisten miinojen määrää yhdellä
      */
     public void addViereistenMiinojenMaaraa() {
         viereistenMiinojenMaara++;

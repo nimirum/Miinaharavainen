@@ -17,12 +17,15 @@ public class Klikkaustenkuuntelija extends MouseInputAdapter {
     private Piirtaja piirtaja;
     //private List<TapahtumaAlue> tapahtumaalueet;
 
+    /**
+     *Konstruktori
+     */
     public Klikkaustenkuuntelija() {
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+        super.mouseClicked(e); 
     }
 
   
