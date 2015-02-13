@@ -4,7 +4,7 @@ package nimirum.Miinaharavainen.logiikka;
  * Miinharava peli luokka, joka luo pelilaudan
  * @author nimirum
  */
-public class Miinaharavainen {
+public final class Miinaharavainen {
     private Pelilauta pelilauta;
     private int miinojenMaara=0;
 
