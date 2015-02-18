@@ -1,5 +1,6 @@
 package nimirum.Miinaharavainen.gui;
 
+import java.awt.Image;
 import java.awt.Rectangle;
 import nimirum.Miinaharavainen.logiikka.Ruutu;
 
@@ -16,16 +17,20 @@ public class TapahtumaAlue extends Rectangle {
     /**
      *Luo neliön muotoisen tapahtumaalueen, kooltaan 24x24
      * 
-     * @param x
-     * @param y
+     * @param x sijainti
+     * @param y sijainti
      * @param pelilauta
      * @param ruutu
      */
-    public TapahtumaAlue(int x, int y, Ruutu[][] pelilauta, Ruutu ruutu) {
+    public TapahtumaAlue(int x, int y, Ruutu ruutu) {
         super(x, y, 24, 24);
-        this.ruudut = pelilauta;
+        //this.ruudut = pelilauta;
         this.ruutu = ruutu;
     }
+    
+//    private int RuudunKorkeusKayttoliittymassa(){
+//       kuvat.GetImage("Tile").getTileHeight();
+//    }
     
     /**
      *Tarkistaa onko alueeseen klikattu ja toimii sen mukaan

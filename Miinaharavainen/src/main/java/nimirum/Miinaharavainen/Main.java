@@ -7,7 +7,7 @@ import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
 
 /**
  *
- * @author nexu770
+ * @author nimirum
  */
 public class Main {
     

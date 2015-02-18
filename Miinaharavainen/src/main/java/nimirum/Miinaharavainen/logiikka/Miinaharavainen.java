@@ -73,4 +73,6 @@ public final class Miinaharavainen {
     public Pelilauta getPelilauta() {
         return pelilauta;
     }   
+    
+    
 }

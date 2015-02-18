@@ -4,12 +4,13 @@ package nimirum.Miinaharavainen.gui;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
 
 /**
- * Luokka hallistee käyttöliittymän elementtejä ja käynnistää pelin
+ * Luokka hallitsee käyttöliittymän elementtejä ja käynnistää pelin
  *
  * @author nimirum
  */
@@ -27,16 +28,14 @@ public class Kayttoliittyma implements Runnable {
   
    public Kayttoliittyma(Miinaharavainen miinaharava) {
         this.miinaharava = miinaharava;
-    }
-    
-    
+   }
 
     @Override
     public void run() {
         
         frame = new JFrame("Miinaharavainen");
-        int leveys = ((miinaharava.getPelilauta().getX()) * 24) +16;
-        int korkeus = ((miinaharava.getPelilauta().getY()) * 24) +39;
+        int leveys = ((miinaharava.getPelilauta().getX()) * 24) +18;
+        int korkeus = ((miinaharava.getPelilauta().getY()) * 24) +45;
 
         frame.setPreferredSize(new Dimension(leveys, korkeus));
 
@@ -56,8 +55,21 @@ public class Kayttoliittyma implements Runnable {
     public void luoKomponentit(Container container) {
            Piirtaja piirtoalusta = new Piirtaja(miinaharava);
            
+           lisaaKuuntelija(piirtoalusta); 
+           
            container.add(piirtoalusta);
     }
+    
+      private void lisaaKuuntelija(Piirtaja piirtaja) {
+        Klikkaustenkuuntelija kuuntelija = new Klikkaustenkuuntelija(piirtaja,luoTapahtumaAlueet());
+        piirtaja.addMouseListener(kuuntelija);
+      }
+      
+      private ArrayList luoTapahtumaAlueet(){
+          Sijainnit sijainnit = new Sijainnit(miinaharava);
+          ArrayList list = sijainnit.TapahtumaAlueet();
+          return list;
+      }
     
     /**
      *Palauttaa ikkunan
