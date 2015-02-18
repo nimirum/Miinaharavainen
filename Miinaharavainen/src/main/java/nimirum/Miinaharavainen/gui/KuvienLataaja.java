@@ -15,7 +15,7 @@ public class KuvienLataaja {
     private BufferedImage ulkoRuutu;
     private BufferedImage liputettuRuutu;
     private BufferedImage miinaRuutu;
-    private BufferedImage numeroRuutu;
+    private BufferedImage numeroRuutuYksi;
     private BufferedImage tyhjaRuutu;
 
     /**
@@ -27,7 +27,7 @@ public class KuvienLataaja {
             miinaRuutu = ImageIO.read(new File("graphics/mine24x24.png"));
             tyhjaRuutu = ImageIO.read(new File("graphics/empty24x24.png"));
             liputettuRuutu = ImageIO.read(new File("graphics/flagtile24x24.png"));
-            numeroRuutu = ImageIO.read(new File("graphics/empty24x24.png")); //KESKEN
+            numeroRuutuYksi = ImageIO.read(new File("graphics/one24x24.png")); //KESKEN
         } catch (IOException ex) {
             System.out.println("Kuvien lataus epäonnistui");
         }
@@ -50,9 +50,9 @@ public class KuvienLataaja {
             case "Empty":
                 return tyhjaRuutu;
             case "1":
-                return tyhjaRuutu;
+                return numeroRuutuYksi;
             default:
-                return ulkoRuutu;
+                return numeroRuutuYksi;
         }
 
     }
