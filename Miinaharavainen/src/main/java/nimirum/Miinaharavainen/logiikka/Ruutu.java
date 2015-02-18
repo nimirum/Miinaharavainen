@@ -1,5 +1,7 @@
 package nimirum.Miinaharavainen.logiikka;
 
+import java.util.ArrayList;
+
 /**
  *Pelilaudan ruutu, mikä voi olla miina, tyhjä tai numero, joka kertoo vieressä olevien miinojen määrän
  * 
@@ -16,6 +18,7 @@ public class Ruutu {
     private final int ruudunKorkeus = 24;
     private boolean onkoLiputettu = false;
     private Pelilauta pelilauta;
+    private ArrayList viereisetRuudut;
     
 
     /**
@@ -30,7 +33,17 @@ public class Ruutu {
         this.x = x;
         this.y = y;
         this.pelilauta = pelilauta;
+        
     }
+    
+    public void setViereisetRuudut(ArrayList list) {
+        this.viereisetRuudut = list;
+    }
+
+    public ArrayList getViereisetRuudut() {
+        return viereisetRuudut;
+    }
+    
 
     /**
      *Ruudulle voi asettaa tai poistaa miinan

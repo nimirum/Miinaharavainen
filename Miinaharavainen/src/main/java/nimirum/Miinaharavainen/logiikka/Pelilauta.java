@@ -1,9 +1,12 @@
 package nimirum.Miinaharavainen.logiikka;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Muodostaa Pelilaudan, joka muodostuu ruuduista(x,y), miinoittaa ja laskee numero arvot.
+ * Muodostaa Pelilaudan, joka muodostuu ruuduista(x,y), miinoittaa ja laskee
+ * numero arvot.
+ *
  * @author nimirum
  */
 public class Pelilauta {
@@ -14,8 +17,8 @@ public class Pelilauta {
     private Ruutu pelilauta[][];
 
     /**
-     *Muodostaa pelilaudan johon kuuluu x*y määrä ruutuja
-     * 
+     * Muodostaa pelilaudan johon kuuluu x*y määrä ruutuja
+     *
      * @param x pelilaudan leveys
      * @param y pelilaudan korkeus
      */
@@ -28,7 +31,8 @@ public class Pelilauta {
             for (int j = 0; j < this.y; j++) {
                 pelilauta[i][j] = new Ruutu(i, j, this);
             }
-        }
+        }  
+        viereisetRuudut();
     }
 
     /**
@@ -49,7 +53,6 @@ public class Pelilauta {
         return pelilauta;
     }
 
-    
     /**
      *
      * @return Pelilaudan leveys
@@ -67,21 +70,20 @@ public class Pelilauta {
     }
 
     /**
-     *Asettaa pelilaudan ruudulle(x,y) miinan
-     * 
+     * Asettaa pelilaudan ruudulle(x,y) miinan
+     *
      * @param x leveys koordinaatti
      * @param y korkeus koordinaatti
      */
     public void setMiina(int x, int y) {
         //testausta varten
-        Ruutu ruutu = pelilauta[x][y];
+        Ruutu ruutu = getRuutu(x, y);
         ruutu.setOnkoMiina(true);
     }
 
     /**
-     *Lisää randomisti miinat  ja lopuksi laskeNumerot()
-     * 
-     * @return Miinojen määrä miinoittamisen jälkeen
+     * Lisää randomisti miinat ja lopuksi laskeNumerot()
+     *
      */
     public void miinoita() {
         int miinojenMaara = miinojenMaaraLaskuri();
@@ -94,7 +96,7 @@ public class Pelilauta {
         for (int i = 0; i < miinojenMaara; i++) {
             int randomNumX = rand.nextInt((maxX - min) + 1) + min;
             int randomNumY = rand.nextInt((maxY - min) + 1) + min;
-            Ruutu ruutu = pelilauta[randomNumX][randomNumY];
+            Ruutu ruutu = getRuutu(randomNumX, randomNumY);
             if (!ruutu.getOnkoMiina()) {
                 ruutu.setOnkoMiina(true);
             } else {
@@ -102,20 +104,54 @@ public class Pelilauta {
                 i--;
             }
         }
-        laskeNumerot();
     }
 
-    private int miinojenMaaraLaskuri(){
+    private int miinojenMaaraLaskuri() {
         return (int) (0.15 * this.x * this.y);
     }
 
     public int getMiinojenMaara() {
         return miinojenMaara;
     }
-    
-    
+
+    private void viereisetRuudut() { 
+        ArrayList viereiset = new ArrayList();
+        for (int i = 0; i < this.x; i++) {
+            for (int j = 0; j < this.y; j++) {
+                Ruutu ruutu = getRuutu(i, j);
+                if (getRuutu(i + 1, j) != null) {
+                    viereiset.add(getRuutu(i + 1, j));
+                }
+                if (getRuutu(i + 1, j + 1) != null) {
+                    viereiset.add(getRuutu(i + 1, j+1));
+                }          
+                if (getRuutu(i, j + 1) != null) {
+                    viereiset.add(getRuutu(i, j+1));
+                }
+                if (getRuutu(i, j - 1) != null) {
+                    viereiset.add(getRuutu(i, j-1));
+                }
+                if (getRuutu(i+1, j - 1) != null) {
+                    viereiset.add(getRuutu(i+1, j-1));
+                }
+                if (getRuutu(i-1, j ) != null) {
+                    viereiset.add(getRuutu(i-1, j));
+                }
+                if (getRuutu(i-1, j + 1) != null) {
+                    viereiset.add(getRuutu(i-1, j+1));
+                }
+                if (getRuutu(i-1, j - 1) != null) {
+                    viereiset.add(getRuutu(i-1, j-1));
+                }
+                ruutu.setViereisetRuudut(viereiset);
+            }
+        }
+
+    }
+
     /**
-     *Käy koko pelilaudan läpi ja numeroi viereisiin ruutuihin viereisten miinojen määrät
+     * Käy koko pelilaudan läpi ja numeroi viereisiin ruutuihin viereisten
+     * miinojen määrät
      */
     public void laskeNumerot() {
         for (int i = 0; i < this.x; i++) {
