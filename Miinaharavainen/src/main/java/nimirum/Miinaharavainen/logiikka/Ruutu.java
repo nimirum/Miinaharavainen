@@ -11,7 +11,7 @@ public class Ruutu {
     private int viereistenMiinojenMaara = 0; //8 lähintä ruutua
     private int x;
     private int y;
-    private boolean onkoRuutuNakyva = true;
+    private boolean onkoRuutuNakyva = false;
 
     /**
      *

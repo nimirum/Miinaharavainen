@@ -21,7 +21,7 @@ public class Sijainnit {
         ArrayList list=new ArrayList();
         for (int i = 0; i < harava.getPelilauta().getX(); i++) {
             for (int j = 0; j < harava.getPelilauta().getY(); j++) {
-                TapahtumaAlue alue = new TapahtumaAlue(i+x, j+y, null);
+                TapahtumaAlue alue = new TapahtumaAlue(i+x, j+y,harava.getPelilauta().getRuutu(i, j));
                 list.add(alue);
             }
             

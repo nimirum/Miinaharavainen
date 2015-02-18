@@ -44,7 +44,7 @@ public class TapahtumaAlue extends Rectangle {
         }
         if(!ruutu.getOnkoRuutuNakyva()){
             ruutu.setOnkoRuutuNakyva(true);
-            //muuta kuva?
+            //muuta kuva? eli repaint?
         }
     }
 

@@ -26,12 +26,15 @@ public class Klikkaustenkuuntelija extends MouseInputAdapter {
     //    this.miinaharavainen = miinaharavainen;
         this.piirtaja = piirtaja;
         tapahtumaalueet= alueet;
-    }
-    
-    
+    } 
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        for(TapahtumaAlue alue:tapahtumaalueet){
+            alue.alueeseenKlikattu(e.getX(), e.getY());
+            break;
+        }
+        piirtaja.repaint();
         
     }
 
