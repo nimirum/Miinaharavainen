@@ -30,15 +30,15 @@ public class Piirtaja extends JPanel {
         piirraRuudut(g);
     }
 
-    private void piirraRuudut(Graphics g) {
+    public void piirraRuudut(Graphics g) {
 
         for (int i = 0; i < miinaharava.getPelilauta().getX() * 24; i = i + 24) {
             for (int j = 0; j < miinaharava.getPelilauta().getY() * 24; j = j + 24) {
                 Ruutu ruutu = miinaharava.getPelilauta().getRuutu(i/24, j/24);
                 Image kuva = kuvat.GetImage("Tile");
-                if (!ruutu.getOnkoRuutuNakyva()) {
+                if (!ruutu.getOnkoRuutuNakyva()) { //eli kun ruutu on false niin ei piirretä
                     kuva = kuvat.GetImage("Tile");
-                } else {
+                } else { //ruutu true
                     if (ruutu.getOnkoMiina()) {
                         kuva = kuvat.GetImage("Mine");
                     }

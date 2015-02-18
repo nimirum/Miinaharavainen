@@ -12,6 +12,9 @@ public class Ruutu {
     private int x;
     private int y;
     private boolean onkoRuutuNakyva = false;
+    private final int ruudunLeveys = 24; 
+    private final int ruudunKorkeus = 24;
+    
 
     /**
      *
@@ -112,5 +115,15 @@ public class Ruutu {
             return " .";
         }
     }
+
+    public int getRuudunKorkeus() {
+        return ruudunKorkeus;
+    }
+
+    public int getRuudunLeveys() {
+        return ruudunLeveys;
+    }
+    
+    
 
 }
