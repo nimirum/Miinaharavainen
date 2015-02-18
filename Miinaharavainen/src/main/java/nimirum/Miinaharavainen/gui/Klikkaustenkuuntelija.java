@@ -36,7 +36,7 @@ public class Klikkaustenkuuntelija extends MouseInputAdapter {
             }
         } if (SwingUtilities.isRightMouseButton(e)){
             for (TapahtumaAlue alue : tapahtumaalueet) {
-                alue.alueLiputettu(e.getX(), e.getY());
+                alue.alueenLiputus(e.getX(), e.getY());
             }
         }
         piirtaja.repaint();

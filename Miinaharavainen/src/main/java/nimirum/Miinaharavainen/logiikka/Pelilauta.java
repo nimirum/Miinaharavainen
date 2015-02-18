@@ -10,8 +10,8 @@ public class Pelilauta {
 
     private int x;
     private int y;
-
-    Ruutu pelilauta[][];
+    private int miinojenMaara;
+    private Ruutu pelilauta[][];
 
     /**
      *Muodostaa pelilaudan johon kuuluu x*y määrä ruutuja
@@ -26,10 +26,9 @@ public class Pelilauta {
 
         for (int i = 0; i < this.x; i++) {
             for (int j = 0; j < this.y; j++) {
-                pelilauta[i][j] = new Ruutu(i, j);
+                pelilauta[i][j] = new Ruutu(i, j, this);
             }
         }
-        //  System.out.println("Pelilaudan luominen onnistui");
     }
 
     /**
@@ -84,8 +83,8 @@ public class Pelilauta {
      * 
      * @return Miinojen määrä miinoittamisen jälkeen
      */
-    public int miinoita() {
-        int miinojenMaara = (int) (0.15 * this.x * this.y);
+    public void miinoita() {
+        int miinojenMaara = miinojenMaaraLaskuri();
 
         Random rand = new Random();
         int min = 0;
@@ -104,9 +103,17 @@ public class Pelilauta {
             }
         }
         laskeNumerot();
-        return miinojenMaara;
     }
 
+    private int miinojenMaaraLaskuri(){
+        return (int) (0.15 * this.x * this.y);
+    }
+
+    public int getMiinojenMaara() {
+        return miinojenMaara;
+    }
+    
+    
     /**
      *Käy koko pelilaudan läpi ja numeroi viereisiin ruutuihin viereisten miinojen määrät
      */

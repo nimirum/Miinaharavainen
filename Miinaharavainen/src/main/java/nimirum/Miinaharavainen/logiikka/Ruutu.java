@@ -15,6 +15,7 @@ public class Ruutu {
     private final int ruudunLeveys = 24; 
     private final int ruudunKorkeus = 24;
     private boolean onkoLiputettu = false;
+    private Pelilauta pelilauta;
     
 
     /**
@@ -25,9 +26,10 @@ public class Ruutu {
      * @param y Korkeus koordinaatti
      */
     
-    public Ruutu(int x, int y) {
+    public Ruutu(int x, int y, Pelilauta pelilauta) {
         this.x = x;
         this.y = y;
+        this.pelilauta = pelilauta;
     }
 
     /**

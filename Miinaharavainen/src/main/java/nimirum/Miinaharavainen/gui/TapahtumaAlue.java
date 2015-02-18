@@ -1,7 +1,7 @@
 package nimirum.Miinaharavainen.gui;
 
-import java.awt.Image;
 import java.awt.Rectangle;
+import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
 import nimirum.Miinaharavainen.logiikka.Ruutu;
 
 /**
@@ -12,7 +12,7 @@ import nimirum.Miinaharavainen.logiikka.Ruutu;
  */
 public class TapahtumaAlue extends Rectangle {
 
-    private Ruutu[][] ruudut;
+    private Miinaharavainen miinaharavainen;
     private Ruutu ruutu;
     private int x;
     private int y;
@@ -24,8 +24,9 @@ public class TapahtumaAlue extends Rectangle {
      * @param y sijainti
      * @param ruutu
      */
-    public TapahtumaAlue(int x, int y, Ruutu ruutu) {
+    public TapahtumaAlue(int x, int y, Ruutu ruutu, Miinaharavainen miinaharavainen) {
         super(x, y, ruutu.getRuudunLeveys(), ruutu.getRuudunKorkeus());
+        this.miinaharavainen = miinaharavainen;
         this.ruutu = ruutu;
         this.x = x;
         this.y = y;
@@ -44,10 +45,12 @@ public class TapahtumaAlue extends Rectangle {
             }
             if (!ruutu.getOnkoRuutuNakyva()) {
                 ruutu.setOnkoRuutuNakyva(true);
+                //tarkista onko tyhjä ruutu, ketjreaktio avaa kaikki muut tyhjät myös
                 //muuta kuva? eli repaint?
             }
             if (ruutu.getOnkoMiina()) {
                 //GAMEOVER
+                //kaikki ruudut näkyviksi, klikattu rikkinäiseksi
             }
         }
     }
@@ -60,17 +63,14 @@ public class TapahtumaAlue extends Rectangle {
         }
     }
 
-    public void alueLiputettu(int x, int y) {
-        System.out.println("klikattu");
+    public void alueenLiputus(int x, int y) {
         if (onkoKlikkausAlueella(x, y)) {
             if (ruutu == null) {
                 return;
             }
             if (!ruutu.getOnkoRuutuNakyva()) {
-                System.out.println("toimii");
                 if(!ruutu.isOnkoLiputettu()){
                     ruutu.setOnkoLiputettu(true);
-                    System.out.println("toimii");
                 }else{
                     ruutu.setOnkoLiputettu(false);
                 }

@@ -34,14 +34,14 @@ public final class Miinaharavainen {
     }
             
     /**
-     * Miinoittaa pelilaudan random lukujen avulla.
+     * Miinoittaa pelilaudan random lukujen avulla ensimmäisen klikkauksen jälkeen.
      * Asetttaa miinojen määrän muistiin, jota tarvitsee pelin voittamiseen. 
      * Ajanoton pitäisi alkaa tämän metodin käynnistämisen jälkeen
      *
      */
     public void miinoitaLauta(){
-        // ensimmäinen klikkaus eli (x,y) koordinaatti johon ei tule miinaa (MYÖHEMMIN LISÄTTÄVÄ) 
-        miinojenMaara = pelilauta.miinoita();
+        pelilauta.miinoita();
+        miinojenMaara = pelilauta.getMiinojenMaara();
     }
 
     /**

@@ -23,7 +23,7 @@ public class Sijainnit {
         ArrayList list = new ArrayList();
         for (int i = 0; i < harava.getPelilauta().getX() * ruudunLeveys; i = i + 24) {
             for (int j = 0; j < harava.getPelilauta().getY() * ruudunKorkeus; j = j + 24) {
-                TapahtumaAlue alue = new TapahtumaAlue(i, j, harava.getPelilauta().getRuutu(i / ruudunLeveys, j / ruudunKorkeus));
+                TapahtumaAlue alue = new TapahtumaAlue(i, j, harava.getPelilauta().getRuutu(i / ruudunLeveys, j / ruudunKorkeus),harava);
                 list.add(alue);
             }
         }
