@@ -21,3 +21,7 @@
 8.2. klo 20-21 Kello ja Kuvienlataaja
 
 11.2 klo 14-15 ja 21-24 Käyttöliittymä kuvapohjaiseksi, ruudut piirtyvät oikein, klikkaustenkuuntelijan toiminnallisuutta lisää, lisää testejä
+
+13.2 klo 11-11.30 Sekvenssikaavio ja klo 16-16.30 Javadocin päivittämistä, gitignore ei toimi
+
+18.2. klo 13-16 Klikkaustenkuuntelija toimii, liputtaminen myös

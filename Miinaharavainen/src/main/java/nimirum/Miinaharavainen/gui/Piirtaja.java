@@ -1,4 +1,3 @@
-
 package nimirum.Miinaharavainen.gui;
 
 import java.awt.Color;
@@ -34,10 +33,14 @@ public class Piirtaja extends JPanel {
 
         for (int i = 0; i < miinaharava.getPelilauta().getX() * 24; i = i + 24) {
             for (int j = 0; j < miinaharava.getPelilauta().getY() * 24; j = j + 24) {
-                Ruutu ruutu = miinaharava.getPelilauta().getRuutu(i/24, j/24);
+                Ruutu ruutu = miinaharava.getPelilauta().getRuutu(i / 24, j / 24);
                 Image kuva = kuvat.GetImage("Tile");
                 if (!ruutu.getOnkoRuutuNakyva()) { //eli kun ruutu on false niin ei piirretä
-                    kuva = kuvat.GetImage("Tile");
+                    if (!ruutu.isOnkoLiputettu()) {
+                        kuva = kuvat.GetImage("Tile");
+                    } else {
+                        kuva = kuvat.GetImage("Flag");
+                    }
                 } else { //ruutu true
                     if (ruutu.getOnkoMiina()) {
                         kuva = kuvat.GetImage("Mine");
@@ -45,7 +48,7 @@ public class Piirtaja extends JPanel {
                     if (!ruutu.getOnkoMiina() && ruutu.getViereistenMiinojenMaara() > 0) {
                         kuva = kuvat.GetImage(String.valueOf(ruutu.getViereistenMiinojenMaara()));
                     }
-                     if (!ruutu.getOnkoMiina() && ruutu.getViereistenMiinojenMaara() == 0) {
+                    if (!ruutu.getOnkoMiina() && ruutu.getViereistenMiinojenMaara() == 0) {
                         kuva = kuvat.GetImage("Empty");
                     }
                 }

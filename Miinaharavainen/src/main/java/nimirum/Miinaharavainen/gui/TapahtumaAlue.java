@@ -59,4 +59,22 @@ public class TapahtumaAlue extends Rectangle {
             return false;
         }
     }
+
+    public void alueLiputettu(int x, int y) {
+        System.out.println("klikattu");
+        if (onkoKlikkausAlueella(x, y)) {
+            if (ruutu == null) {
+                return;
+            }
+            if (!ruutu.getOnkoRuutuNakyva()) {
+                System.out.println("toimii");
+                if(!ruutu.isOnkoLiputettu()){
+                    ruutu.setOnkoLiputettu(true);
+                    System.out.println("toimii");
+                }else{
+                    ruutu.setOnkoLiputettu(false);
+                }
+            }
+        }
+    }
 }

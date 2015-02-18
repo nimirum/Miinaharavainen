@@ -14,6 +14,7 @@ public class Ruutu {
     private boolean onkoRuutuNakyva = false;
     private final int ruudunLeveys = 24; 
     private final int ruudunKorkeus = 24;
+    private boolean onkoLiputettu = false;
     
 
     /**
@@ -122,6 +123,14 @@ public class Ruutu {
 
     public int getRuudunLeveys() {
         return ruudunLeveys;
+    }
+
+    public boolean isOnkoLiputettu() {
+        return onkoLiputettu;
+    }
+
+    public void setOnkoLiputettu(boolean onkoLiputettu) {
+        this.onkoLiputettu = onkoLiputettu;
     }
     
     
