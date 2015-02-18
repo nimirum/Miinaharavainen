@@ -24,4 +24,4 @@
 
 13.2 klo 11-11.30 Sekvenssikaavio ja klo 16-16.30 Javadocin päivittämistä, gitignore ei toimi
 
-18.2. klo 13-16 Klikkaustenkuuntelija toimii, liputtaminen myös
+18.2. klo 13-16 Klikkaustenkuuntelija toimii, liputtaminen myös ja klo 22-23 Ruutujen konstruktorien muokkaus ja viereisetRuudut() ja laskeNumerot() tehty uudestaan

@@ -36,11 +36,11 @@ public class Ruutu {
         
     }
     
-    public void setViereisetRuudut(ArrayList list) {
+    public void setViereisetRuudut(ArrayList<Ruutu> list) {
         this.viereisetRuudut = list;
     }
 
-    public ArrayList getViereisetRuudut() {
+    public ArrayList<Ruutu> getViereisetRuudut() {
         return viereisetRuudut;
     }
     
@@ -92,6 +92,15 @@ public class Ruutu {
      */
     public boolean getOnkoMiina() {
         return onkoMiina;
+    }
+    
+    
+    public void laskeNumerot(){
+        for(Ruutu viereinen : getViereisetRuudut()){
+            if(viereinen.onkoMiina)
+                addViereistenMiinojenMaaraa();
+            System.out.println(getViereistenMiinojenMaara());
+        }
     }
 
     /**

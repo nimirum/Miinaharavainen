@@ -31,7 +31,7 @@ public class Pelilauta {
             for (int j = 0; j < this.y; j++) {
                 pelilauta[i][j] = new Ruutu(i, j, this);
             }
-        }  
+        }
         viereisetRuudut();
     }
 
@@ -42,7 +42,10 @@ public class Pelilauta {
      * @return Ruutu
      */
     public Ruutu getRuutu(int x, int y) {
-        return pelilauta[x][y];
+        if (0 <= x && x < this.x && 0 <= y && y < this.y) {
+            return pelilauta[x][y];
+        }
+        return null;
     }
 
     /**
@@ -104,6 +107,16 @@ public class Pelilauta {
                 i--;
             }
         }
+        laskeNumerot();
+    }
+
+    private void laskeNumerot() {
+        for (int i = 0; i < this.x; i++) {
+            for (int j = 0; j < this.y; j++) {
+                Ruutu ruutu = getRuutu(i, j);
+                ruutu.laskeNumerot();
+            }
+        }
     }
 
     private int miinojenMaaraLaskuri() {
@@ -114,8 +127,8 @@ public class Pelilauta {
         return miinojenMaara;
     }
 
-    private void viereisetRuudut() { 
-        ArrayList viereiset = new ArrayList();
+    private void viereisetRuudut() {
+        ArrayList<Ruutu> viereiset = new ArrayList<Ruutu>();
         for (int i = 0; i < this.x; i++) {
             for (int j = 0; j < this.y; j++) {
                 Ruutu ruutu = getRuutu(i, j);
@@ -123,27 +136,28 @@ public class Pelilauta {
                     viereiset.add(getRuutu(i + 1, j));
                 }
                 if (getRuutu(i + 1, j + 1) != null) {
-                    viereiset.add(getRuutu(i + 1, j+1));
-                }          
+                    viereiset.add(getRuutu(i + 1, j + 1));
+                }
                 if (getRuutu(i, j + 1) != null) {
-                    viereiset.add(getRuutu(i, j+1));
+                    viereiset.add(getRuutu(i, j + 1));
                 }
                 if (getRuutu(i, j - 1) != null) {
-                    viereiset.add(getRuutu(i, j-1));
+                    viereiset.add(getRuutu(i, j - 1));
                 }
-                if (getRuutu(i+1, j - 1) != null) {
-                    viereiset.add(getRuutu(i+1, j-1));
+                if (getRuutu(i + 1, j - 1) != null) {
+                    viereiset.add(getRuutu(i + 1, j - 1));
                 }
-                if (getRuutu(i-1, j ) != null) {
-                    viereiset.add(getRuutu(i-1, j));
+                if (getRuutu(i - 1, j) != null) {
+                    viereiset.add(getRuutu(i - 1, j));
                 }
-                if (getRuutu(i-1, j + 1) != null) {
-                    viereiset.add(getRuutu(i-1, j+1));
+                if (getRuutu(i - 1, j + 1) != null) {
+                    viereiset.add(getRuutu(i - 1, j + 1));
                 }
-                if (getRuutu(i-1, j - 1) != null) {
-                    viereiset.add(getRuutu(i-1, j-1));
+                if (getRuutu(i - 1, j - 1) != null) {
+                    viereiset.add(getRuutu(i - 1, j - 1));
                 }
                 ruutu.setViereisetRuudut(viereiset);
+                viereiset = new ArrayList<Ruutu>();
             }
         }
 
@@ -153,7 +167,7 @@ public class Pelilauta {
      * Käy koko pelilaudan läpi ja numeroi viereisiin ruutuihin viereisten
      * miinojen määrät
      */
-    public void laskeNumerot() {
+    public void laskeNumerot2() {
         for (int i = 0; i < this.x; i++) {
             for (int j = 0; j < this.y; j++) {
                 if (pelilauta[i][j].getOnkoMiina()) {
