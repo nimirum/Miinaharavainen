@@ -88,7 +88,7 @@ public class Pelilauta {
      * Lisää randomisti miinat ja lopuksi laskeNumerot()
      *
      */
-    public void miinoita() {
+    public void miinoita(int x, int y) {
         miinojenMaara = miinojenMaaraLaskuri();
 
         Random rand = new Random();
@@ -100,8 +100,8 @@ public class Pelilauta {
             int randomNumX = rand.nextInt((maxX - min) + 1) + min;
             int randomNumY = rand.nextInt((maxY - min) + 1) + min;
             Ruutu ruutu = getRuutu(randomNumX, randomNumY);
-            if (!ruutu.getOnkoMiina()) {
-                ruutu.setOnkoMiina(true);
+            if (!ruutu.getOnkoMiina() && randomNumX != x && randomNumY !=y) {
+                ruutu.setOnkoMiina(true); 
             } else {
                 //jos ruudussa jo miina, arvontojen mÃƒÂ¤ÃƒÂ¤rÃƒÂ¤ÃƒÂ¤ lisÃƒÂ¤tÃƒÂ¤ÃƒÂ¤n yhdellÃƒÂ¤
                 i--;

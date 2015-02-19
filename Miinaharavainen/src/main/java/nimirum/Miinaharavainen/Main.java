@@ -16,7 +16,7 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
-        Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
+        Miinaharavainen miinaharava = new Miinaharavainen(20, 10);
         Kayttoliittyma katis = new Kayttoliittyma(miinaharava);
         SwingUtilities.invokeLater(katis);
         //miinaharava.tulostaLauta();

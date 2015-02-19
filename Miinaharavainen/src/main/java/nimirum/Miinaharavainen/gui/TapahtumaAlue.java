@@ -44,8 +44,8 @@ public class TapahtumaAlue extends Rectangle {
             if (ruutu == null) {
                 return;
             }
-            if (miinoitettu == false) {
-                miinaharavainen.miinoitaLauta();
+            if (!miinoitettu) {
+                miinaharavainen.miinoitaLauta(ruutu.getX(),ruutu.getY());
                 miinoitettu = true;
                 miinaharavainen.tulostaLauta(); //väliaikainen
             }
