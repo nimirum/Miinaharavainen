@@ -14,8 +14,8 @@ import nimirum.Miinaharavainen.logiikka.Ruutu;
  */
 public class Piirtaja extends JPanel {
 
-    private KuvienLataaja kuvat;
-    private Miinaharavainen miinaharava;
+    private final KuvienLataaja kuvat;
+    private final Miinaharavainen miinaharava;
 
     Piirtaja(Miinaharavainen miinaharava) {
         super.setBackground(Color.white);
@@ -31,7 +31,7 @@ public class Piirtaja extends JPanel {
 
     /**
      * Piirtää kaikki pelilaudan ruudut kuvina
-     * @param g graphics
+     * @param g Graphics
      */
     public void piirraRuudut(Graphics g) {
 

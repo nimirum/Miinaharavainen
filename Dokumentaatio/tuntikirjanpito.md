@@ -26,4 +26,4 @@
 
 18.2. klo 13-16 Klikkaustenkuuntelija toimii, liputtaminen myös ja klo 22-23 Ruutujen konstruktorien muokkaus ja viereisetRuudut() ja laskeNumerot() tehty uudestaan
 
-19.2 klo 11-12 Testejä korjattu ja lisätty ja klo 12.30-15 vierekkäisten tyhjien ruutujen avaaminen toimii, javadocin kirjoittamista
+19.2 klo 11-12 Testejä korjattu ja lisätty ja klo 12.30-15 vierekkäisten tyhjien ruutujen avaaminen toimii, javadocin kirjoittamista, sekvenssikaavioita

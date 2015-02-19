@@ -61,21 +61,6 @@ public final class Miinaharavainen {
     public boolean isPelilautaMiinoitettu() {
         return miinoitettu;
     }
-    
-
-    /**
-     * Väliaikainen tulostusmetodi pelilaudan testausta varten.
-     *
-     */
-    public void tulostaLauta() {
-        for (int i = 0; i < pelilauta.getX(); i++) {
-            for (int j = 0; j < pelilauta.getY(); j++) {
-                Ruutu ruutu = pelilauta.getRuutu(i, j);
-                System.out.print(ruutu.toString());
-            }
-            System.out.println();
-        }
-    }
 
     /**
      *

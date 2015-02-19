@@ -44,13 +44,14 @@ public class RuutuTest {
         ruutu.setOnkoLiputettu(true);
         assertEquals(ruutu.isOnkoLiputettu(), true);
     }
-     @Test
+
+    @Test
     public void ruudunLiputtaminenEiToimii() {
         ruutu.setOnkoRuutuNakyva(true);
         ruutu.setOnkoLiputettu(true);
         assertEquals(ruutu.isOnkoLiputettu(), false);
     }
-    
+
     @Test
     public void ruudunKoordinaatitToimii() {
         assertEquals(ruutu.getX(), 1);
@@ -101,6 +102,22 @@ public class RuutuTest {
     public void ruudunKokoOikein() {
         assertEquals(ruutu.getRuudunKorkeus(), 24);
         assertEquals(ruutu.getRuudunLeveys(), 24);
+    }
+
+    @Test
+    public void ruutuKlikattuMiinaEiToimi() {
+        assertEquals(ruutu.isKlikattuMiina(), false);
+        ruutu.setOnkoMiina(false);
+        ruutu.setKlikattuMiina(true);
+        assertEquals(ruutu.isKlikattuMiina(), false);
+    }
+
+    @Test
+    public void ruutuKlikattuMiinaToimii() {
+        assertEquals(ruutu.isKlikattuMiina(), false);
+        ruutu.setOnkoMiina(true);
+        ruutu.setKlikattuMiina(true);
+        assertEquals(ruutu.isKlikattuMiina(), true);
     }
 
     @BeforeClass

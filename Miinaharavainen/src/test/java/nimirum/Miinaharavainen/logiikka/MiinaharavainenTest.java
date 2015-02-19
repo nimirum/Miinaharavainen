@@ -52,7 +52,9 @@ public class MiinaharavainenTest {
         Miinaharavainen testi = new Miinaharavainen(20, 20);
         testi.miinoitaLauta(10,10);
         assertEquals(testi.getMiinojenMaara(), 60);
+        assertEquals(true, testi.isPelilautaMiinoitettu());
     }
+    
 
     @BeforeClass
     public static void setUpClass() {

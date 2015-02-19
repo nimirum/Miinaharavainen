@@ -11,10 +11,10 @@ import java.util.Random;
  */
 public class Pelilauta {
 
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
     private int miinojenMaara;
-    private Ruutu pelilauta[][];
+    private final Ruutu pelilauta[][];
 
     /**
      * Muodostaa pelilaudan johon kuuluu x*y määrä ruutuja
@@ -79,7 +79,6 @@ public class Pelilauta {
      * @param y korkeus koordinaatti
      */
     public void setMiina(int x, int y) {
-        //testausta varten
         Ruutu ruutu = getRuutu(x, y);
         ruutu.setOnkoMiina(true);
     }
@@ -92,28 +91,39 @@ public class Pelilauta {
      */
     public void miinoita(int x, int y) {
         miinojenMaara = miinojenMaaraLaskuri();
+        Ruutu ekaKlikkaus = getRuutu(x, y);
 
-        Random rand = new Random();
+        Random random = new Random();
         int min = 0;
         int maxX = this.x - 1;
         int maxY = this.y - 1;
 
         for (int i = 0; i < miinojenMaara; i++) {
-            int randomNumX = rand.nextInt((maxX - min) + 1) + min;
-            int randomNumY = rand.nextInt((maxY - min) + 1) + min;
+            int randomNumX = random.nextInt((maxX - min) + 1) + min;
+            int randomNumY = random.nextInt((maxY - min) + 1) + min;
             Ruutu ruutu = getRuutu(randomNumX, randomNumY);
-            if (!ruutu.getOnkoMiina() && randomNumX != x && randomNumY != y) {
+            if (!ruutu.getOnkoMiina() && ruutu.getX() != ekaKlikkaus.getX() && ruutu.getY() != ekaKlikkaus.getY() && viereisetRuudutEiMiinoitetaTarkitus(ruutu.getX(), ruutu.getY(), ekaKlikkaus)) {
                 ruutu.setOnkoMiina(true);
             } else {
-                //jos ruudussa jo miina, arpominen toistetaan uudestaan
+                //jos ehdot ei toteudu, arpominen toistetaan uudestaan
                 i--;
             }
         }
         laskeNumerot();
     }
 
+    private boolean viereisetRuudutEiMiinoitetaTarkitus(int x, int y, Ruutu ruutu) {
+        for (Ruutu ruutuinen : ruutu.getViereisetRuudut()) {
+            if (ruutuinen.getX() == x && ruutuinen.getY() == y) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /**
-     * Laskee numero arvot miinojen viereen, eli kuinka moneen miinaan kyseinen ruutu koskee
+     * Laskee numero arvot miinojen viereen, eli kuinka moneen miinaan kyseinen
+     * ruutu koskee
      */
     public void laskeNumerot() {
         for (int i = 0; i < this.x; i++) {
@@ -169,7 +179,6 @@ public class Pelilauta {
                 viereiset = new ArrayList<>();
             }
         }
-
     }
 
     /**
