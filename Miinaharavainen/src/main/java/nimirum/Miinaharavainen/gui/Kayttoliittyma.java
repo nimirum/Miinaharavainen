@@ -24,10 +24,10 @@ public class Kayttoliittyma implements Runnable {
     /**
      * Kayttoliittyma luo pelin Miinaharavan
      *
-     * @param miinaharava
      */
-    public Kayttoliittyma(Miinaharavainen miinaharava) {
-        this.miinaharava = miinaharava;
+
+    public Kayttoliittyma() {
+        this.miinaharava = new Miinaharavainen(20, 20);
         ruudunLeveys = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunLeveys();
         ruudunKorkeus = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus();
     }
@@ -37,11 +37,11 @@ public class Kayttoliittyma implements Runnable {
 
         frame = new JFrame("Miinaharavainen");
 
-        int leveys = ((miinaharava.getPelilauta().getX()) * ruudunLeveys) + 18;
-        int korkeus = ((miinaharava.getPelilauta().getY()) * ruudunKorkeus) + 45;
+        int leveys = ((miinaharava.getPelilauta().getX()) * ruudunLeveys) + 6;
+        int korkeus = ((miinaharava.getPelilauta().getY()) * ruudunKorkeus) + 29;
 
         frame.setPreferredSize(new Dimension(leveys, korkeus));
-
+        frame.setResizable(false);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         luoKomponentit(frame.getContentPane());
@@ -77,7 +77,7 @@ public class Kayttoliittyma implements Runnable {
     /**
      * Palauttaa ikkunan
      *
-     * @return
+     * @return JFrame
      */
     public JFrame getFrame() {
         return frame;

@@ -42,8 +42,8 @@ public final class Miinaharavainen {
      * jälkeen. Asetttaa miinojen määrän muistiin, jota tarvitsee pelin
      * voittamiseen. Ajanoton pitäisi alkaa tämän metodin käynnistämisen jälkeen
      *
-     * @param x
-     * @param y
+     * @param x Ensimmäisen klikkauksen x koordinaatti
+     * @param y Ensimmäisen klikkauksen y koordinaatti
      */
     public void miinoitaLauta(int x, int y) {
         if (!miinoitettu) {
@@ -94,11 +94,9 @@ public final class Miinaharavainen {
     }
 
     /**
-     *
+     * Pelin päättyminen, kello pysähtyy, kentän koko ja aika tallennetaan ennätyksiin
      */
     public void gameOver() {
         //new Pelilauta?
-        //kello pysäytetty
-        //tallenna kentän koko ja kellon aika ennätyksiin jos top 10
     }
 }
