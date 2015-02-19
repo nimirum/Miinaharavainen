@@ -29,7 +29,7 @@ public class Kayttoliittyma implements Runnable {
     public Kayttoliittyma(Miinaharavainen miinaharava) {
         this.miinaharava = miinaharava;
         ruudunLeveys = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunLeveys();
-        ruudunKorkeus = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunLeveys();
+        ruudunKorkeus = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus();
     }
 
     @Override

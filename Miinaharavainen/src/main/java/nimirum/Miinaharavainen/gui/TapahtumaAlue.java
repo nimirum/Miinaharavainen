@@ -45,6 +45,9 @@ public class TapahtumaAlue extends Rectangle {
             }
             if (!ruutu.getOnkoRuutuNakyva()) {
                 ruutu.setOnkoRuutuNakyva(true);
+                if(ruutu.getViereistenMiinojenMaara()==0){
+                    ruutu.avaaViereisetRuudut();
+                }
                 //tarkista onko tyhjä ruutu, ketjreaktio avaa kaikki muut tyhjät myös
                 //muuta kuva? eli repaint?
             }

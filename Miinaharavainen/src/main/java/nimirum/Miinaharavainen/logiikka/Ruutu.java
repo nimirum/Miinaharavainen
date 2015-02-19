@@ -158,4 +158,20 @@ public class Ruutu {
         }
     }
 
+    public void avaaViereisetRuudut() {
+
+        for (Ruutu viereinen : getViereisetRuudut()) {
+            if (viereinen.onkoRuutuNakyva == false) {
+                if (viereinen.getViereistenMiinojenMaara() == 0) {
+                    viereinen.setOnkoRuutuNakyva(true);
+                    viereinen.avaaViereisetRuudut();
+                }
+                if (viereinen.getViereistenMiinojenMaara() > 0) {
+                    viereinen.setOnkoRuutuNakyva(true);
+                }
+            }
+        }
+
+    }
+
 }

@@ -15,7 +15,7 @@ public class Sijainnit {
 
     public Sijainnit(Miinaharavainen harava) {
         this.harava = harava;
-             ruudunLeveys = harava.getPelilauta().getRuutu(0, 0).getRuudunLeveys();
+        ruudunLeveys = harava.getPelilauta().getRuutu(0, 0).getRuudunLeveys();
         ruudunKorkeus = harava.getPelilauta().getRuutu(0, 0).getRuudunLeveys();
     }
 
