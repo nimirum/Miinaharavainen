@@ -10,6 +10,7 @@ public final class Miinaharavainen {
     private Pelilauta pelilauta;
     private int miinojenMaara = 0;
     private boolean miinoitettu = false;
+    private Kello pelikello;
 
     /**
      * Miinaharavan konstruktori, missä luodaan pelilauta annetuista arvoista
@@ -41,14 +42,26 @@ public final class Miinaharavainen {
      * jälkeen. Asetttaa miinojen määrän muistiin, jota tarvitsee pelin
      * voittamiseen. Ajanoton pitäisi alkaa tämän metodin käynnistämisen jälkeen
      *
+     * @param x
+     * @param y
      */
     public void miinoitaLauta(int x, int y) {
         if (!miinoitettu) {
             pelilauta.miinoita(x, y);
             miinojenMaara = pelilauta.getMiinojenMaara();
             miinoitettu = true;
+            pelikello = new Kello();
         }
     }
+
+    /**
+     *
+     * @return Onko pelilauta miinoitettu
+     */
+    public boolean isPelilautaMiinoitettu() {
+        return miinoitettu;
+    }
+    
 
     /**
      * Väliaikainen tulostusmetodi pelilaudan testausta varten.
@@ -80,7 +93,12 @@ public final class Miinaharavainen {
         return pelilauta;
     }
 
+    /**
+     *
+     */
     public void gameOver() {
-
+        //new Pelilauta?
+        //kello pysäytetty
+        //tallenna kentän koko ja kellon aika ennätyksiin jos top 10
     }
 }

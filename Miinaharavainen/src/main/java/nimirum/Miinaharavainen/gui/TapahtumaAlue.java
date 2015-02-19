@@ -16,14 +16,14 @@ public class TapahtumaAlue extends Rectangle {
     private Ruutu ruutu;
     private int x;
     private int y;
-    private boolean miinoitettu = false;
 
     /**
      * Luo neliön muotoisen tapahtumaalueen, kooltaan 24x24
-     *
-     * @param x sijainti
-     * @param y sijainti
-     * @param ruutu
+     *     
+     * @param x Leveys koordinaatti
+     * @param y Korkeus koordinaatti
+     * @param ruutu Ruutu
+     * @param miinaharavainen Miinaharavainen
      */
     public TapahtumaAlue(int x, int y, Ruutu ruutu, Miinaharavainen miinaharavainen) {
         super(x, y, ruutu.getRuudunLeveys(), ruutu.getRuudunKorkeus());
@@ -36,32 +36,27 @@ public class TapahtumaAlue extends Rectangle {
     /**
      * Tarkistaa onko alueeseen klikattu ja toimii sen mukaan
      *
-     * @param x
-     * @param y
+     * @param x Leveys koordinaatti
+     * @param y Korkeus koordinaatti
      */
     public void alueeseenKlikattu(int x, int y) {
         if (onkoKlikkausAlueella(x, y)) {
             if (ruutu == null) {
                 return;
             }
-            if (!miinoitettu) {
+            if (!miinaharavainen.isPelilautaMiinoitettu()) {
                 miinaharavainen.miinoitaLauta(ruutu.getX(),ruutu.getY());
-                miinoitettu = true;
-                miinaharavainen.tulostaLauta(); //väliaikainen
             }
             if (!ruutu.getOnkoRuutuNakyva() && !ruutu.isOnkoLiputettu()) {
                 ruutu.setOnkoRuutuNakyva(true);
                 if (ruutu.getViereistenMiinojenMaara() == 0) {
                     ruutu.avaaViereisetRuudut();
                 }
-                //tarkista onko tyhjä ruutu, ketjreaktio avaa kaikki muut tyhjät myös
-                //muuta kuva? eli repaint?
             }
             if (ruutu.getOnkoMiina()) {
                 ruutu.setKlikattuMiina(true);
                 miinaharavainen.getPelilauta().avaaKaikkiRuudut();
                 //GAMEOVER
-                //kaikki ruudut näkyviksi, klikattu rikkinäiseksi
             }
         }
     }
@@ -74,6 +69,11 @@ public class TapahtumaAlue extends Rectangle {
         }
     }
 
+    /**
+      Liputtaa ruudun, joka on parametreina saaduissa koordinaateissa
+     * @param x Leveys koordinaatti
+     * @param y Korkeus koordinaatti
+     */
     public void alueenLiputus(int x, int y) {
         if (onkoKlikkausAlueella(x, y)) {
             if (ruutu == null) {

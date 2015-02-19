@@ -50,7 +50,7 @@ public class MiinaharavainenTest {
     @Test
     public void miinojenMaaraOikeinKentänGeneroinninJalkeen() {
         Miinaharavainen testi = new Miinaharavainen(20, 20);
-        testi.miinoitaLauta();
+        testi.miinoitaLauta(10,10);
         assertEquals(testi.getMiinojenMaara(), 60);
     }
 

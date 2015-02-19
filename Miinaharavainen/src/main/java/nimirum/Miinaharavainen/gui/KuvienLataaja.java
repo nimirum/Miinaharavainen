@@ -39,7 +39,7 @@ public class KuvienLataaja {
      * Kuvien kutsumismetodi, palauttaa halutun kuvan
      *
      * @param name Halutunlaisen ruudun nimi
-     * @return
+     * @return Pyydetty kuva
      */
     public BufferedImage GetImage(String name) {
         switch (name) {

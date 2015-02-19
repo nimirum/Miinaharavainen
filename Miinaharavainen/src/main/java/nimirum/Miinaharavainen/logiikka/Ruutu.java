@@ -28,6 +28,7 @@ public class Ruutu {
      *
      * @param x Leveys koordinaatti
      * @param y Korkeus koordinaatti
+     * @param pelilauta Pelilauta
      */
     public Ruutu(int x, int y, Pelilauta pelilauta) {
         this.x = x;
@@ -36,10 +37,19 @@ public class Ruutu {
 
     }
 
+    /**
+     * Asettaa ruudun viereiset ruudut muistiin
+     *
+     * @param list ArrayList
+     */
     public void setViereisetRuudut(ArrayList<Ruutu> list) {
         this.viereisetRuudut = list;
     }
 
+    /**
+     *
+     * @return ArrayList viereisistä ruuduista
+     */
     public ArrayList<Ruutu> getViereisetRuudut() {
         return viereisetRuudut;
     }
@@ -55,14 +65,15 @@ public class Ruutu {
 
     /**
      *
-     * @return onko ruutu näkyvä, eli onko sen päällä klikattava ruutu
+     * @return Onko ruutu näkyvä, eli onko se klikattava
      */
     public boolean getOnkoRuutuNakyva() {
         return onkoRuutuNakyva;
     }
 
     /**
-     * Asettaa ruudnu näkyvyysarvon Piirtäjää varten
+     * Asettaa ruudnu näkyvyysarvon Piirtäjää varten False arvolla piirtää
+     * päällimmäisen ruudun True arvolla piirtää mitä ruutu on oikeasti
      *
      * @param onkoRuutuNakyva
      */
@@ -94,6 +105,10 @@ public class Ruutu {
         return onkoMiina;
     }
 
+    /**
+     * Käy ruudun viereiset ruudut läpi ja lisää viereisten miinojen määrää, jos
+     * itse ruudussa on miina
+     */
     public void laskeNumerot() {
         for (Ruutu viereinen : getViereisetRuudut()) {
             if (viereinen.onkoMiina) {
@@ -122,20 +137,30 @@ public class Ruutu {
 
     /**
      *
-     * @return
+     * @return viereisten miinojen määrä
      */
     public int getViereistenMiinojenMaara() {
         return viereistenMiinojenMaara;
     }
 
+    /**
+     *
+     * @return onko ruudussa miina ja onko sitä klikattu, piirtäjää varten
+     */
     public boolean isKlikattuMiina() {
         return klikattuMiina;
     }
 
+    /**
+     * Piirtäjää varten mahdollista asettaa mikä on klikattu miina
+     * @param klikattuMiina
+     */
     public void setKlikattuMiina(boolean klikattuMiina) {
-        this.klikattuMiina = klikattuMiina;
+        if (getOnkoMiina()) {
+            this.klikattuMiina = klikattuMiina;
+        }
     }
-    
+
     @Override
     public String toString() {
         if (onkoMiina) {
@@ -149,24 +174,43 @@ public class Ruutu {
         }
     }
 
+    /**
+     *
+     * @return Ruudun korkeus
+     */
     public int getRuudunKorkeus() {
         return ruudunKorkeus;
     }
 
+    /**
+     *
+     * @return Ruudun leveys
+     */
     public int getRuudunLeveys() {
         return ruudunLeveys;
     }
 
+    /**
+     *
+     * @return onko ruutu liputetu
+     */
     public boolean isOnkoLiputettu() {
         return onkoLiputettu;
     }
 
+    /**
+     * Ruudun voi liputtaa vain jos sitä ei ole klikattu vielä
+     * @param onkoLiputettu
+     */
     public void setOnkoLiputettu(boolean onkoLiputettu) {
-        if (onkoLiputettu = true && !getOnkoRuutuNakyva()) {
+        if (!getOnkoRuutuNakyva()) {
             this.onkoLiputettu = onkoLiputettu;
         }
     }
 
+    /**
+     * Avaa kaikki tyhjän ruudun vieressä olevat tyhjät ruudut ja viereiset numeroruudut
+     */
     public void avaaViereisetRuudut() {
 
         for (Ruutu viereinen : getViereisetRuudut()) {

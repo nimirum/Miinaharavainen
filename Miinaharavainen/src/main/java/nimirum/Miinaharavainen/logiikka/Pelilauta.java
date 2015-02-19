@@ -19,8 +19,8 @@ public class Pelilauta {
     /**
      * Muodostaa pelilaudan johon kuuluu x*y määrä ruutuja
      *
-     * @param x pelilaudan leveys
-     * @param y pelilaudan korkeus
+     * @param x Pelilaudan leveys
+     * @param y Pelilaudan korkeus
      */
     public Pelilauta(int x, int y) {
         this.x = x;
@@ -50,7 +50,7 @@ public class Pelilauta {
 
     /**
      *
-     * @return Pelilauta
+     * @return Pelilauta kaksiulotteisena taulukkona
      */
     public Ruutu[][] getPelilauta() {
         return pelilauta;
@@ -87,6 +87,8 @@ public class Pelilauta {
     /**
      * Lisää randomisti miinat ja lopuksi laskeNumerot()
      *
+     * @param x
+     * @param y
      */
     public void miinoita(int x, int y) {
         miinojenMaara = miinojenMaaraLaskuri();
@@ -100,16 +102,19 @@ public class Pelilauta {
             int randomNumX = rand.nextInt((maxX - min) + 1) + min;
             int randomNumY = rand.nextInt((maxY - min) + 1) + min;
             Ruutu ruutu = getRuutu(randomNumX, randomNumY);
-            if (!ruutu.getOnkoMiina() && randomNumX != x && randomNumY !=y) {
-                ruutu.setOnkoMiina(true); 
+            if (!ruutu.getOnkoMiina() && randomNumX != x && randomNumY != y) {
+                ruutu.setOnkoMiina(true);
             } else {
-                //jos ruudussa jo miina, arvontojen mÃƒÂ¤ÃƒÂ¤rÃƒÂ¤ÃƒÂ¤ lisÃƒÂ¤tÃƒÂ¤ÃƒÂ¤n yhdellÃƒÂ¤
+                //jos ruudussa jo miina, arpominen toistetaan uudestaan
                 i--;
             }
         }
         laskeNumerot();
     }
 
+    /**
+     * Laskee numero arvot miinojen viereen, eli kuinka moneen miinaan kyseinen ruutu koskee
+     */
     public void laskeNumerot() {
         for (int i = 0; i < this.x; i++) {
             for (int j = 0; j < this.y; j++) {
@@ -123,6 +128,10 @@ public class Pelilauta {
         return (int) (0.15 * this.x * this.y);
     }
 
+    /**
+     *
+     * @return Miinojen määrä
+     */
     public int getMiinojenMaara() {
         return miinojenMaara;
     }
@@ -163,11 +172,15 @@ public class Pelilauta {
 
     }
 
+    /**
+     * Avaa kaikki ruudut, eli vaihtaa ne näkyviksi
+     */
     public void avaaKaikkiRuudut() {
-         for (int i = 0; i < this.x; i++) {
+        for (int i = 0; i < this.x; i++) {
             for (int j = 0; j < this.y; j++) {
                 Ruutu ruutu = getRuutu(i, j);
-                ruutu.setOnkoRuutuNakyva(true); 
+                ruutu.setOnkoRuutuNakyva(true);
             }
-        } }
+        }
+    }
 }

@@ -29,6 +29,10 @@ public class Piirtaja extends JPanel {
         piirraRuudut(g);
     }
 
+    /**
+     * Piirtää kaikki pelilaudan ruudut kuvina
+     * @param g graphics
+     */
     public void piirraRuudut(Graphics g) {
 
         for (int i = 0; i < miinaharava.getPelilauta().getX() * 24; i = i + 24) {
