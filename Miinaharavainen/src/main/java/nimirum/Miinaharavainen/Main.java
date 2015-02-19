@@ -17,11 +17,8 @@ public class Main {
      */
     public static void main(String[] args) {
         Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
-        miinaharava.miinoitaLauta();
-        miinaharava.tulostaLauta();
-        //miinoittaminen pitäisi siirtää käyttöliittymään jossain vaiheessa
-         
         Kayttoliittyma katis = new Kayttoliittyma(miinaharava);
         SwingUtilities.invokeLater(katis);
+        //miinaharava.tulostaLauta();
   }
 }

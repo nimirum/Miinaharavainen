@@ -162,4 +162,12 @@ public class Pelilauta {
         }
 
     }
+
+    public void avaaKaikkiRuudut() {
+         for (int i = 0; i < this.x; i++) {
+            for (int j = 0; j < this.y; j++) {
+                Ruutu ruutu = getRuutu(i, j);
+                ruutu.setOnkoRuutuNakyva(true); 
+            }
+        } }
 }

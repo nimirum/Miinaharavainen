@@ -15,6 +15,7 @@ public class KuvienLataaja {
     private BufferedImage ulkoRuutu;
     private BufferedImage liputettuRuutu;
     private BufferedImage miinaRuutu;
+    private BufferedImage miinaRuutuRikki;
     private BufferedImage numeroRuutuYksi;
     private BufferedImage tyhjaRuutu;
 
@@ -25,6 +26,7 @@ public class KuvienLataaja {
         try {
             ulkoRuutu = ImageIO.read(new File("graphics/tile24x24.png"));
             miinaRuutu = ImageIO.read(new File("graphics/mine24x24.png"));
+            miinaRuutuRikki = ImageIO.read(new File("graphics/brokenMine24x24.png"));
             tyhjaRuutu = ImageIO.read(new File("graphics/empty24x24.png"));
             liputettuRuutu = ImageIO.read(new File("graphics/flagtile24x24.png"));
             numeroRuutuYksi = ImageIO.read(new File("graphics/one24x24.png")); //KESKEN
@@ -45,6 +47,8 @@ public class KuvienLataaja {
                 return ulkoRuutu;
             case "Mine":
                 return miinaRuutu;
+            case "BrokenMine":
+                return miinaRuutuRikki;
             case "Flag":
                 return liputettuRuutu;
             case "Empty":

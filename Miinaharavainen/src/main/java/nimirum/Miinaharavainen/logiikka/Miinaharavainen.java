@@ -74,5 +74,7 @@ public final class Miinaharavainen {
         return pelilauta;
     }   
     
-    
+    public void gameOver(){
+        
+    }
 }

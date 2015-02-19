@@ -16,6 +16,7 @@ public class TapahtumaAlue extends Rectangle {
     private Ruutu ruutu;
     private int x;
     private int y;
+    private boolean miinoitettu = false;
 
     /**
      * Luo neliön muotoisen tapahtumaalueen, kooltaan 24x24
@@ -43,15 +44,22 @@ public class TapahtumaAlue extends Rectangle {
             if (ruutu == null) {
                 return;
             }
-            if (!ruutu.getOnkoRuutuNakyva()) {
+            if (miinoitettu == false) {
+                miinaharavainen.miinoitaLauta();
+                miinoitettu = true;
+                miinaharavainen.tulostaLauta(); //väliaikainen
+            }
+            if (!ruutu.getOnkoRuutuNakyva() && !ruutu.isOnkoLiputettu()) {
                 ruutu.setOnkoRuutuNakyva(true);
-                if(ruutu.getViereistenMiinojenMaara()==0){
+                if (ruutu.getViereistenMiinojenMaara() == 0) {
                     ruutu.avaaViereisetRuudut();
                 }
                 //tarkista onko tyhjä ruutu, ketjreaktio avaa kaikki muut tyhjät myös
                 //muuta kuva? eli repaint?
             }
             if (ruutu.getOnkoMiina()) {
+                ruutu.setKlikattuMiina(true);
+                miinaharavainen.getPelilauta().avaaKaikkiRuudut();
                 //GAMEOVER
                 //kaikki ruudut näkyviksi, klikattu rikkinäiseksi
             }
@@ -72,9 +80,9 @@ public class TapahtumaAlue extends Rectangle {
                 return;
             }
             if (!ruutu.getOnkoRuutuNakyva()) {
-                if(!ruutu.isOnkoLiputettu()){
+                if (!ruutu.isOnkoLiputettu()) {
                     ruutu.setOnkoLiputettu(true);
-                }else{
+                } else {
                     ruutu.setOnkoLiputettu(false);
                 }
             }

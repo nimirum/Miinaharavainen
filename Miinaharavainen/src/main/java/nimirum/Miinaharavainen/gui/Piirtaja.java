@@ -42,7 +42,10 @@ public class Piirtaja extends JPanel {
                         kuva = kuvat.GetImage("Flag");
                     }
                 } else { //ruutu true
-                    if (ruutu.getOnkoMiina()) {
+                    if (ruutu.getOnkoMiina() && ruutu.isKlikattuMiina()) {
+                        kuva = kuvat.GetImage("BrokenMine");
+                    }
+                    if (ruutu.getOnkoMiina() && !ruutu.isKlikattuMiina()) {
                         kuva = kuvat.GetImage("Mine");
                     }
                     if (!ruutu.getOnkoMiina() && ruutu.getViereistenMiinojenMaara() > 0) {

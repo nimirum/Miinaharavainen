@@ -10,16 +10,17 @@ import java.util.ArrayList;
  */
 public class Ruutu {
 
-    private boolean onkoMiina = false;
     private int viereistenMiinojenMaara = 0; //8 lähintä ruutua
     private int x;
     private int y;
-    private boolean onkoRuutuNakyva = false;
     private final int ruudunLeveys = 24;
     private final int ruudunKorkeus = 24;
-    private boolean onkoLiputettu = false;
     private Pelilauta pelilauta;
     private ArrayList viereisetRuudut;
+    private boolean onkoMiina = false;
+    private boolean onkoRuutuNakyva = false;
+    private boolean klikattuMiina = false;
+    private boolean onkoLiputettu = false;
 
     /**
      *
@@ -127,6 +128,14 @@ public class Ruutu {
         return viereistenMiinojenMaara;
     }
 
+    public boolean isKlikattuMiina() {
+        return klikattuMiina;
+    }
+
+    public void setKlikattuMiina(boolean klikattuMiina) {
+        this.klikattuMiina = klikattuMiina;
+    }
+    
     @Override
     public String toString() {
         if (onkoMiina) {
@@ -165,13 +174,10 @@ public class Ruutu {
                 if (viereinen.getViereistenMiinojenMaara() == 0) {
                     viereinen.setOnkoRuutuNakyva(true);
                     viereinen.avaaViereisetRuudut();
-                }
-                if (viereinen.getViereistenMiinojenMaara() > 0) {
+                } else {
                     viereinen.setOnkoRuutuNakyva(true);
                 }
             }
         }
-
     }
-
 }
