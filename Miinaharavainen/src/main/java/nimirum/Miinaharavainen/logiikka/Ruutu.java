@@ -3,8 +3,9 @@ package nimirum.Miinaharavainen.logiikka;
 import java.util.ArrayList;
 
 /**
- *Pelilaudan ruutu, mikä voi olla miina, tyhjä tai numero, joka kertoo vieressä olevien miinojen määrän
- * 
+ * Pelilaudan ruutu, mikä voi olla miina, tyhjä tai numero, joka kertoo vieressä
+ * olevien miinojen määrän
+ *
  * @author nimirum
  */
 public class Ruutu {
@@ -14,28 +15,26 @@ public class Ruutu {
     private int x;
     private int y;
     private boolean onkoRuutuNakyva = false;
-    private final int ruudunLeveys = 24; 
+    private final int ruudunLeveys = 24;
     private final int ruudunKorkeus = 24;
     private boolean onkoLiputettu = false;
     private Pelilauta pelilauta;
     private ArrayList viereisetRuudut;
-    
 
     /**
      *
      * Parametrit x ja y ovat ruudun koordinaatit
-     * 
+     *
      * @param x Leveys koordinaatti
      * @param y Korkeus koordinaatti
      */
-    
     public Ruutu(int x, int y, Pelilauta pelilauta) {
         this.x = x;
         this.y = y;
         this.pelilauta = pelilauta;
-        
+
     }
-    
+
     public void setViereisetRuudut(ArrayList<Ruutu> list) {
         this.viereisetRuudut = list;
     }
@@ -43,10 +42,10 @@ public class Ruutu {
     public ArrayList<Ruutu> getViereisetRuudut() {
         return viereisetRuudut;
     }
-    
 
     /**
-     *Ruudulle voi asettaa tai poistaa miinan
+     * Ruudulle voi asettaa tai poistaa miinan
+     *
      * @param onkoMiina
      */
     public void setOnkoMiina(boolean onkoMiina) {
@@ -85,7 +84,7 @@ public class Ruutu {
     public int getY() {
         return y;
     }
-    
+
     /**
      *
      * @return onkoMiina
@@ -93,18 +92,18 @@ public class Ruutu {
     public boolean getOnkoMiina() {
         return onkoMiina;
     }
-    
-    
-    public void laskeNumerot(){
-        for(Ruutu viereinen : getViereisetRuudut()){
-            if(viereinen.onkoMiina)
+
+    public void laskeNumerot() {
+        for (Ruutu viereinen : getViereisetRuudut()) {
+            if (viereinen.onkoMiina) {
                 addViereistenMiinojenMaaraa();
-            System.out.println(getViereistenMiinojenMaara());
+            }
         }
     }
 
     /**
      * Ruudulle asetetan viereisten miinojen määrä, arvo voi olla väliltä 0-8
+     *
      * @param viereistenMiinojenMaara
      */
     public void setViereistenMiinojenMaara(int viereistenMiinojenMaara) {
@@ -114,7 +113,7 @@ public class Ruutu {
     }
 
     /**
-     *Lisää viereisten miinojen määrää yhdellä
+     * Lisää viereisten miinojen määrää yhdellä
      */
     public void addViereistenMiinojenMaaraa() {
         viereistenMiinojenMaara++;
@@ -154,9 +153,9 @@ public class Ruutu {
     }
 
     public void setOnkoLiputettu(boolean onkoLiputettu) {
-        this.onkoLiputettu = onkoLiputettu;
+        if (onkoLiputettu = true && !getOnkoRuutuNakyva()) {
+            this.onkoLiputettu = onkoLiputettu;
+        }
     }
-    
-    
 
 }

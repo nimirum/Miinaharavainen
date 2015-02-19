@@ -89,7 +89,7 @@ public class Pelilauta {
      *
      */
     public void miinoita() {
-        int miinojenMaara = miinojenMaaraLaskuri();
+        miinojenMaara = miinojenMaaraLaskuri();
 
         Random rand = new Random();
         int min = 0;
@@ -110,7 +110,7 @@ public class Pelilauta {
         laskeNumerot();
     }
 
-    private void laskeNumerot() {
+    public void laskeNumerot() {
         for (int i = 0; i < this.x; i++) {
             for (int j = 0; j < this.y; j++) {
                 Ruutu ruutu = getRuutu(i, j);
@@ -128,7 +128,7 @@ public class Pelilauta {
     }
 
     private void viereisetRuudut() {
-        ArrayList<Ruutu> viereiset = new ArrayList<Ruutu>();
+        ArrayList<Ruutu> viereiset = new ArrayList<>();
         for (int i = 0; i < this.x; i++) {
             for (int j = 0; j < this.y; j++) {
                 Ruutu ruutu = getRuutu(i, j);
@@ -157,158 +157,9 @@ public class Pelilauta {
                     viereiset.add(getRuutu(i - 1, j - 1));
                 }
                 ruutu.setViereisetRuudut(viereiset);
-                viereiset = new ArrayList<Ruutu>();
+                viereiset = new ArrayList<>();
             }
         }
 
     }
-
-    /**
-     * Käy koko pelilaudan läpi ja numeroi viereisiin ruutuihin viereisten
-     * miinojen määrät
-     */
-    public void laskeNumerot2() {
-        for (int i = 0; i < this.x; i++) {
-            for (int j = 0; j < this.y; j++) {
-                if (pelilauta[i][j].getOnkoMiina()) {
-
-                    if (i == 0 && j == 0) {
-                        vasenYlanurkka(i, j);
-                        continue;
-                    }
-                    if (i == 0 && 0 < j && j < this.y - 1) {
-                        ylareuna(i, j);
-                        continue;
-                    }
-                    if (i == 0 && j == this.y - 1) {
-                        oikeaYlanurkka(i, j);
-                        continue;
-                    }
-                    if (0 < i && i < this.x - 1 && j == 0) {
-                        vasenReuna(i, j);
-                        continue;
-                    }
-                    if (0 < i && i < this.x - 1 && 0 < j && j < this.y - 1) {
-                        keskialue(i, j);
-                        continue;
-                    }
-                    if (0 < i && i < this.x - 1 && j == this.y - 1) {
-                        oikeaReuna(i, j);
-                        continue;
-                    }
-                    if (i == this.x - 1 && 0 < j && j < this.y - 1) {
-                        alareuna(i, j);
-                        continue;
-                    }
-                    if (i == this.x - 1 && j == this.y - 1) {
-                        oikeaAlanurkka(i, j);
-                        continue;
-                    }
-                    if (i == this.x - 1 && j == 0) {
-                        vasenAlanurkka(i, j);
-                    }
-                }
-            }
-        }
-    }
-
-    private void alas(int i, int j) {
-        pelilauta[i + 1][j].addViereistenMiinojenMaaraa();
-    }
-
-    private void oikeaAlas(int i, int j) {
-        pelilauta[i + 1][j + 1].addViereistenMiinojenMaaraa();
-    }
-
-    private void oikea(int i, int j) {
-        pelilauta[i][j + 1].addViereistenMiinojenMaaraa();
-    }
-
-    private void vasen(int i, int j) {
-        pelilauta[i][j - 1].addViereistenMiinojenMaaraa();
-    }
-
-    private void vasenAlas(int i, int j) {
-        pelilauta[i + 1][j - 1].addViereistenMiinojenMaaraa();
-    }
-
-    private void ylos(int i, int j) {
-        pelilauta[i - 1][j].addViereistenMiinojenMaaraa();
-    }
-
-    private void oikeaYlos(int i, int j) {
-        pelilauta[i - 1][j + 1].addViereistenMiinojenMaaraa();
-    }
-
-    private void vasenYlos(int i, int j) {
-        pelilauta[i - 1][j - 1].addViereistenMiinojenMaaraa();
-    }
-
-    private void vasenYlanurkka(int i, int j) {
-        alas(i, j);
-        oikeaAlas(i, j);
-        oikea(i, j);
-    }
-
-    private void ylareuna(int i, int j) {
-        vasen(i, j);
-        vasenAlas(i, j);
-        alas(i, j);
-        oikeaAlas(i, j);
-        oikea(i, j);
-    }
-
-    private void oikeaYlanurkka(int i, int j) {
-        vasen(i, j);
-        vasenAlas(i, j);
-        alas(i, j);
-    }
-
-    private void vasenReuna(int i, int j) {
-        ylos(i, j);
-        oikeaYlos(i, j);
-        oikea(i, j);
-        oikeaAlas(i, j);
-        alas(i, j);
-    }
-
-    private void keskialue(int i, int j) {
-        oikeaYlos(i, j);
-        ylos(i, j);
-        vasenYlos(i, j);
-        vasen(i, j);
-        vasenAlas(i, j);
-        alas(i, j);
-        oikeaAlas(i, j);
-        oikea(i, j);
-    }
-
-    private void oikeaReuna(int i, int j) {
-        ylos(i, j);
-        vasenYlos(i, j);
-        vasen(i, j);
-        vasenAlas(i, j);
-        alas(i, j);
-    }
-
-    private void alareuna(int i, int j) {
-        oikeaYlos(i, j);
-        ylos(i, j);
-        vasenYlos(i, j);
-        vasen(i, j);
-        oikea(i, j);
-    }
-
-    private void oikeaAlanurkka(int i, int j) {
-        ylos(i, j);
-        vasenYlos(i, j);
-        vasen(i, j);
-    }
-
-    private void vasenAlanurkka(int i, int j) {
-        oikeaYlos(i, j);
-        ylos(i, j);
-        oikea(i, j);
-    }
-
 }

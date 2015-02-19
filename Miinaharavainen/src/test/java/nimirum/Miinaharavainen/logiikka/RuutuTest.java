@@ -14,12 +14,14 @@ import static org.junit.Assert.*;
  */
 public class RuutuTest {
 
+    private Miinaharavainen harava;
+    private Ruutu ruutu;
+
     public RuutuTest() {
     }
 
     @Test
     public void ruudussaEiAluksiMiinaJaMiinanLisaysOnnistuu() {
-        Ruutu ruutu = new Ruutu(1, 1);
         assertEquals(ruutu.getOnkoMiina(), false);
         ruutu.setOnkoMiina(true);
         assertEquals(ruutu.getOnkoMiina(), true);
@@ -27,21 +29,36 @@ public class RuutuTest {
 
     @Test
     public void palauttaaRuudunNakyvyydenAluksiFalse() {
-        Ruutu ruutu = new Ruutu(1, 1);
-        assertEquals(ruutu.getOnkoRuutuNakyva(), true);
-        //Vaihda falseksi, väliaikaisesti true
+        assertEquals(ruutu.getOnkoRuutuNakyva(), false);
     }
 
     @Test
+    public void ruudunNakyvyysVaihdettavissa() {
+        ruutu.setOnkoRuutuNakyva(true);
+        assertEquals(ruutu.getOnkoRuutuNakyva(), true);
+    }
+
+    @Test
+    public void ruudunLiputtaminenToimii() {
+        ruutu.setOnkoRuutuNakyva(false);
+        ruutu.setOnkoLiputettu(true);
+        assertEquals(ruutu.isOnkoLiputettu(), true);
+    }
+     @Test
+    public void ruudunLiputtaminenEiToimii() {
+        ruutu.setOnkoRuutuNakyva(true);
+        ruutu.setOnkoLiputettu(true);
+        assertEquals(ruutu.isOnkoLiputettu(), false);
+    }
+    
+    @Test
     public void ruudunKoordinaatitToimii() {
-        Ruutu ruutu = new Ruutu(1, 1);
         assertEquals(ruutu.getX(), 1);
         assertEquals(ruutu.getY(), 1);
     }
 
     @Test
     public void ruudussaMiinaTulostuuOikein() {
-        Ruutu ruutu = new Ruutu(1, 1);
         ruutu.setOnkoMiina(true);
         ruutu.setViereistenMiinojenMaara(3);
         assertEquals(ruutu.toString(), " x");
@@ -49,7 +66,6 @@ public class RuutuTest {
 
     @Test
     public void ruudussaLiikaaViereisiaMiinojaTulostuuOikein() {
-        Ruutu ruutu = new Ruutu(1, 1);
         ruutu.setViereistenMiinojenMaara(9);
         assertEquals(ruutu.getViereistenMiinojenMaara(), 0);
         assertEquals(ruutu.toString(), " .");
@@ -57,37 +73,50 @@ public class RuutuTest {
 
     @Test
     public void ruudussaNegatiivinenArvoMiinojenmaaraTulostuuOikein() {
-        Ruutu ruutu = new Ruutu(1, 1);
         ruutu.setViereistenMiinojenMaara(-1);
         assertEquals(ruutu.getViereistenMiinojenMaara(), 0);
         assertEquals(ruutu.toString(), " .");
     }
 
     @Test
-    public void viereistenMiinojenMaaraTulostuuOikein() {
-        Ruutu ruutu = new Ruutu(1, 1);
+    public void viereistenMiinojenMaaraTulostuuOikein8() {
         ruutu.setViereistenMiinojenMaara(8);
         assertEquals(ruutu.getViereistenMiinojenMaara(), 8);
         assertEquals(ruutu.toString(), " 8");
     }
 
     @Test
-    public void tyhjaRuutuTulostuuOikein() {
-        Ruutu ruutu = new Ruutu(1, 1);
+    public void viereistenMiinojenMaaraTulostuuOikein0() {
+        ruutu.setViereistenMiinojenMaara(0);
+        assertEquals(ruutu.getViereistenMiinojenMaara(), 0);
         assertEquals(ruutu.toString(), " .");
+    }
+
+    @Test
+    public void tyhjaRuutuTulostuuOikein() {
+        assertEquals(ruutu.toString(), " .");
+    }
+
+    @Test
+    public void ruudunKokoOikein() {
+        assertEquals(ruutu.getRuudunKorkeus(), 24);
+        assertEquals(ruutu.getRuudunLeveys(), 24);
     }
 
     @BeforeClass
     public static void setUpClass() {
+
     }
 
     @AfterClass
     public static void tearDownClass() {
+
     }
 
     @Before
     public void setUp() {
-
+        harava = new Miinaharavainen(10, 10);
+        ruutu = new Ruutu(1, 1, harava.getPelilauta());
     }
 
     @After

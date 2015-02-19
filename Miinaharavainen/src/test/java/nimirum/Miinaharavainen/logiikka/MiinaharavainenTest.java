@@ -40,14 +40,6 @@ public class MiinaharavainenTest {
         assertEquals(testi.getPelilauta().getX(), 10);
         assertEquals(testi.getPelilauta().getY(), 10);
     }
-    
-//      @Test
-//    public void konstruktoriEiToimiKirjaimella() {
-//        //KESKEN
-////        Miinaharavainen testi = new Miinaharavainen("k", 3);
-////        assertEquals(testi.getPelilauta().getX(), 10);
-////        assertEquals(testi.getPelilauta().getY(), 10);
-//    }
 
     @Test
     public void miinojenMaaraNollaEnnenKentänGenerointa() {
