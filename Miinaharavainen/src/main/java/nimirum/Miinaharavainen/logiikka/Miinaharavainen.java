@@ -51,7 +51,12 @@ public final class Miinaharavainen {
             miinojenMaara = pelilauta.getMiinojenMaara();
             miinoitettu = true;
             pelikello = new Kello();
+            pelikello.run();
         }
+    }
+    
+    public Kello getKello(){
+        return pelikello;
     }
 
     /**
