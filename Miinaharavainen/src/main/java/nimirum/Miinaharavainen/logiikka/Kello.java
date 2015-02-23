@@ -9,7 +9,7 @@ import nimirum.Miinaharavainen.gui.Piirtaja;
  *
  * @author nimirum
  */
-public class Kello implements Runnable{
+public class Kello implements Runnable {
 
     static int counter = 0;
     static Timer timer;
@@ -23,7 +23,6 @@ public class Kello implements Runnable{
 
             @Override
             public void run() {
-                 System.out.println("TimerTask executing counter is: " + counter);
                 counter++;
                 //piirtaja.repaint();
             }
@@ -35,9 +34,7 @@ public class Kello implements Runnable{
             @Override
             public void run() {
                 while (true) {
-                    System.out.println("Thread reading counter is: " + counter);
-                    if (counter == 25) {
-                        //  System.out.println("Counter has reached 13 now will terminate");
+                    if (counter == 999) {
                         timer.cancel();//end the timer
                         break;//end this loop
                     }
@@ -54,12 +51,7 @@ public class Kello implements Runnable{
 
     }
 
-    public void setParametrit(Piirtaja piirtaja, Miinaharavainen harava) {
-        this.piirtaja = piirtaja;
-        this.harava = harava;
-    }
-
-    public static void sleepForcefully(int milliSecond) {
+    private static void sleepForcefully(int milliSecond) {
         final long endingTime = System.currentTimeMillis() + milliSecond;
         long remainingTime = milliSecond;
         while (remainingTime > 0) {
@@ -73,7 +65,17 @@ public class Kello implements Runnable{
 
     @Override
     public String toString() {
+        if (counter < 10) {
+            return "00" + counter;
+        }
+        if (counter < 100) {
+            return "0" + counter;
+        }
         return "" + counter;
+    }
+
+    public void stop() {
+        timer.cancel();
     }
 
 }

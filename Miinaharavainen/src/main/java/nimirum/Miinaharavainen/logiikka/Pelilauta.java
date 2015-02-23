@@ -135,7 +135,7 @@ public class Pelilauta {
     }
 
     private int miinojenMaaraLaskuri() {
-        return (int) (0.15 * this.x * this.y);
+       return (int) (0.15 * this.x * this.y);
     }
 
     /**
@@ -191,5 +191,19 @@ public class Pelilauta {
                 ruutu.setOnkoRuutuNakyva(true);
             }
         }
+    }
+
+    public boolean onkoPeliPaattynyt() {
+        int klikatutRuudut = 0;
+        for (int i = 0; i < this.x; i++) {
+            for (int j = 0; j < this.y; j++) {
+
+                Ruutu ruutu = getRuutu(i, j);
+                if (ruutu.getOnkoRuutuNakyva()) {
+                    klikatutRuudut++;
+                }
+            }
+        }
+        return (klikatutRuudut == (this.x * this.y - miinojenMaara));
     }
 }

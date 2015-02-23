@@ -40,6 +40,9 @@ public class Piirtaja extends JPanel {
         super.paintComponent(g);
         piirraRuudut(g);
         piirraKello(g);
+        if(miinaharava.getPelilauta().onkoPeliPaattynyt()){
+            piirraGameOver(g);
+        }
     }
 
     /**
@@ -81,7 +84,12 @@ public class Piirtaja extends JPanel {
     }
 
     private void piirraKello(Graphics g) {
-        g.drawString(miinaharava.getKello().toString(), 50, miinaharava.getPelilauta().getY() * 24 + 50);
+        g.drawString(miinaharava.getKello().toString(), 50, miinaharava.getPelilauta().getY() * miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus() + 24);
+    }
+
+    private void piirraGameOver(Graphics g) {
+        
+        g.drawString("Voitit", 100, miinaharava.getPelilauta().getY() * miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus() + 24);
     }
 
 }

@@ -10,7 +10,7 @@ public final class Miinaharavainen {
     private Pelilauta pelilauta;
     private int miinojenMaara = 0;
     private boolean miinoitettu = false;
-    private Kello pelikello;
+    private final Kello pelikello;
 
     /**
      * Miinaharavan konstruktori, missä luodaan pelilauta annetuista arvoista
@@ -88,6 +88,7 @@ public final class Miinaharavainen {
      * ennätyksiin
      */
     public void gameOver() {
-        //new Pelilauta?
-    }
+        pelikello.stop();
+        getPelilauta().avaaKaikkiRuudut();
+        }
 }

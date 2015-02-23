@@ -13,7 +13,7 @@ import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
  *
  * @author nimirum
  */
-public class Klikkaustenkuuntelija extends MouseInputAdapter {
+public class KlikkaustenKuuntelija extends MouseInputAdapter {
 
     private Piirtaja piirtaja;
     private ArrayList<TapahtumaAlue> tapahtumaalueet;
@@ -23,7 +23,7 @@ public class Klikkaustenkuuntelija extends MouseInputAdapter {
      * @param piirtaja
      * @param tapahtumaAlueet
      */
-    public Klikkaustenkuuntelija(Piirtaja piirtaja, ArrayList tapahtumaAlueet) {
+    public KlikkaustenKuuntelija(Piirtaja piirtaja, ArrayList tapahtumaAlueet) {
         //    this.miinaharavainen = miinaharavainen;
         this.piirtaja = piirtaja;
         tapahtumaalueet = tapahtumaAlueet;

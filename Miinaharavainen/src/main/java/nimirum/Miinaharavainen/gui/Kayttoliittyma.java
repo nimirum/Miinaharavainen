@@ -3,7 +3,11 @@ package nimirum.Miinaharavainen.gui;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 
 import javax.swing.*;
 import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
@@ -17,16 +21,16 @@ public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
     private Miinaharavainen miinaharava;
-    private JButton taulukko[][];
-    private int ruudunLeveys;
-    private int ruudunKorkeus;
+    // private JButton taulukko[][];
+    private final int ruudunLeveys;
+    private final int ruudunKorkeus;
 
     /**
      * Kayttoliittyma luo pelin Miinaharavan
      *
      */
     public Kayttoliittyma() {
-        this.miinaharava = new Miinaharavainen(20, 20);
+        this.miinaharava = new Miinaharavainen(15, 15);
         ruudunLeveys = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunLeveys();
         ruudunKorkeus = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus();
     }
@@ -35,17 +39,17 @@ public class Kayttoliittyma implements Runnable {
     public void run() {
         frame = new JFrame("Miinaharavainen");
 
-        int leveys = ((miinaharava.getPelilauta().getX()) * ruudunLeveys) + 6;
-        int korkeus = ((miinaharava.getPelilauta().getY()) * ruudunKorkeus) + 29 + 60;
+        int leveys = ((miinaharava.getPelilauta().getX()) * ruudunLeveys);
+        int korkeus = ((miinaharava.getPelilauta().getY()) * ruudunKorkeus + 60);
 
-        frame.setPreferredSize(new Dimension(leveys, korkeus));
         frame.setResizable(false);
+        frame.setVisible(true);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
+        frame.setSize(new Dimension(leveys + frame.getInsets().left + frame.getInsets().right, korkeus + frame.getInsets().top + frame.getInsets().bottom));
+        setIconImage();
+        luoValikko();
         luoKomponentit(frame.getContentPane());
 
-        frame.pack();
-        frame.setVisible(true);
     }
 
     /**
@@ -55,16 +59,12 @@ public class Kayttoliittyma implements Runnable {
      */
     public void luoKomponentit(Container container) {
         Piirtaja piirtoalusta = new Piirtaja(miinaharava);
-        //if (miinaharava.isPelilautaMiinoitettu()) {
-            miinaharava.getKello().setParametrit(piirtoalusta,miinaharava);
-        //}
         lisaaKuuntelija(piirtoalusta);
-
         container.add(piirtoalusta);
     }
 
     private void lisaaKuuntelija(Piirtaja piirtaja) {
-        Klikkaustenkuuntelija kuuntelija = new Klikkaustenkuuntelija(piirtaja, luoTapahtumaAlueet());
+        KlikkaustenKuuntelija kuuntelija = new KlikkaustenKuuntelija(piirtaja, luoTapahtumaAlueet());
         piirtaja.addMouseListener(kuuntelija);
     }
 
@@ -74,6 +74,23 @@ public class Kayttoliittyma implements Runnable {
         return list;
     }
 
+    private void luoValikko() {
+        JMenuBar valikko = new JMenuBar();
+        frame.setJMenuBar(valikko);
+        JMenuItem uusiPeli = new JMenuItem("Uusi peli");
+        JMenuItem ennatykset = new JMenuItem("Ennätykset");
+        JMenuItem vaihdaKokoa = new JMenuItem("Asetukset");
+        valikko.add(uusiPeli);
+        valikko.add(vaihdaKokoa);
+        valikko.add(ennatykset);
+
+        NappuloidenKuuntelija kuuntelija = new NappuloidenKuuntelija(this);
+        uusiPeli.addActionListener(kuuntelija);
+
+        // UusiPeliNappulanKuuntelija kuuntelija = new UusiPeliNappulanKuuntelija(this);
+        //uusiPeli.addActionListener(kuuntelija);
+    }
+
     /**
      * Palauttaa ikkunan
      *
@@ -81,5 +98,23 @@ public class Kayttoliittyma implements Runnable {
      */
     public JFrame getFrame() {
         return frame;
+    }
+
+    public void uusiPeli(Miinaharavainen miinaharavainen) {
+        this.miinaharava = miinaharavainen;
+        Container c = frame.getContentPane();
+        c.removeAll();
+        luoKomponentit(c);
+        frame.setVisible(true);
+    }
+
+    private void setIconImage() {
+        BufferedImage miinaRuutu = null;
+        try {
+            miinaRuutu = ImageIO.read(new File("graphics/mine24x24.png"));
+        } catch (IOException ex) {
+            System.out.println("Kuvien lataus epäonnistui");
+        }
+        frame.setIconImage(miinaRuutu);
     }
 }

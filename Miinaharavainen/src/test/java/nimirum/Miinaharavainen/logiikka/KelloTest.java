@@ -14,6 +14,8 @@ import static org.junit.Assert.*;
  */
 public class KelloTest {
     
+    Kello kello = new Kello();
+    
     public KelloTest() {
     }
     
@@ -34,14 +36,8 @@ public class KelloTest {
     }
 
     @Test
-    public void KellonAloitusarvoNolla(){
-        Kello kello = new Kello();
-        assertEquals(0, kello.getSekunti());
-    }
-    @Test
-    public void KellonaikaKasvaa(){
-        Kello kello = new Kello();
-        kello.kasvataKelloa();
-        assertEquals(1, kello.getSekunti());
+    public void KelloAluksiNolla(){
+        assertEquals(kello.toString(), "0");
+        
     }
 }

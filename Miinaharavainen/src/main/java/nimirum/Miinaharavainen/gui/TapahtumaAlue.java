@@ -19,7 +19,7 @@ public class TapahtumaAlue extends Rectangle {
 
     /**
      * Luo neliön muotoisen tapahtumaalueen, kooltaan 24x24
-     *     
+     *
      * @param x Leveys koordinaatti
      * @param y Korkeus koordinaatti
      * @param ruutu Ruutu
@@ -44,20 +44,24 @@ public class TapahtumaAlue extends Rectangle {
             if (ruutu == null) {
                 return;
             }
+
             if (!miinaharavainen.isPelilautaMiinoitettu()) {
-                miinaharavainen.miinoitaLauta(ruutu.getX(),ruutu.getY());
+                miinaharavainen.miinoitaLauta(ruutu.getX(), ruutu.getY());
             }
             if (!ruutu.getOnkoRuutuNakyva() && !ruutu.isOnkoLiputettu()) {
                 ruutu.setOnkoRuutuNakyva(true);
                 if (ruutu.getViereistenMiinojenMaara() == 0) {
                     ruutu.avaaViereisetRuudut();
                 }
+                if (miinaharavainen.getPelilauta().onkoPeliPaattynyt()) {
+                    miinaharavainen.gameOver();
+                }
             }
             if (ruutu.getOnkoMiina()) {
                 ruutu.setKlikattuMiina(true);
-                miinaharavainen.getPelilauta().avaaKaikkiRuudut();
-                //GAMEOVER
+                miinaharavainen.gameOver();//häviäminen
             }
+
         }
     }
 
@@ -70,7 +74,8 @@ public class TapahtumaAlue extends Rectangle {
     }
 
     /**
-      Liputtaa ruudun, joka on parametreina saaduissa koordinaateissa
+     * Liputtaa ruudun, joka on parametreina saaduissa koordinaateissa
+     *
      * @param x Leveys koordinaatti
      * @param y Korkeus koordinaatti
      */
