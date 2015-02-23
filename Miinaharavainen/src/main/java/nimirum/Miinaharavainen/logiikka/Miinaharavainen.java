@@ -20,6 +20,7 @@ public final class Miinaharavainen {
      */
     public Miinaharavainen(int leveys, int korkeus) {
         setPelilaudanKoko(leveys, korkeus);
+        pelikello = new Kello();
     }
 
     /**
@@ -50,12 +51,11 @@ public final class Miinaharavainen {
             pelilauta.miinoita(x, y);
             miinojenMaara = pelilauta.getMiinojenMaara();
             miinoitettu = true;
-            pelikello = new Kello();
             pelikello.run();
         }
     }
-    
-    public Kello getKello(){
+
+    public Kello getKello() {
         return pelikello;
     }
 
@@ -84,7 +84,8 @@ public final class Miinaharavainen {
     }
 
     /**
-     * Pelin päättyminen, kello pysähtyy, kentän koko ja aika tallennetaan ennätyksiin
+     * Pelin päättyminen, kello pysähtyy, kentän koko ja aika tallennetaan
+     * ennätyksiin
      */
     public void gameOver() {
         //new Pelilauta?

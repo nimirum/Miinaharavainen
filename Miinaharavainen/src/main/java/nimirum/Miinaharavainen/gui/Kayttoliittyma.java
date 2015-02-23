@@ -33,7 +33,6 @@ public class Kayttoliittyma implements Runnable {
 
     @Override
     public void run() {
-
         frame = new JFrame("Miinaharavainen");
 
         int leveys = ((miinaharava.getPelilauta().getX()) * ruudunLeveys) + 6;
@@ -56,9 +55,9 @@ public class Kayttoliittyma implements Runnable {
      */
     public void luoKomponentit(Container container) {
         Piirtaja piirtoalusta = new Piirtaja(miinaharava);
-        if (miinaharava.isPelilautaMiinoitettu()) {
+        //if (miinaharava.isPelilautaMiinoitettu()) {
             miinaharava.getKello().setParametrit(piirtoalusta,miinaharava);
-        }
+        //}
         lisaaKuuntelija(piirtoalusta);
 
         container.add(piirtoalusta);

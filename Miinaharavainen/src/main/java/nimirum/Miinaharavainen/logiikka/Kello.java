@@ -25,7 +25,7 @@ public class Kello implements Runnable{
             public void run() {
                  System.out.println("TimerTask executing counter is: " + counter);
                 counter++;
-                piirtaja.repaint();
+                //piirtaja.repaint();
             }
         };
 

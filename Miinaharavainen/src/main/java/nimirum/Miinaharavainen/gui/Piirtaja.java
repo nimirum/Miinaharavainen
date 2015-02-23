@@ -3,7 +3,10 @@ package nimirum.Miinaharavainen.gui;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
 import nimirum.Miinaharavainen.logiikka.Ruutu;
 
@@ -21,17 +24,22 @@ public class Piirtaja extends JPanel {
         super.setBackground(Color.white);
         this.kuvat = new KuvienLataaja();
         this.miinaharava = miinaharava;
-//        miinaharava.getKello().setPiirtaja(this);
-        
+        int delay = 1000; //milliseconds
+        ActionListener taskPerformer = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                repaint();
+            }
+        };
+        new Timer(delay, taskPerformer).start();
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         piirraRuudut(g);
-        if (miinaharava.isPelilautaMiinoitettu()) {
-            piirraKello(g);
-        }
+        piirraKello(g);
     }
 
     /**
