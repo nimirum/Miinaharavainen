@@ -11,7 +11,7 @@ import nimirum.Miinaharavainen.gui.Kayttoliittyma;
 public class Main {
     
     /**
-     *
+     * Käyttöliittymän käynnistys
      * @param args
      */
     public static void main(String[] args) {

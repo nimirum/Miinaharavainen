@@ -16,20 +16,23 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
- *
- * @author nexu770
+ * Avaa ikkunan, jossa voi muokata pelin asetuksia, eli korkeutta ja leveyttä
+ * @author nimirum
  */
 public class KoonAsettaminen implements Runnable {
 
     private JFrame mainFrame;
     private JPanel controlPanel;
-    private int x;
-    private int y;
-    private Kayttoliittyma kayttoliittyma;
+    private final int x;
+    private final int y;
+    private final Kayttoliittyma kayttoliittyma;
 
-    public KoonAsettaminen() {
-    }
-
+    /**
+     * Konstruktori
+     * @param x
+     * @param y
+     * @param kayttoliittyma
+     */
     public KoonAsettaminen(int x, int y, Kayttoliittyma kayttoliittyma) {
         this.x = x;
         this.y = y;
@@ -79,8 +82,8 @@ public class KoonAsettaminen implements Runnable {
         JLabel ohje = new JLabel("Aseta uuden pelin koko:");
         JLabel leveyslaatikko = new JLabel("Leveys: ", JLabel.RIGHT);
         JLabel korkeuslaatikko = new JLabel("Korkeus: ", JLabel.CENTER);
-        final JTextField leveysText = new JTextField("" + x, 6);//new JTextField(6);
-        final JTextField korkeusText = new JTextField("" + y, 6);
+        final JTextField leveysText = new JTextField("" + y, 6);//new JTextField(6);
+        final JTextField korkeusText = new JTextField("" + x, 6);
 
         JButton loginButton = new JButton("Aseta");
         loginButton.addActionListener(new ActionListener() {
@@ -92,7 +95,7 @@ public class KoonAsettaminen implements Runnable {
                 mainFrame.setVisible(false);
                 mainFrame.dispose();
                 kayttoliittyma.sulje();
-                SwingUtilities.invokeLater(new Kayttoliittyma(10, 10));
+                SwingUtilities.invokeLater(new Kayttoliittyma(15, 10));
             }
         });
         controlPanel.add(ohje);
@@ -108,7 +111,5 @@ public class KoonAsettaminen implements Runnable {
     public void run() {
         prepareGUI();
         showText();
-       // mainFrame.toFront();
-        // mainFrame.repaint();
     }
 }

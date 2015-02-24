@@ -12,7 +12,8 @@ import nimirum.Miinaharavainen.gui.Kayttoliittyma;
 import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
 
 /**
- *
+ * Kuuntelee käyttöliittymän menu nappuloiden toimintaa
+ * 
  * @author nimirum
  */
 public class NappuloidenKuuntelija implements ActionListener {
@@ -20,6 +21,11 @@ public class NappuloidenKuuntelija implements ActionListener {
     private Kayttoliittyma kayttoliittyma;
     private Miinaharavainen miinaharava;
 
+    /**
+     * Konstruktori
+     * @param kayttoliittyma
+     * @param miinaharava
+     */
     public NappuloidenKuuntelija(Kayttoliittyma kayttoliittyma, Miinaharavainen miinaharava) {
         this.kayttoliittyma = kayttoliittyma;
         this.miinaharava = miinaharava;
@@ -33,6 +39,9 @@ public class NappuloidenKuuntelija implements ActionListener {
         }
         if (e.getActionCommand().equals("Asetukset")) {
             kayttoliittyma.kysyKokoa();
+        }
+        if (e.getActionCommand().equals("Ennatykset")) {
+            //KESKEN
         }
     }
 

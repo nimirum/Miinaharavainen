@@ -27,16 +27,22 @@ public class Kayttoliittyma implements Runnable {
     private final int ruudunKorkeus;
 
     /**
-     * Kayttoliittyma luo pelin Miinaharavan
+     * Kayttoliittyma luo 15x10 kokoisen Miinaharavan pelin 
      *
      */
     public Kayttoliittyma() {
-        this.miinaharava = new Miinaharavainen(15, 15);
+        this.miinaharava = new Miinaharavainen(15, 10);
         ruudunLeveys = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunLeveys();
         ruudunKorkeus = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus();
     }
-        public Kayttoliittyma(int x, int y) {
-        this.miinaharava = new Miinaharavainen(x, y);
+
+    /**
+     * Käyttöliittymä luo parametrien kokoisen Miinaharava pelin
+     * @param x Pelilaudan korkeus
+     * @param y Pelilaudan leveys
+     */
+    public Kayttoliittyma(int x, int y) {
+        this.miinaharava = new Miinaharavainen(y, x);
         ruudunLeveys = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunLeveys();
         ruudunKorkeus = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus();
     }
@@ -47,10 +53,10 @@ public class Kayttoliittyma implements Runnable {
 
         int leveys = ((miinaharava.getPelilauta().getX()) * ruudunLeveys);
         int korkeus = ((miinaharava.getPelilauta().getY()) * ruudunKorkeus + 60);
+        //60 pikseliä tilaa kellolle
 
         frame.setResizable(false);
         frame.setVisible(true);
-        //frame.setLocationRelativeTo(null);
         centreWindow();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setSize(new Dimension(leveys + frame.getInsets().left + frame.getInsets().right, korkeus + frame.getInsets().top + frame.getInsets().bottom));
@@ -115,6 +121,11 @@ public class Kayttoliittyma implements Runnable {
         return frame;
     }
 
+    /**
+     * Luo uuden tyhjän Miinaharava pelin
+     * 
+     * @param miinaharavainen Miinaharavainen
+     */
     public void uusiPeli(Miinaharavainen miinaharavainen) {
         this.miinaharava = miinaharavainen;
         Container c = frame.getContentPane();
@@ -133,11 +144,17 @@ public class Kayttoliittyma implements Runnable {
         frame.setIconImage(miinaRuutu);
     }
 
+    /**
+     * Sulkee käyttöliittymän ikkunan
+     */
     public void sulje() {
         frame.setVisible(false);
         frame.dispose();
     }
 
+    /**
+     * "Asetukset" nappulan komento joka avaa kokoa kysyvän ikkunan
+     */
     public void kysyKokoa() {
         frame.toBack();
         SwingUtilities.invokeLater((Runnable) new KoonAsettaminen(miinaharava.getPelilauta().getX(),miinaharava.getPelilauta().getY(),this));

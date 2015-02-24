@@ -35,7 +35,10 @@ public class TapahtumaAlue extends Rectangle {
 
     /**
      * Tarkistaa onko alueeseen klikattu ja toimii sen mukaan
-     *
+     * Jos pelilautaa ei ole miinoitettu, se miinoitetaan ensimmäisen klikkauksen mukaan
+     * Kun ruutu ei ole näkyvä, se muuttuu näkyväksi klikkauksesta
+     * Ruutu joka ei ole näkyvä voi liputtaa
+     * 
      * @param x Leveys koordinaatti
      * @param y Korkeus koordinaatti
      */
