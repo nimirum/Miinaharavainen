@@ -14,14 +14,16 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.JFormattedTextField.AbstractFormatter;
 
 /**
  * Avaa ikkunan, jossa voi muokata pelin asetuksia, eli korkeutta ja leveyttä
+ *
  * @author nimirum
  */
 public class KoonAsettaminen implements Runnable {
 
-    private JFrame mainFrame;
+    private JFrame frame;
     private JPanel controlPanel;
     private final int x;
     private final int y;
@@ -29,6 +31,7 @@ public class KoonAsettaminen implements Runnable {
 
     /**
      * Konstruktori
+     *
      * @param x
      * @param y
      * @param kayttoliittyma
@@ -40,13 +43,14 @@ public class KoonAsettaminen implements Runnable {
     }
 
     private void prepareGUI() {
-        mainFrame = new JFrame("Miinaharvainen");
-        mainFrame.setSize(200, 160);
-        mainFrame.setLayout(new GridLayout(1, 1));
-        mainFrame.addWindowListener(new WindowAdapter() {
+        frame = new JFrame("Miinaharvainen");
+        frame.setSize(200, 160);
+        frame.setLayout(new GridLayout(1, 1));
+        frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent windowEvent) {
-                System.exit(0);
+                frame.setVisible(false);
+                frame.dispose();
             }
         });
 
@@ -56,8 +60,8 @@ public class KoonAsettaminen implements Runnable {
         controlPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
         controlPanel.setLayout(new FlowLayout());
 
-        mainFrame.add(controlPanel);
-        mainFrame.setVisible(true);
+        frame.add(controlPanel);
+        frame.setVisible(true);
     }
 
     private void setIconImage() {
@@ -67,14 +71,14 @@ public class KoonAsettaminen implements Runnable {
         } catch (IOException ex) {
             System.out.println("Kuvan lataus epäonnistui");
         }
-        mainFrame.setIconImage(miinaRuutu);
+        frame.setIconImage(miinaRuutu);
     }
 
     private void centreWindow() {
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (int) ((dimension.getWidth() - mainFrame.getWidth()) / 3);
-        int y = (int) ((dimension.getHeight() - mainFrame.getHeight()) / 3);
-        mainFrame.setLocation(x, y);
+        int x = (int) ((dimension.getWidth() - frame.getWidth()) / 3);
+        int y = (int) ((dimension.getHeight() - frame.getHeight()) / 3);
+        frame.setLocation(x, y);
     }
 
     private void showText() {
@@ -82,20 +86,30 @@ public class KoonAsettaminen implements Runnable {
         JLabel ohje = new JLabel("Aseta uuden pelin koko:");
         JLabel leveyslaatikko = new JLabel("Leveys: ", JLabel.RIGHT);
         JLabel korkeuslaatikko = new JLabel("Korkeus: ", JLabel.CENTER);
-        final JTextField leveysText = new JTextField("" + y, 6);//new JTextField(6);
-        final JTextField korkeusText = new JTextField("" + x, 6);
+        final JTextField leveysText = new JTextField("" + x, 6);
+        final JTextField korkeusText = new JTextField("" + y, 6);
 
         JButton loginButton = new JButton("Aseta");
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //leveysText.getText()
-                //korkeusText.getText()
-                // statusLabel.setText(data);   
-                mainFrame.setVisible(false);
-                mainFrame.dispose();
-                kayttoliittyma.sulje();
-                SwingUtilities.invokeLater(new Kayttoliittyma(15, 10));
+                int leveys = 0;
+                int korkeus = 0;
+                boolean arvotKelpaavat = false;
+                try {
+                    leveys = Integer.parseInt(leveysText.getText());
+                    korkeus = Integer.parseInt(korkeusText.getText());
+                    arvotKelpaavat = true;
+                } catch (NumberFormatException ex) {
+                    leveysText.setText("");
+                    korkeusText.setText("");
+                }
+                if (arvotKelpaavat) {
+                    frame.setVisible(false);
+                    frame.dispose();
+                    kayttoliittyma.sulje();
+                    SwingUtilities.invokeLater(new Kayttoliittyma(leveys, korkeus));
+                }
             }
         });
         controlPanel.add(ohje);
@@ -104,7 +118,7 @@ public class KoonAsettaminen implements Runnable {
         controlPanel.add(korkeuslaatikko);
         controlPanel.add(korkeusText);
         controlPanel.add(loginButton);
-        mainFrame.setVisible(true);
+        frame.setVisible(true);
     }
 
     @Override

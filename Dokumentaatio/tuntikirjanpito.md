@@ -27,3 +27,8 @@
 18.2. klo 13-16 Klikkaustenkuuntelija toimii, liputtaminen myös ja klo 22-23 Ruutujen konstruktorien muokkaus ja viereisetRuudut() ja laskeNumerot() tehty uudestaan
 
 19.2 klo 11-12 Testejä korjattu ja lisätty ja klo 12.30-15 vierekkäisten tyhjien ruutujen avaaminen toimii, javadocin kirjoittamista, sekvenssikaavioita
+ 
+24.2 klo 14-17 Kellon toiminallisuutta
+
+25.2. klo 10-11 Kello päivittyy oikein käyttöliittymässä eli sekunnin välein ja klo 15-16 uuden pelin luominen onnistuu
+

@@ -42,7 +42,7 @@ public class Kayttoliittyma implements Runnable {
      * @param y Pelilaudan leveys
      */
     public Kayttoliittyma(int x, int y) {
-        this.miinaharava = new Miinaharavainen(y, x);
+        this.miinaharava = new Miinaharavainen(x, y);
         ruudunLeveys = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunLeveys();
         ruudunKorkeus = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus();
     }
@@ -156,7 +156,7 @@ public class Kayttoliittyma implements Runnable {
      * "Asetukset" nappulan komento joka avaa kokoa kysyvän ikkunan
      */
     public void kysyKokoa() {
-        frame.toBack();
+       // frame.toBack();
         SwingUtilities.invokeLater((Runnable) new KoonAsettaminen(miinaharava.getPelilauta().getX(),miinaharava.getPelilauta().getY(),this));
     }
 }
