@@ -7,6 +7,7 @@ package nimirum.Miinaharavainen.kuuntelijat;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.SwingUtilities;
 import nimirum.Miinaharavainen.gui.Kayttoliittyma;
 import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
 
@@ -30,8 +31,11 @@ public class NappuloidenKuuntelija implements ActionListener {
             Miinaharavainen miinaharava = new Miinaharavainen(this.miinaharava.getPelilauta().getX(), this.miinaharava.getPelilauta().getY());
             kayttoliittyma.uusiPeli(miinaharava);
         }
-        if (e.getActionCommand().equals("Ennatykset")) {
-            //tulosta 10 parasta
+        if (e.getActionCommand().equals("Asetukset")) {
+            kayttoliittyma.kysyKokoa();
+            SwingUtilities.invokeLater(new Kayttoliittyma());
+            kayttoliittyma.sulje();
+            
         }
     }
 

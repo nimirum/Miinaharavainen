@@ -136,8 +136,8 @@ public class Pelilauta {
     }
 
     private int miinojenMaaraLaskuri() {
-        return 1;
-       //return (int) (0.15 * this.x * this.y);
+        //return 1;
+       return (int) (0.15 * this.x * this.y);
     }
 
     /**

@@ -4,7 +4,7 @@ import nimirum.Miinaharavainen.kuuntelijat.NappuloidenKuuntelija;
 import nimirum.Miinaharavainen.kuuntelijat.KlikkaustenKuuntelija;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class Kayttoliittyma implements Runnable {
      *
      */
     public Kayttoliittyma() {
-        this.miinaharava = new Miinaharavainen(8, 8);
+        this.miinaharava = new Miinaharavainen(10, 10);
         ruudunLeveys = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunLeveys();
         ruudunKorkeus = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus();
     }
@@ -45,6 +45,8 @@ public class Kayttoliittyma implements Runnable {
 
         frame.setResizable(false);
         frame.setVisible(true);
+        //frame.setLocationRelativeTo(null);
+        centreWindow();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setSize(new Dimension(leveys + frame.getInsets().left + frame.getInsets().right, korkeus + frame.getInsets().top + frame.getInsets().bottom));
         setIconImage();
@@ -69,6 +71,13 @@ public class Kayttoliittyma implements Runnable {
         piirtaja.addMouseListener(kuuntelija);
     }
 
+    private void centreWindow() {
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - frame.getWidth()) / 3);
+        int y = (int) ((dimension.getHeight() - frame.getHeight()) / 3);
+        frame.setLocation(x, y);
+    }
+
     private ArrayList luoTapahtumaAlueet() {
         Sijainnit sijainnit = new Sijainnit(miinaharava);
         ArrayList list = sijainnit.TapahtumaAlueet();
@@ -78,6 +87,8 @@ public class Kayttoliittyma implements Runnable {
     private void luoValikko() {
         JMenuBar valikko = new JMenuBar();
         frame.setJMenuBar(valikko);
+
+        //JButton uusiPeli = new JButton("Uusi peli");
         JMenuItem uusiPeli = new JMenuItem("Uusi peli");
         JMenuItem ennatykset = new JMenuItem("Ennätykset");
         JMenuItem vaihdaKokoa = new JMenuItem("Asetukset");
@@ -85,11 +96,9 @@ public class Kayttoliittyma implements Runnable {
         valikko.add(vaihdaKokoa);
         valikko.add(ennatykset);
 
-        NappuloidenKuuntelija kuuntelija = new NappuloidenKuuntelija(this,miinaharava);
+        NappuloidenKuuntelija kuuntelija = new NappuloidenKuuntelija(this, miinaharava);
         uusiPeli.addActionListener(kuuntelija);
-
-        // UusiPeliNappulanKuuntelija kuuntelija = new UusiPeliNappulanKuuntelija(this);
-        //uusiPeli.addActionListener(kuuntelija);
+        vaihdaKokoa.addActionListener(kuuntelija);
     }
 
     /**
@@ -117,5 +126,15 @@ public class Kayttoliittyma implements Runnable {
             System.out.println("Kuvien lataus epäonnistui");
         }
         frame.setIconImage(miinaRuutu);
+    }
+
+    public void sulje() {
+        frame.setVisible(false);
+        frame.dispose();
+    }
+
+    public void kysyKokoa() {
+        frame.toBack();
+        SwingUtilities.invokeLater((Runnable) new KoonAsettaminen());
     }
 }
