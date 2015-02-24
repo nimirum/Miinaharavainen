@@ -40,9 +40,7 @@ public class Piirtaja extends JPanel {
         super.paintComponent(g);
         piirraRuudut(g);
         piirraKello(g);
-        if(miinaharava.getPelilauta().onkoPeliPaattynyt()){
-            piirraGameOver(g);
-        }
+        piirraGameOver(g);
     }
 
     /**
@@ -84,11 +82,25 @@ public class Piirtaja extends JPanel {
     }
 
     private void piirraKello(Graphics g) {
-        g.drawString(miinaharava.getKello().toString(), 50, miinaharava.getPelilauta().getY() * miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus() + 24);
+        int leveys = (int) (0.15*miinaharava.getPelilauta().getX()*miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus());
+        int korkeus = miinaharava.getPelilauta().getY() * miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus();
+        
+        g.drawString(miinaharava.getKello().toString(),leveys , korkeus + 24);
     }
 
-    private void piirraGameOver(Graphics g) {      
-        g.drawString("Voitit", 100, miinaharava.getPelilauta().getY() * miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus() + 24);
+    private void piirraGameOver(Graphics g) {
+        
+        int leveys = (int) (0.3*miinaharava.getPelilauta().getX()*miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus());
+        int korkeus = miinaharava.getPelilauta().getY() * miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus();
+        
+        if (miinaharava.getGameOver() != null) {
+            if (miinaharava.getGameOver().equals("Voitto")) {
+                g.drawString("Voitit pelin!", leveys, korkeus + 24);
+            }
+            if (miinaharava.getGameOver().equals("Havio")) {
+                g.drawString("Hävisit pelin.", leveys, korkeus + 24);
+            }
+        }
     }
 
 }

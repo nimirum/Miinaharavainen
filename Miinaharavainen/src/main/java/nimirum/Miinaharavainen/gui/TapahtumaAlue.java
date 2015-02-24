@@ -40,29 +40,31 @@ public class TapahtumaAlue extends Rectangle {
      * @param y Korkeus koordinaatti
      */
     public void alueeseenKlikattu(int x, int y) {
+
         if (onkoKlikkausAlueella(x, y)) {
             if (ruutu == null) {
                 return;
             }
 
+            miinaharavainen.getPelilauta().paivitaKlikatutRuudut();
             if (!miinaharavainen.isPelilautaMiinoitettu()) {
                 miinaharavainen.miinoitaLauta(ruutu.getX(), ruutu.getY());
             }
             if (!ruutu.getOnkoRuutuNakyva() && !ruutu.isOnkoLiputettu()) {
-                
+
                 ruutu.setOnkoRuutuNakyva(true);
                 miinaharavainen.getPelilauta().paivitaKlikatutRuudut();
-                
+
                 if (ruutu.getViereistenMiinojenMaara() == 0) {
                     ruutu.avaaViereisetRuudut();
                 }
                 if (miinaharavainen.getPelilauta().onkoPeliPaattynyt()) {
-                    miinaharavainen.gameOver();
+                    miinaharavainen.gameOver("Voitto");
                 }
             }
             if (ruutu.getOnkoMiina()) {
                 ruutu.setKlikattuMiina(true);
-                miinaharavainen.gameOver();//häviäminen
+                miinaharavainen.gameOver("Havio");
             }
 
         }
