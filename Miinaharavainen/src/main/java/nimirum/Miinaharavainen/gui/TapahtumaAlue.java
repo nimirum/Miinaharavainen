@@ -49,7 +49,10 @@ public class TapahtumaAlue extends Rectangle {
                 miinaharavainen.miinoitaLauta(ruutu.getX(), ruutu.getY());
             }
             if (!ruutu.getOnkoRuutuNakyva() && !ruutu.isOnkoLiputettu()) {
+                
                 ruutu.setOnkoRuutuNakyva(true);
+                miinaharavainen.getPelilauta().paivitaKlikatutRuudut();
+                
                 if (ruutu.getViereistenMiinojenMaara() == 0) {
                     ruutu.avaaViereisetRuudut();
                 }

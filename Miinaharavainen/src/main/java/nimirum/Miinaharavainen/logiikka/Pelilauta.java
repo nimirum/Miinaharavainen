@@ -15,6 +15,7 @@ public class Pelilauta {
     private final int y;
     private int miinojenMaara;
     private final Ruutu pelilauta[][];
+    private int klikatutRuudut = 0;
 
     /**
      * Muodostaa pelilaudan johon kuuluu x*y määrä ruutuja
@@ -192,9 +193,9 @@ public class Pelilauta {
             }
         }
     }
-
-    public boolean onkoPeliPaattynyt() {
-        int klikatutRuudut = 0;
+    
+    public void paivitaKlikatutRuudut(){
+        this.klikatutRuudut = 0;
         for (int i = 0; i < this.x; i++) {
             for (int j = 0; j < this.y; j++) {
 
@@ -204,6 +205,9 @@ public class Pelilauta {
                 }
             }
         }
+    }
+
+    public boolean onkoPeliPaattynyt() {
         return (klikatutRuudut == (this.x * this.y - miinojenMaara));
     }
 }

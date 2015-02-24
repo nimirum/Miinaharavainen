@@ -1,4 +1,4 @@
-package nimirum.Miinaharavainen.gui;
+package nimirum.Miinaharavainen.kuuntelijat;
 
 import java.awt.List;
 
@@ -6,6 +6,8 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputAdapter;
+import nimirum.Miinaharavainen.gui.Piirtaja;
+import nimirum.Miinaharavainen.gui.TapahtumaAlue;
 import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
 
 /**

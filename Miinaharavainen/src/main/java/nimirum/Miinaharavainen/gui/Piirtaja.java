@@ -24,7 +24,7 @@ public class Piirtaja extends JPanel {
         super.setBackground(Color.white);
         this.kuvat = new KuvienLataaja();
         this.miinaharava = miinaharava;
-        int delay = 1000; //milliseconds
+        int viive = 1000; //millisekunteja
         ActionListener taskPerformer = new ActionListener() {
 
             @Override
@@ -32,7 +32,7 @@ public class Piirtaja extends JPanel {
                 repaint();
             }
         };
-        new Timer(delay, taskPerformer).start();
+        new Timer(viive, taskPerformer).start();
     }
 
     @Override
@@ -87,8 +87,7 @@ public class Piirtaja extends JPanel {
         g.drawString(miinaharava.getKello().toString(), 50, miinaharava.getPelilauta().getY() * miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus() + 24);
     }
 
-    private void piirraGameOver(Graphics g) {
-        
+    private void piirraGameOver(Graphics g) {      
         g.drawString("Voitit", 100, miinaharava.getPelilauta().getY() * miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus() + 24);
     }
 

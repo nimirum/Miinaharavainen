@@ -1,5 +1,7 @@
 package nimirum.Miinaharavainen.gui;
 
+import nimirum.Miinaharavainen.kuuntelijat.NappuloidenKuuntelija;
+import nimirum.Miinaharavainen.kuuntelijat.KlikkaustenKuuntelija;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -21,7 +23,6 @@ public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
     private Miinaharavainen miinaharava;
-    // private JButton taulukko[][];
     private final int ruudunLeveys;
     private final int ruudunKorkeus;
 
@@ -84,7 +85,7 @@ public class Kayttoliittyma implements Runnable {
         valikko.add(vaihdaKokoa);
         valikko.add(ennatykset);
 
-        NappuloidenKuuntelija kuuntelija = new NappuloidenKuuntelija(this);
+        NappuloidenKuuntelija kuuntelija = new NappuloidenKuuntelija(this,miinaharava);
         uusiPeli.addActionListener(kuuntelija);
 
         // UusiPeliNappulanKuuntelija kuuntelija = new UusiPeliNappulanKuuntelija(this);

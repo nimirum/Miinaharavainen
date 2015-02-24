@@ -2,7 +2,6 @@ package nimirum.Miinaharavainen.logiikka;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import nimirum.Miinaharavainen.gui.Piirtaja;
 
 /**
  * Pelin ajanotto
@@ -11,30 +10,27 @@ import nimirum.Miinaharavainen.gui.Piirtaja;
  */
 public class Kello implements Runnable {
 
-    static int counter = 0;
-    static Timer timer;
-    Piirtaja piirtaja;
-    Miinaharavainen harava;
+    private int laskuri = 0;
+    private Timer timer;
 
     @Override
     public void run() {
-        //create timer task to increment counter
+        //Timer task joka kasvattaa laskuria
         TimerTask timerTask = new TimerTask() {
 
             @Override
             public void run() {
-                counter++;
-                //piirtaja.repaint();
+                laskuri++;
             }
         };
 
-        //create thread to print counter value
+        //Thread joka päivittää kelloa
         Thread t = new Thread(new Runnable() {
 
             @Override
             public void run() {
                 while (true) {
-                    if (counter == 999) {
+                    if (laskuri == 999) {
                         timer.cancel();//end the timer
                         break;//end this loop
                     }
@@ -43,15 +39,16 @@ public class Kello implements Runnable {
             }
         });
 
-        timer = new Timer("MyTimer");//create a new timer
+        timer = new Timer("MyTimer");//Ajastin
 
         timer.scheduleAtFixedRate(timerTask, 0, 1000);
 
-        t.start();//start thread to display counter
+        t.start();//Käynnistää kellon
 
     }
 
     private static void sleepForcefully(int milliSecond) {
+        //Pakottaa kellon päivittymään tasan sekunnin välein
         final long endingTime = System.currentTimeMillis() + milliSecond;
         long remainingTime = milliSecond;
         while (remainingTime > 0) {
@@ -65,13 +62,13 @@ public class Kello implements Runnable {
 
     @Override
     public String toString() {
-        if (counter < 10) {
-            return "00" + counter;
+        if (laskuri < 10) {
+            return "00" + laskuri;
         }
-        if (counter < 100) {
-            return "0" + counter;
+        if (laskuri < 100) {
+            return "0" + laskuri;
         }
-        return "" + counter;
+        return "" + laskuri;
     }
 
     public void stop() {
