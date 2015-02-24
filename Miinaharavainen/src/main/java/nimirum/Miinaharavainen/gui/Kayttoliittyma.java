@@ -31,7 +31,12 @@ public class Kayttoliittyma implements Runnable {
      *
      */
     public Kayttoliittyma() {
-        this.miinaharava = new Miinaharavainen(10, 10);
+        this.miinaharava = new Miinaharavainen(15, 15);
+        ruudunLeveys = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunLeveys();
+        ruudunKorkeus = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus();
+    }
+        public Kayttoliittyma(int x, int y) {
+        this.miinaharava = new Miinaharavainen(x, y);
         ruudunLeveys = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunLeveys();
         ruudunKorkeus = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus();
     }
@@ -87,7 +92,7 @@ public class Kayttoliittyma implements Runnable {
     private void luoValikko() {
         JMenuBar valikko = new JMenuBar();
         frame.setJMenuBar(valikko);
-
+        
         //JButton uusiPeli = new JButton("Uusi peli");
         JMenuItem uusiPeli = new JMenuItem("Uusi peli");
         JMenuItem ennatykset = new JMenuItem("Ennätykset");
@@ -135,6 +140,6 @@ public class Kayttoliittyma implements Runnable {
 
     public void kysyKokoa() {
         frame.toBack();
-        SwingUtilities.invokeLater((Runnable) new KoonAsettaminen());
+        SwingUtilities.invokeLater((Runnable) new KoonAsettaminen(miinaharava.getPelilauta().getX(),miinaharava.getPelilauta().getY(),this));
     }
 }

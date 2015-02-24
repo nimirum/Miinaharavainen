@@ -33,9 +33,6 @@ public class NappuloidenKuuntelija implements ActionListener {
         }
         if (e.getActionCommand().equals("Asetukset")) {
             kayttoliittyma.kysyKokoa();
-            SwingUtilities.invokeLater(new Kayttoliittyma());
-            kayttoliittyma.sulje();
-            
         }
     }
 
