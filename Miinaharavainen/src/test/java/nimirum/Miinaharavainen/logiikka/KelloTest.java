@@ -37,7 +37,7 @@ public class KelloTest {
 
     @Test
     public void KelloAluksiNolla(){
-        assertEquals(kello.toString(), "0");
+        assertEquals(kello.toString(), "000");
         
     }
 }

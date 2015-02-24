@@ -10,8 +10,8 @@ public final class Miinaharavainen {
     private Pelilauta pelilauta;
     private int miinojenMaara = 0;
     private boolean miinoitettu = false;
-    private final Kello pelikello;
-    private String gameOver =null;
+    private Kello pelikello;
+    private String gameOver = null;
 
     /**
      * Miinaharavan konstruktori, missä luodaan pelilauta annetuista arvoista
@@ -94,7 +94,7 @@ public final class Miinaharavainen {
             case "Voitto":
                 pelikello.stop();
                 getPelilauta().avaaKaikkiRuudut();
-                //tallenna tulos ennatyksiin
+            //tallenna tulos ennatyksiin
             case "Havio":
                 pelikello.stop();
                 getPelilauta().avaaKaikkiRuudut();
@@ -104,5 +104,13 @@ public final class Miinaharavainen {
     public String getGameOver() {
         return gameOver;
     }
-    
+//
+//    public void uusiPeli() {
+//    pelilauta;
+//    miinojenMaara = 0;
+//    miinoitettu = false;
+//    pelikello = new Kello();
+//    gameOver = null;
+//}
+
 }

@@ -14,7 +14,6 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.JFormattedTextField.AbstractFormatter;
 
 /**
  * Avaa ikkunan, jossa voi muokata pelin asetuksia, eli korkeutta ja leveyttä
@@ -83,7 +82,7 @@ public class KoonAsettaminen implements Runnable {
 
     private void showText() {
 
-        JLabel ohje = new JLabel("Aseta uuden pelin koko:");
+        JLabel ohje = new JLabel("Aseta uuden pelin koko (8-50)");
         JLabel leveyslaatikko = new JLabel("Leveys: ", JLabel.RIGHT);
         JLabel korkeuslaatikko = new JLabel("Korkeus: ", JLabel.CENTER);
         final JTextField leveysText = new JTextField("" + x, 6);
