@@ -36,6 +36,7 @@ public class NappuloidenKuuntelija implements ActionListener {
         if (e.getActionCommand().equals("Uusi peli")) {
             Miinaharavainen miinaharava = new Miinaharavainen(this.miinaharava.getPelilauta().getX(), this.miinaharava.getPelilauta().getY());
             kayttoliittyma.uusiPeli(miinaharava);
+           // miinaharava.uusiPeli();
         }
         if (e.getActionCommand().equals("Asetukset")) {
             kayttoliittyma.kysyKokoa();

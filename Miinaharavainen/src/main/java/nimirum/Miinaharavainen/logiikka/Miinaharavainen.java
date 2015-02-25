@@ -20,7 +20,7 @@ public final class Miinaharavainen {
      * @param korkeus Pelilaudan korkeus
      */
     public Miinaharavainen(int leveys, int korkeus) {
-        setPelilaudanKoko(leveys, korkeus);
+        luoPelilauta(leveys, korkeus);
         pelikello = new Kello();
     }
 
@@ -31,7 +31,7 @@ public final class Miinaharavainen {
      * @param x Pelilaudan leveys
      * @param y Pelilaudan korkeus
      */
-    public void setPelilaudanKoko(int x, int y) {
+    public void luoPelilauta(int x, int y) {
         if (8 <= x && x <= 50 && 8 <= y && y <= 50) {
             pelilauta = new Pelilauta(x, y);
         } else {
@@ -104,13 +104,13 @@ public final class Miinaharavainen {
     public String getGameOver() {
         return gameOver;
     }
-//
-//    public void uusiPeli() {
-//    pelilauta;
-//    miinojenMaara = 0;
-//    miinoitettu = false;
-//    pelikello = new Kello();
-//    gameOver = null;
-//}
+
+    public void uusiPeli() {
+    luoPelilauta(getPelilauta().getX(), getPelilauta().getY());
+    miinojenMaara = 0;
+    miinoitettu = false;
+    pelikello = new Kello();
+    gameOver = null;
+}
 
 }

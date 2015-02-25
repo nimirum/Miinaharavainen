@@ -1,4 +1,3 @@
-Käyttöohjeiden teko ei vielä mahdollista - Kesken.
-
-Peli käynnistyy ajamalla ohjelman. Ruutuja voi klikkailla, jolloin alta paljastuu tyhjää tai miina.
-Pelin voittaa klikkaamalla kaikki tyhjät ruudut. Epäiltyjä miinoja voi merkkailla hiiren oikealla klikkauksella.
+Peli käynnistyy ajamalla ohjelman. Ruutuja voi klikkailla, jolloin alta paljastuu tyhjää tai miina. Pelikello käynnistyy ensimmäisen klikkauksen jälkeen.
+Pelin voittaa avaamalla kaikki tyhjät ruudut. Peli kysy silloin tuloksen tallentamista ennätyksiin. Pelin häviää klikkaamalla miinaan. Epäiltyjä miinoja voi merkata lipuilla hiiren oikealla klikkauksella.
+Pelissä on kolme nappulaa pelin lisäksi. "Uusi peli", joka luo uuden tyhjän pelin ja poistaa vanhan. "Asetukset", josta voi vaihtaa pelikentän kokoa, luo samalla uuden pelin. "Ennätykset" näyttää listan parhaimmista tuloksista.

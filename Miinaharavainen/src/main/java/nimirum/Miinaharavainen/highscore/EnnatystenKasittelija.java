@@ -14,22 +14,13 @@ import java.util.Collections;
  */
 public class EnnatystenKasittelija {
 
-    private final ArrayList<Ennatys> ennatykset;
-    private final Tiedostonlukija lukija;
+   // private final ArrayList<Ennatys> ennatykset;
+    private final TiedostonKasittelija lukija;
 
     public EnnatystenKasittelija() {
-        lukija = new Tiedostonlukija();      
-        ennatykset = lukija.ennatyksetArrayListiin();
+        lukija = new TiedostonKasittelija();      
+        //ennatykset = lukija.ennatyksetArrayListiin();
     }
-    
-    public void lisaaEnnatys(Ennatys ennatys){
-        ennatykset.add(ennatys);
-        Collections.sort(ennatykset);
-        lukija.uudelleenKirjoitaEnnatykset(ennatykset);
-    }
-    
-    public void tulostaEnnatykset(){
-        lukija.tulostaEnnatykset();
-    }
+
 
 }
