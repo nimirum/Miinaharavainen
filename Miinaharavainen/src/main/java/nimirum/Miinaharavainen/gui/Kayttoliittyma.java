@@ -111,6 +111,7 @@ public class Kayttoliittyma implements Runnable {
         NappuloidenKuuntelija kuuntelija = new NappuloidenKuuntelija(this, miinaharava);
         uusiPeli.addActionListener(kuuntelija);
         vaihdaKokoa.addActionListener(kuuntelija);
+        ennatykset.addActionListener(kuuntelija);
     }
 
     /**
@@ -155,17 +156,18 @@ public class Kayttoliittyma implements Runnable {
     public void sulje() {
         frame.setVisible(false);
         frame.dispose();
+        miinaharava.getKasittelija().suljeKasittelija();
     }
 
     /**
      * "Asetukset" nappulan komento joka avaa kokoa kysyvän ikkunan
      */
     public void kysyKokoa() {
-        // frame.toBack();
         SwingUtilities.invokeLater((Runnable) new KoonAsettaminen(miinaharava.getPelilauta().getX(), miinaharava.getPelilauta().getY(), this));
     }
 
-    public void tallennaEnnatys() {
-
+    public void avaaEnnatykset() {
+        SwingUtilities.invokeLater((Runnable) new EnnatyksetIkkuna(miinaharava));
     }
+
 }

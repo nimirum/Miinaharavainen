@@ -31,8 +31,8 @@ public class Kello implements Runnable {
             public void run() {
                 while (true) {
                     if (laskuri == 999) {
-                        timer.cancel();//end the timer
-                        break;//end this loop
+                        timer.cancel();//timer pysähtyy
+                        break;//looppi loppuu
                     }
                     sleepForcefully(1000);
                 }

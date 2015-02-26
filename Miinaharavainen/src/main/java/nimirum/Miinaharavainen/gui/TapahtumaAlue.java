@@ -12,10 +12,10 @@ import nimirum.Miinaharavainen.logiikka.Ruutu;
  */
 public class TapahtumaAlue extends Rectangle {
 
-    private Miinaharavainen miinaharavainen;
-    private Ruutu ruutu;
-    private int x;
-    private int y;
+    private final Miinaharavainen miinaharavainen;
+    private final Ruutu ruutu;
+    private final int x;
+    private final int y; 
 
     /**
      * Luo neliön muotoisen tapahtumaalueen, kooltaan 24x24

@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package nimirum.Miinaharavainen.gui;
 
 import java.awt.Component;
@@ -5,43 +10,33 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
 
 /**
- * Luo uuden ennätyksen tallentamista varten ikkunan
- * 
+ *
  * @author nimirum
  */
-public class EnnatyksenTallentaminen implements Runnable {
+public class EnnatyksetIkkuna implements Runnable {
 
     private JFrame frame;
     private JPanel controlPanel;
     private final Miinaharavainen miinaharavainen;
 
-    /**
-     * Konstruktori
-     *
-     * @param miinaharavainen
-     */
-    public EnnatyksenTallentaminen(Miinaharavainen miinaharavainen) {
+    public EnnatyksetIkkuna(Miinaharavainen miinaharavainen) {
         this.miinaharavainen = miinaharavainen;
     }
 
     private void prepareGUI() {
-        frame = new JFrame("Ennatys");
+        frame = new JFrame("Ennatykset");
         frame.setSize(200, 160);
         frame.setLayout(new GridLayout(1, 1));
         frame.addWindowListener(new WindowAdapter() {
@@ -81,24 +76,9 @@ public class EnnatyksenTallentaminen implements Runnable {
 
     private void showText() {
 
-        JLabel ohje = new JLabel("Tallenna ennätys: ");
-        final JTextField nimitext = new JTextField("Nimi", 8);
-        
-        JLabel tulos = new JLabel("Tulos: " + miinaharavainen.getKello().toString() + " - " + miinaharavainen.getPelilauta().toString());
+        JLabel tulos = new JLabel("1: " + "erkki - 016 - 8x8");
 
-        JButton saveButton = new JButton("Tallenna");
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
-                frame.dispose();
-                miinaharavainen.getKasittelija().lisaaEnnatys(nimitext.getText() + " - " + miinaharavainen.getKello().toString() + " - " + miinaharavainen.getPelilauta().toString());
-            }
-        });
-        controlPanel.add(ohje);
-        controlPanel.add(nimitext);
         controlPanel.add(tulos);
-        controlPanel.add(saveButton);
         frame.setVisible(true);
     }
 
@@ -107,4 +87,5 @@ public class EnnatyksenTallentaminen implements Runnable {
         prepareGUI();
         showText();
     }
+
 }

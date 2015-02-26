@@ -210,7 +210,7 @@ public class Pelilauta {
 
     @Override
     public String toString() {
-        return getX() + " x " + getY();
+        return getX() + "x" + getY();
     }
     
     

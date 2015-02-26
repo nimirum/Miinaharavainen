@@ -14,9 +14,9 @@ public final class Miinaharavainen {
     private Pelilauta pelilauta;
     private int miinojenMaara = 0;
     private boolean miinoitettu = false;
-    private Kello pelikello;
+    private final Kello pelikello;
     private String gameOver = null;
-    private TiedostonKasittelija kasittelija;
+    private final TiedostonKasittelija kasittelija;
 
     /**
      * Miinaharavan konstruktori, missä luodaan pelilauta annetuista arvoista
@@ -80,7 +80,9 @@ public final class Miinaharavainen {
 
     /**
      * Pelin päättyminen, kello pysähtyy, kentän koko ja aika tallennetaan
-     * ennätyksiin
+     * ennätyksiin jos voittaminen
+     *
+     * @param tapaus Voitto tai häviö
      */
     public void gameOver(String tapaus) {
         gameOver = tapaus;
@@ -88,11 +90,10 @@ public final class Miinaharavainen {
             case "Voitto":
                 pelikello.stop();
                 getPelilauta().avaaKaikkiRuudut();
-                SwingUtilities.invokeLater((Runnable) new EnnatyksenTallentaminen(getPelilauta().getX(), getPelilauta().getY(), this));
+                SwingUtilities.invokeLater((Runnable) new EnnatyksenTallentaminen(this));
             case "Havio":
                 pelikello.stop();
-                getPelilauta().avaaKaikkiRuudut();
-                SwingUtilities.invokeLater((Runnable) new EnnatyksenTallentaminen(getPelilauta().getX(), getPelilauta().getY(), this));
+              //  SwingUtilities.invokeLater((Runnable) new EnnatyksenTallentaminen(this));
 
         }
     }
@@ -104,5 +105,4 @@ public final class Miinaharavainen {
     public String getGameOver() {
         return gameOver;
     }
-
 }

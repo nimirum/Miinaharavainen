@@ -7,7 +7,6 @@ package nimirum.Miinaharavainen.kuuntelijat;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.SwingUtilities;
 import nimirum.Miinaharavainen.gui.Kayttoliittyma;
 import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
 
@@ -41,8 +40,9 @@ public class NappuloidenKuuntelija implements ActionListener {
         if (e.getActionCommand().equals("Asetukset")) {
             kayttoliittyma.kysyKokoa();
         }
-        if (e.getActionCommand().equals("Ennatykset")) {
-            //KESKEN
+        if (e.getActionCommand().equals("Ennätykset")) {
+            System.out.println("toimii");
+            kayttoliittyma.avaaEnnatykset();
         }
     }
 
