@@ -1,4 +1,0 @@
-#Pelin ennatykset
-#Wed Feb 25 12:14:56 EET 2015
-jotain2=kivaa2
-jotain1=kivaa1

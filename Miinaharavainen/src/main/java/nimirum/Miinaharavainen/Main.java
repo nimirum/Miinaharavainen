@@ -21,6 +21,7 @@ public class Main {
      */
     public static void main(String[] args) {
        SwingUtilities.invokeLater(new Kayttoliittyma());
+       
        // EnnatystenKasittelija ks = new EnnatystenKasittelija();
 //        Properties properties = System.getProperties();
 //              for (String key : properties.stringPropertyNames()) {

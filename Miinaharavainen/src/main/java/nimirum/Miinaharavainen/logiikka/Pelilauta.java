@@ -57,18 +57,10 @@ public class Pelilauta {
         return pelilauta;
     }
 
-    /**
-     *
-     * @return Pelilaudan leveys
-     */
     public int getX() {
         return x;
     }
 
-    /**
-     *
-     * @return Pelilaudan korkeus
-     */
     public int getY() {
         return y;
     }
@@ -137,13 +129,9 @@ public class Pelilauta {
 
     private int miinojenMaaraLaskuri() {
         //return 1;
-       return (int) (0.15 * this.x * this.y);
+        return (int) (0.15 * this.x * this.y);
     }
 
-    /**
-     *
-     * @return Miinojen määrä
-     */
     public int getMiinojenMaara() {
         return miinojenMaara;
     }
@@ -194,8 +182,11 @@ public class Pelilauta {
             }
         }
     }
-    
-    public void paivitaKlikatutRuudut(){
+
+    /**
+     * Kertoo piirtäjälle mikä on klikattujen eli avattujen ruutujen määrä
+     */
+    public void paivitaKlikatutRuudut() {
         this.klikatutRuudut = 0;
         for (int i = 0; i < this.x; i++) {
             for (int j = 0; j < this.y; j++) {
@@ -208,7 +199,19 @@ public class Pelilauta {
         }
     }
 
+    /**
+     * Laskee klikatuista ruuduista onko peli voitettu
+     * @return Onko klikattuja ruutuja riittävästi pelin voittamiseen
+     * 
+     */
     public boolean onkoPeliPaattynyt() {
         return (klikatutRuudut == (this.x * this.y - miinojenMaara));
     }
+
+    @Override
+    public String toString() {
+        return getX() + " x " + getY();
+    }
+    
+    
 }

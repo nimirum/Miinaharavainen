@@ -57,16 +57,20 @@ public class TiedostonKasittelija {
         if (input != null) {
             try {
                 properties.load(input);
-                System.out.println("Size:" + properties.size());
-                for (String key : properties.stringPropertyNames()) {
-                    String value = properties.getProperty(key);
-                    System.out.println(key + " => " + value);
-                }
+//                System.out.println("Size:" + properties.size());
+//                for (String key : properties.stringPropertyNames()) {
+//                    String value = properties.getProperty(key);
+//                    System.out.println(key + " => " + value);
+//                }
                 output = new FileOutputStream(tiedosto);
             } catch (IOException ex) {
                 Logger.getLogger(TiedostonKasittelija.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+
+    }
+
+    public void lisaaEnnatys(String ennatys) {
 
         properties.put("jotain2", "kivaa2");
         properties.put("jotain1", "kivaa1");
@@ -81,7 +85,7 @@ public class TiedostonKasittelija {
     public ArrayList<Ennatys> ennatyksetArrayListiin() {
         ArrayList<Ennatys> list = new ArrayList<>();
 
-           // String[] osat = rivi.split("-");
+        // String[] osat = rivi.split("-");
         //list.add(new Ennatys(osat[0], Integer.parseInt(osat[1])));
         return list;
     }
@@ -94,4 +98,5 @@ public class TiedostonKasittelija {
             Logger.getLogger(TiedostonKasittelija.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 }

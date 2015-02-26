@@ -1,5 +1,9 @@
 package nimirum.Miinaharavainen.logiikka;
 
+import javax.swing.SwingUtilities;
+import nimirum.Miinaharavainen.gui.EnnatyksenTallentaminen;
+import nimirum.Miinaharavainen.highscore.TiedostonKasittelija;
+
 /**
  * Miinharava peli luokka, joka luo pelilaudan
  *
@@ -12,6 +16,7 @@ public final class Miinaharavainen {
     private boolean miinoitettu = false;
     private Kello pelikello;
     private String gameOver = null;
+    private TiedostonKasittelija kasittelija;
 
     /**
      * Miinaharavan konstruktori, missä luodaan pelilauta annetuista arvoista
@@ -22,6 +27,7 @@ public final class Miinaharavainen {
     public Miinaharavainen(int leveys, int korkeus) {
         luoPelilauta(leveys, korkeus);
         pelikello = new Kello();
+        kasittelija = new TiedostonKasittelija();
     }
 
     /**
@@ -60,26 +66,14 @@ public final class Miinaharavainen {
         return pelikello;
     }
 
-    /**
-     *
-     * @return Onko pelilauta miinoitettu
-     */
     public boolean isPelilautaMiinoitettu() {
         return miinoitettu;
     }
 
-    /**
-     *
-     * @return Pelilaudan miinojen määrä
-     */
     public int getMiinojenMaara() {
         return miinojenMaara;
     }
 
-    /**
-     *
-     * @return Pelilauta
-     */
     public Pelilauta getPelilauta() {
         return pelilauta;
     }
@@ -94,23 +88,21 @@ public final class Miinaharavainen {
             case "Voitto":
                 pelikello.stop();
                 getPelilauta().avaaKaikkiRuudut();
-            //tallenna tulos ennatyksiin
+                SwingUtilities.invokeLater((Runnable) new EnnatyksenTallentaminen(getPelilauta().getX(), getPelilauta().getY(), this));
             case "Havio":
                 pelikello.stop();
                 getPelilauta().avaaKaikkiRuudut();
+                SwingUtilities.invokeLater((Runnable) new EnnatyksenTallentaminen(getPelilauta().getX(), getPelilauta().getY(), this));
+
         }
+    }
+
+    public TiedostonKasittelija getKasittelija() {
+        return kasittelija;
     }
 
     public String getGameOver() {
         return gameOver;
     }
-
-    public void uusiPeli() {
-    luoPelilauta(getPelilauta().getX(), getPelilauta().getY());
-    miinojenMaara = 0;
-    miinoitettu = false;
-    pelikello = new Kello();
-    gameOver = null;
-}
 
 }

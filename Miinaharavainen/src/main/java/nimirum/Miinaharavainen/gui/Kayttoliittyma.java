@@ -27,7 +27,7 @@ public class Kayttoliittyma implements Runnable {
     private final int ruudunKorkeus;
 
     /**
-     * Kayttoliittyma luo 15x10 kokoisen Miinaharavan pelin 
+     * Kayttoliittyma luo 15x10 kokoisen Miinaharavan pelin
      *
      */
     public Kayttoliittyma() {
@@ -38,6 +38,7 @@ public class Kayttoliittyma implements Runnable {
 
     /**
      * Käyttöliittymä luo parametrien kokoisen Miinaharava pelin
+     *
      * @param x Pelilaudan korkeus
      * @param y Pelilaudan leveys
      */
@@ -98,7 +99,7 @@ public class Kayttoliittyma implements Runnable {
     private void luoValikko() {
         JMenuBar valikko = new JMenuBar();
         frame.setJMenuBar(valikko);
-        
+
         //JButton uusiPeli = new JButton("Uusi peli");
         JMenuItem uusiPeli = new JMenuItem("Uusi peli");
         JMenuItem ennatykset = new JMenuItem("Ennätykset");
@@ -121,9 +122,13 @@ public class Kayttoliittyma implements Runnable {
         return frame;
     }
 
+    public Miinaharavainen getMiinaharava() {
+        return miinaharava;
+    }
+
     /**
      * Luo uuden tyhjän Miinaharava pelin
-     * 
+     *
      * @param miinaharavainen Miinaharavainen
      */
     public void uusiPeli(Miinaharavainen miinaharavainen) {
@@ -156,7 +161,11 @@ public class Kayttoliittyma implements Runnable {
      * "Asetukset" nappulan komento joka avaa kokoa kysyvän ikkunan
      */
     public void kysyKokoa() {
-       // frame.toBack();
-        SwingUtilities.invokeLater((Runnable) new KoonAsettaminen(miinaharava.getPelilauta().getX(),miinaharava.getPelilauta().getY(),this));
+        // frame.toBack();
+        SwingUtilities.invokeLater((Runnable) new KoonAsettaminen(miinaharava.getPelilauta().getX(), miinaharava.getPelilauta().getY(), this));
+    }
+
+    public void tallennaEnnatys() {
+
     }
 }
