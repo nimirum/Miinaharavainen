@@ -55,25 +55,25 @@ public class Piirtaja extends JPanel {
         for (int i = 0; i < miinaharava.getPelilauta().getX() * ruudunKoko; i = i + ruudunKoko) {
             for (int j = 0; j < miinaharava.getPelilauta().getY() * ruudunKoko; j = j + ruudunKoko) {
                 Ruutu ruutu = miinaharava.getPelilauta().getRuutu(i / ruudunKoko, j / ruudunKoko);
-                Image kuva = kuvat.GetImage("Tile");
+                Image kuva = kuvat.getImage("Tile");
                 if (!ruutu.getOnkoRuutuNakyva()) { //eli kun ruutu on false niin ei piirretä
                     if (!ruutu.isOnkoLiputettu()) {
-                        kuva = kuvat.GetImage("Tile");
+                        kuva = kuvat.getImage("Tile");
                     } else {
-                        kuva = kuvat.GetImage("Flag");
+                        kuva = kuvat.getImage("Flag");
                     }
                 } else { //ruutu true
                     if (ruutu.getOnkoMiina() && ruutu.isKlikattuMiina()) {
-                        kuva = kuvat.GetImage("BrokenMine");
+                        kuva = kuvat.getImage("BrokenMine");
                     }
                     if (ruutu.getOnkoMiina() && !ruutu.isKlikattuMiina()) {
-                        kuva = kuvat.GetImage("Mine");
+                        kuva = kuvat.getImage("Mine");
                     }
                     if (!ruutu.getOnkoMiina() && ruutu.getViereistenMiinojenMaara() > 0) {
-                        kuva = kuvat.GetImage(String.valueOf(ruutu.getViereistenMiinojenMaara()));
+                        kuva = kuvat.getImage(String.valueOf(ruutu.getViereistenMiinojenMaara()));
                     }
                     if (!ruutu.getOnkoMiina() && ruutu.getViereistenMiinojenMaara() == 0) {
-                        kuva = kuvat.GetImage("Empty");
+                        kuva = kuvat.getImage("Empty");
                     }
                 }
                 g.drawImage(kuva, i, j, null);
@@ -82,17 +82,17 @@ public class Piirtaja extends JPanel {
     }
 
     private void piirraKello(Graphics g) {
-        int leveys = (int) (0.15*miinaharava.getPelilauta().getX()*miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus());
+        int leveys = (int) (0.15 * miinaharava.getPelilauta().getX() * miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus());
         int korkeus = miinaharava.getPelilauta().getY() * miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus();
-        
-        g.drawString(miinaharava.getKello().toString(),leveys , korkeus + 24);
+
+        g.drawString(miinaharava.getKello().toString(), leveys, korkeus + 24);
     }
 
     private void piirraGameOver(Graphics g) {
-        
-        int leveys = (int) (0.3*miinaharava.getPelilauta().getX()*miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus());
+
+        int leveys = (int) (0.3 * miinaharava.getPelilauta().getX() * miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus());
         int korkeus = miinaharava.getPelilauta().getY() * miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus();
-        
+
         if (miinaharava.getGameOver() != null) {
             if (miinaharava.getGameOver().equals("Voitto")) {
                 g.drawString("Voitit pelin!", leveys, korkeus + 24);

@@ -133,7 +133,7 @@ public class RuutuTest {
     @Before
     public void setUp() {
         harava = new Miinaharavainen(10, 10);
-        ruutu = new Ruutu(1, 1, harava.getPelilauta());
+        ruutu = new Ruutu(1, 1);
     }
 
     @After

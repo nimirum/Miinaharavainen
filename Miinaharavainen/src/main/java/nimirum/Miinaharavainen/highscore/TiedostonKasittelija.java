@@ -7,15 +7,13 @@ package nimirum.Miinaharavainen.highscore;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Properties;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,20 +23,19 @@ import java.util.logging.Logger;
  */
 public class TiedostonKasittelija {
 
-    File tiedosto;
-    Properties properties;
-    InputStream input;
-    OutputStream output;
-    Scanner lukija;
-    PrintWriter writer;
+    private File tiedosto;
+    private Properties properties;
+    private InputStream input;
+    private OutputStream output;
+    private ArrayList<Ennatys> ennatykset;
 
     public TiedostonKasittelija() {
         tiedosto = new File("ennatykset/ennatykset.txt");
         try {
             if (tiedosto.createNewFile()) {
-               // System.out.println("File is created!");
+                // System.out.println("File is created!");
             } else {
-               // System.out.println("File already exists.");
+                // System.out.println("File already exists.");
             }
         } catch (IOException ex) {
             Logger.getLogger(TiedostonKasittelija.class.getName()).log(Level.SEVERE, null, ex);
@@ -55,37 +52,52 @@ public class TiedostonKasittelija {
         if (input != null) {
             try {
                 properties.load(input);
-//                System.out.println("Size:" + properties.size());
-//                for (String key : properties.stringPropertyNames()) {
-//                    String value = properties.getProperty(key);
-//                    System.out.println(key + " => " + value);
-//                }
+
                 output = new FileOutputStream(tiedosto);
             } catch (IOException ex) {
                 Logger.getLogger(TiedostonKasittelija.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        ennatykset = ennatyksetArrayListiin();
 
     }
 
-    public void lisaaEnnatys(String ennatys) {
+    public void lisaaEnnatys(String nimi, int aika, String pelilauta) {
+        ArrayList<Ennatys> list = ennatyksetArrayListiin();
+        list.add(new Ennatys(nimi, aika, pelilauta));
+        Collections.sort(list);
+        ennatykset = list;
+        lisaaEnnatyksetMuistiin();
+    }
 
-        properties.put("jotain2", "kivaa2");
-        properties.put("jotain1", "kivaa1");
+    public ArrayList<Ennatys> ennatyksetArrayListiin() {
+        ArrayList<Ennatys> list = new ArrayList<>();
+        for (String key : properties.stringPropertyNames()) {
+            String value = properties.getProperty(key);
+            String[] osat = value.split(" - ");
+            list.add(new Ennatys(osat[0], Integer.parseInt(osat[1]), osat[2]));
+        }
+        Collections.sort(list);
+        ennatykset = list;
+        return list;
+    }
+
+    public void lisaaEnnatyksetMuistiin() {
+        int loopsize;
+        if (ennatykset.size() < 10) {
+            loopsize = ennatykset.size();
+        } else {
+            loopsize = 10;
+        }
+        for (int i = 0; i < loopsize; i++) {
+            properties.put("" + i, ennatykset.get(i).toString());
+        }
         try {
             properties.store(output, "Pelin ennatykset");
 
         } catch (IOException ex) {
             Logger.getLogger(TiedostonKasittelija.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    public ArrayList<Ennatys> ennatyksetArrayListiin() {
-        ArrayList<Ennatys> list = new ArrayList<>();
-
-        // String[] osat = rivi.split("-");
-        //list.add(new Ennatys(osat[0], Integer.parseInt(osat[1])));
-        return list;
     }
 
     public void suljeKasittelija() {

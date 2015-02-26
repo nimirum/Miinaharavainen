@@ -31,19 +31,19 @@ public class Kello implements Runnable {
             public void run() {
                 while (true) {
                     if (laskuri == 999) {
-                        timer.cancel();//timer pysähtyy
-                        break;//looppi loppuu
+                        timer.cancel(); //timer pysähtyy
+                        break; //looppi loppuu
                     }
                     sleepForcefully(1000);
                 }
             }
         });
 
-        timer = new Timer("MyTimer");//Ajastin
+        timer = new Timer("MyTimer"); //Ajastin
 
         timer.scheduleAtFixedRate(timerTask, 0, 1000);
 
-        t.start();//Käynnistää kellon
+        t.start(); //Käynnistää kellon
 
     }
 
@@ -55,6 +55,7 @@ public class Kello implements Runnable {
             try {
                 Thread.sleep(remainingTime);
             } catch (InterruptedException ignore) {
+                System.out.println("Kello ei toimi");
             }
             remainingTime = endingTime - System.currentTimeMillis();
         }
@@ -69,6 +70,10 @@ public class Kello implements Runnable {
             return "0" + laskuri;
         }
         return "" + laskuri;
+    }
+
+    public int getAika() {
+        return laskuri;
     }
 
     public void stop() {

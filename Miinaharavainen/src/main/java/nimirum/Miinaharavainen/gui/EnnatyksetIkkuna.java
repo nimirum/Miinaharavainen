@@ -15,10 +15,12 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import nimirum.Miinaharavainen.highscore.Ennatys;
 import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
 
 /**
@@ -75,9 +77,9 @@ public class EnnatyksetIkkuna implements Runnable {
     }
 
     private void showText() {
+        ArrayList<Ennatys> list = miinaharavainen.getKasittelija().ennatyksetArrayListiin();
 
-        JLabel tulos = new JLabel("1: " + "erkki - 016 - 8x8");
-
+        JLabel tulos = new JLabel(list.get(0).toString());
         controlPanel.add(tulos);
         frame.setVisible(true);
     }

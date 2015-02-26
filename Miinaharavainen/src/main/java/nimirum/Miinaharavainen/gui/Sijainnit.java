@@ -9,9 +9,9 @@ import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
  */
 public class Sijainnit {
 
-    private Miinaharavainen harava;
-    private int ruudunLeveys;
-    private int ruudunKorkeus;
+    private final Miinaharavainen harava;
+    private final int ruudunLeveys;
+    private final int ruudunKorkeus;
 
     /**
      * Konstruktori
@@ -27,11 +27,11 @@ public class Sijainnit {
      *
      * @return Lista tapahtuma-alueista
      */
-    public ArrayList TapahtumaAlueet() {
+    public ArrayList tapahtumaAlueet() {
         ArrayList list = new ArrayList();
         for (int i = 0; i < harava.getPelilauta().getX() * ruudunLeveys; i = i + ruudunLeveys) {
             for (int j = 0; j < harava.getPelilauta().getY() * ruudunKorkeus; j = j + ruudunKorkeus) {
-                TapahtumaAlue alue = new TapahtumaAlue(i, j, harava.getPelilauta().getRuutu(i / ruudunLeveys, j / ruudunKorkeus),harava);
+                TapahtumaAlue alue = new TapahtumaAlue(i, j, harava.getPelilauta().getRuutu(i / ruudunLeveys, j / ruudunKorkeus), harava);
                 list.add(alue);
             }
         }

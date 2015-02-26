@@ -92,7 +92,7 @@ public class Kayttoliittyma implements Runnable {
 
     private ArrayList luoTapahtumaAlueet() {
         Sijainnit sijainnit = new Sijainnit(miinaharava);
-        ArrayList list = sijainnit.TapahtumaAlueet();
+        ArrayList list = sijainnit.tapahtumaAlueet();
         return list;
     }
 

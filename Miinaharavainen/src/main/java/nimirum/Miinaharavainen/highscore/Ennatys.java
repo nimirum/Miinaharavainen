@@ -13,14 +13,20 @@ public class Ennatys implements Comparable<Ennatys> {
 
     private final String pelaaja;
     private final int aika;
+    private final String pelilauta;
 
-    public Ennatys(String pelaaja, int aika) {
+    public Ennatys(String pelaaja, int aika, String pelilauta) {
         this.pelaaja = pelaaja;
         this.aika = aika;
+        this.pelilauta = pelilauta;
     }
 
     public int getAika() {
         return aika;
+    }
+
+    public String getPelilauta() {
+        return pelilauta;
     }
 
     public String getPelaaja() {
@@ -34,7 +40,7 @@ public class Ennatys implements Comparable<Ennatys> {
 
     @Override
     public String toString() {
-        return this.pelaaja + " - " + this.aika;
+        return getPelaaja() + " - " + getAika() + " - " + getPelilauta();
     }
 
 }

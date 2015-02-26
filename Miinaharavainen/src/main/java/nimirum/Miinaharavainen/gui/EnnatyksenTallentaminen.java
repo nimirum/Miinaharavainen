@@ -22,7 +22,7 @@ import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
 
 /**
  * Luo uuden ennätyksen tallentamista varten ikkunan
- * 
+ *
  * @author nimirum
  */
 public class EnnatyksenTallentaminen implements Runnable {
@@ -83,7 +83,7 @@ public class EnnatyksenTallentaminen implements Runnable {
 
         JLabel ohje = new JLabel("Tallenna ennätys: ");
         final JTextField nimitext = new JTextField("Nimi", 8);
-        
+
         JLabel tulos = new JLabel("Tulos: " + miinaharavainen.getKello().toString() + " - " + miinaharavainen.getPelilauta().toString());
 
         JButton saveButton = new JButton("Tallenna");
@@ -92,7 +92,7 @@ public class EnnatyksenTallentaminen implements Runnable {
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
                 frame.dispose();
-                miinaharavainen.getKasittelija().lisaaEnnatys(nimitext.getText() + " - " + miinaharavainen.getKello().toString() + " - " + miinaharavainen.getPelilauta().toString());
+                miinaharavainen.getKasittelija().lisaaEnnatys(nimitext.getText(), miinaharavainen.getKello().getAika(), miinaharavainen.getPelilauta().toString());
             }
         });
         controlPanel.add(ohje);

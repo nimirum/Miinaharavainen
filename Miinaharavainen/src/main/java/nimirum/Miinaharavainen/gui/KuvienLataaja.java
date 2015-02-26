@@ -34,8 +34,8 @@ public class KuvienLataaja {
             liputettuRuutu = ImageIO.read(new File("graphics/flagtile24x24.png"));
             numeroRuutuYksi = ImageIO.read(new File("graphics/one24x24.png"));
             numeroRuutuKaksi = ImageIO.read(new File("graphics/two24x24.png"));
-            numeroRuutuKolme = ImageIO.read(new File("graphics/three24x24.png"));//KESKEN
-            numeroRuutuNelja = ImageIO.read(new File("graphics/four24x24.png"));//KESKEN
+            numeroRuutuKolme = ImageIO.read(new File("graphics/three24x24.png"));
+            numeroRuutuNelja = ImageIO.read(new File("graphics/four24x24.png")); 
         } catch (IOException ex) {
             System.out.println("Kuvien lataus epäonnistui");
         }
@@ -47,7 +47,7 @@ public class KuvienLataaja {
      * @param name Halutunlaisen ruudun nimi
      * @return Pyydetty kuva
      */
-    public BufferedImage GetImage(String name) {
+    public BufferedImage getImage(String name) {
         switch (name) {
             case "Tile":
                 return ulkoRuutu;

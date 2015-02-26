@@ -15,7 +15,6 @@ public class Ruutu {
     private int y;
     private final int ruudunLeveys = 24;
     private final int ruudunKorkeus = 24;
-    private Pelilauta pelilauta;
     private ArrayList viereisetRuudut;
     private boolean onkoMiina = false;
     private boolean onkoRuutuNakyva = false;
@@ -28,13 +27,10 @@ public class Ruutu {
      *
      * @param x Leveys koordinaatti
      * @param y Korkeus koordinaatti
-     * @param pelilauta Pelilauta
      */
-    public Ruutu(int x, int y, Pelilauta pelilauta) {
+    public Ruutu(int x, int y) {
         this.x = x;
         this.y = y;
-        this.pelilauta = pelilauta;
-
     }
 
     /**
@@ -135,10 +131,6 @@ public class Ruutu {
         viereistenMiinojenMaara++;
     }
 
-    /**
-     *
-     * @return viereisten miinojen määrä
-     */
     public int getViereistenMiinojenMaara() {
         return viereistenMiinojenMaara;
     }
@@ -153,6 +145,7 @@ public class Ruutu {
 
     /**
      * Piirtäjää varten mahdollista asettaa mikä on klikattu miina
+     *
      * @param klikattuMiina
      */
     public void setKlikattuMiina(boolean klikattuMiina) {
@@ -168,24 +161,15 @@ public class Ruutu {
         } //Jos on miina niin miinojenmäärä ei tulostu
         if (viereistenMiinojenMaara > 0) {
             return " " + viereistenMiinojenMaara;
-        } //Tyhja ruutu
-        else {
+        } else { //Tyhja ruutu 
             return " .";
         }
     }
 
-    /**
-     *
-     * @return Ruudun korkeus
-     */
     public int getRuudunKorkeus() {
         return ruudunKorkeus;
     }
 
-    /**
-     *
-     * @return Ruudun leveys
-     */
     public int getRuudunLeveys() {
         return ruudunLeveys;
     }
@@ -200,6 +184,7 @@ public class Ruutu {
 
     /**
      * Ruudun voi liputtaa vain jos sitä ei ole klikattu vielä
+     *
      * @param onkoLiputettu
      */
     public void setOnkoLiputettu(boolean onkoLiputettu) {
@@ -209,7 +194,8 @@ public class Ruutu {
     }
 
     /**
-     * Avaa kaikki tyhjän ruudun vieressä olevat tyhjät ruudut ja viereiset numeroruudut
+     * Avaa kaikki tyhjän ruudun vieressä olevat tyhjät ruudut ja viereiset
+     * numeroruudut
      */
     public void avaaViereisetRuudut() {
 

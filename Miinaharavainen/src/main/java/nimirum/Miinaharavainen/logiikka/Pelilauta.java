@@ -30,7 +30,7 @@ public class Pelilauta {
 
         for (int i = 0; i < this.x; i++) {
             for (int j = 0; j < this.y; j++) {
-                pelilauta[i][j] = new Ruutu(i, j, this);
+                pelilauta[i][j] = new Ruutu(i, j);
             }
         }
         viereisetRuudut();
@@ -128,7 +128,6 @@ public class Pelilauta {
     }
 
     private int miinojenMaaraLaskuri() {
-        //return 1;
         return (int) (0.15 * this.x * this.y);
     }
 

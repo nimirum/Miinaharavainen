@@ -93,7 +93,8 @@ public final class Miinaharavainen {
                 SwingUtilities.invokeLater((Runnable) new EnnatyksenTallentaminen(this));
             case "Havio":
                 pelikello.stop();
-              //  SwingUtilities.invokeLater((Runnable) new EnnatyksenTallentaminen(this));
+                getPelilauta().avaaKaikkiRuudut();
+            //SwingUtilities.invokeLater((Runnable) new EnnatyksenTallentaminen(this));
 
         }
     }
