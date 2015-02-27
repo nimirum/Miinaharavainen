@@ -5,6 +5,8 @@ import nimirum.Miinaharavainen.kuuntelijat.KlikkaustenKuuntelija;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -59,7 +61,17 @@ public class Kayttoliittyma implements Runnable {
         frame.setResizable(false);
         frame.setVisible(true);
         centreWindow();
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        //      frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                miinaharava.getKasittelija().suljeKasittelija();
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            }
+        });
         frame.setSize(new Dimension(leveys + frame.getInsets().left + frame.getInsets().right, korkeus + frame.getInsets().top + frame.getInsets().bottom));
         setIconImage();
         luoValikko();

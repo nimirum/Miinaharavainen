@@ -33,15 +33,14 @@ public class NappuloidenKuuntelija implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Uusi peli")) {
+            miinaharava.getKasittelija().suljeKasittelija();
             Miinaharavainen miinaharava = new Miinaharavainen(this.miinaharava.getPelilauta().getX(), this.miinaharava.getPelilauta().getY());
             kayttoliittyma.uusiPeli(miinaharava);
-           // miinaharava.uusiPeli();
         }
         if (e.getActionCommand().equals("Asetukset")) {
             kayttoliittyma.kysyKokoa();
         }
         if (e.getActionCommand().equals("Ennätykset")) {
-            System.out.println("toimii");
             kayttoliittyma.avaaEnnatykset();
         }
     }

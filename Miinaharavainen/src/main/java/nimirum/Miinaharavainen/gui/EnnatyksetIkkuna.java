@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nimirum.Miinaharavainen.gui;
 
 import java.awt.Component;
@@ -52,7 +47,7 @@ public class EnnatyksetIkkuna implements Runnable {
         centreWindow();
         setIconImage();
         controlPanel = new JPanel();
-        controlPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
+        controlPanel.setAlignmentY(Component.LEFT_ALIGNMENT);
         controlPanel.setLayout(new FlowLayout());
 
         frame.add(controlPanel);
@@ -77,10 +72,15 @@ public class EnnatyksetIkkuna implements Runnable {
     }
 
     private void showText() {
-        ArrayList<Ennatys> list = miinaharavainen.getKasittelija().ennatyksetArrayListiin();
-
-        JLabel tulos = new JLabel(list.get(0).toString());
-        controlPanel.add(tulos);
+        ArrayList<Ennatys> list = miinaharavainen.getKasittelija().getEnnatykset();
+        if (list.size() > 0) {
+            for (Ennatys ennatys : list) {
+                controlPanel.add(new JLabel((list.indexOf(ennatys) + 1)+": " + ennatys.tulostaEnnatys()));
+                //indexit alkaa nollasta, joten +1
+            }
+        } else {
+            controlPanel.add(new JLabel("Ei vielä ennätyksiä."));
+        }
         frame.setVisible(true);
     }
 

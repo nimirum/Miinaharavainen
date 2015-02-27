@@ -1,0 +1,14 @@
+#Pelin ennatykset
+#Fri Feb 27 15:48:46 EET 2015
+4=Nimi - 5 - 10x10
+3=Nimi - 3 - 15x10
+2=Nimi - 2 - 10x10
+1=Nimi - 2 - 15x10
+0=Nimi - 1 - 15x10
+#Pelin ennatykset
+#Fri Feb 27 15:48:53 EET 2015
+4=Nimi - 5 - 10x10
+3=Nimi - 3 - 15x10
+2=Nimi - 2 - 10x10
+1=Nimi - 2 - 15x10
+0=Nimi - 1 - 15x10

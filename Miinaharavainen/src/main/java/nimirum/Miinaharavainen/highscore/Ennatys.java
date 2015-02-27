@@ -35,12 +35,26 @@ public class Ennatys implements Comparable<Ennatys> {
 
     @Override
     public int compareTo(Ennatys ennatys) {
-        return ennatys.getAika() - this.aika;
+        return this.aika - ennatys.getAika();
     }
 
     @Override
     public String toString() {
         return getPelaaja() + " - " + getAika() + " - " + getPelilauta();
+    }
+
+    public String tulostaEnnatys() {
+        return getPelaaja() + " - " + kellonAika() + " - " + getPelilauta();
+    }
+
+    public String kellonAika() {
+        if (getAika() < 10) {
+            return "00" + getAika();
+        }
+        if (getAika() < 100) {
+            return "0" + getAika();
+        }
+        return "" + getAika();
     }
 
 }
