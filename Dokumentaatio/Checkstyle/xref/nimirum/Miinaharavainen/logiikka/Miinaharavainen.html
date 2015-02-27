@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en_GB" lang="en_GB">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>Miinaharavainen xref</title>
+<link type="text/css" rel="stylesheet" href="../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../apidocs/nimirum/Miinaharavainen/logiikka/Miinaharavainen.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> nimirum.Miinaharavainen.logiikka;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> nimirum.Miinaharavainen.gui.Kayttoliittyma;
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> nimirum.Miinaharavainen.highscore.EnnatystenKasittelija;
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_javadoccomment"> * Miinharava peli luokka, joka luo pelilaudan</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_javadoccomment"> * @author nimirum</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../nimirum/Miinaharavainen/logiikka/Miinaharavainen.html">Miinaharavainen</a> {
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <a href="../../../nimirum/Miinaharavainen/logiikka/Pelilauta.html">Pelilauta</a> pelilauta;
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">int</strong> miinojenMaara = 0;
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> miinoitettu = false;
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <a href="../../../nimirum/Miinaharavainen/logiikka/Kello.html">Kello</a> pelikello;
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>      <strong class="jxr_keyword">private</strong> String gameOver = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <a href="../../../nimirum/Miinaharavainen/highscore/EnnatystenKasittelija.html">EnnatystenKasittelija</a> kasittelija;
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <em class="jxr_javadoccomment">     * Miinaharavan konstruktori, missä luodaan pelilauta annetuista arvoista.</em>
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <em class="jxr_javadoccomment">     * Pelilaudan mittojen pitää olla väliltä 8-40, muuten luo 10x10 pelilaudan.</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_javadoccomment">     * @param leveys Pelilaudan leveys</em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <em class="jxr_javadoccomment">     * @param korkeus Pelilaudan korkeus</em>
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>      <strong class="jxr_keyword">public</strong> <a href="../../../nimirum/Miinaharavainen/logiikka/Miinaharavainen.html">Miinaharavainen</a>(<strong class="jxr_keyword">int</strong> leveys, <strong class="jxr_keyword">int</strong> korkeus) {
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>          <strong class="jxr_keyword">if</strong> (8 &lt;= leveys &amp;&amp; leveys &lt;= 40 &amp;&amp; 8 &lt;= korkeus &amp;&amp; korkeus &lt;= 40) {
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>              pelilauta = <strong class="jxr_keyword">new</strong> <a href="../../../nimirum/Miinaharavainen/logiikka/Pelilauta.html">Pelilauta</a>(leveys, korkeus);
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>          } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>              pelilauta = <strong class="jxr_keyword">new</strong> <a href="../../../nimirum/Miinaharavainen/logiikka/Pelilauta.html">Pelilauta</a>(10, 10);
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>          }
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>          pelikello = <strong class="jxr_keyword">new</strong> <a href="../../../nimirum/Miinaharavainen/logiikka/Kello.html">Kello</a>();
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>          kasittelija = <strong class="jxr_keyword">new</strong> <a href="../../../nimirum/Miinaharavainen/highscore/EnnatystenKasittelija.html">EnnatystenKasittelija</a>();
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>      }
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <em class="jxr_javadoccomment">     * Miinoittaa pelilaudan random lukujen avulla ensimmäisen klikkauksen</em>
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment">     * jälkeen. Asetttaa miinojen määrän muistiin, jota tarvitsee pelin</em>
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment">     * voittamiseen. Ajanoton pitäisi alkaa tämän metodin käynnistämisen jälkeen</em>
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <em class="jxr_javadoccomment">     * @param klikkausX Ensimmäisen klikkauksen x koordinaatti</em>
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>  <em class="jxr_javadoccomment">     * @param klikkausY Ensimmäisen klikkauksen y koordinaatti</em>
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> miinoitaLauta(<strong class="jxr_keyword">int</strong> klikkausX, <strong class="jxr_keyword">int</strong> klikkausY) {
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>          <strong class="jxr_keyword">if</strong> (!miinoitettu) {
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>              pelilauta.miinoita(klikkausX, klikkausY);
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>              miinojenMaara = pelilauta.getMiinojenMaara();
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>              miinoitettu = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>              pelikello.run();
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>          }
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>      }
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>  
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>      <strong class="jxr_keyword">public</strong> <a href="../../../nimirum/Miinaharavainen/logiikka/Kello.html">Kello</a> getKello() {
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>          <strong class="jxr_keyword">return</strong> pelikello;
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>      }
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>  
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> isPelilautaMiinoitettu() {
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>          <strong class="jxr_keyword">return</strong> miinoitettu;
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>      }
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>  
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> getMiinojenMaara() {
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>          <strong class="jxr_keyword">return</strong> miinojenMaara;
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>      }
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>  
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>      <strong class="jxr_keyword">public</strong> <a href="../../../nimirum/Miinaharavainen/logiikka/Pelilauta.html">Pelilauta</a> getPelilauta() {
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>          <strong class="jxr_keyword">return</strong> pelilauta;
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>      }
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>  
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>  <em class="jxr_javadoccomment">     * Pelin päättyminen, kello pysähtyy, kentän koko ja aika tallennetaan</em>
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>  <em class="jxr_javadoccomment">     * ennätyksiin jos kyseessä voittaminen</em>
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>  <em class="jxr_javadoccomment">     * @param tapaus Voitto tai häviö</em>
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> gameOver(String tapaus) {
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>          gameOver = tapaus;
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>          pelikello.stop();
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>          getPelilauta().avaaKaikkiRuudut();
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>      }
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>  
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>      <strong class="jxr_keyword">public</strong> <a href="../../../nimirum/Miinaharavainen/highscore/EnnatystenKasittelija.html">EnnatystenKasittelija</a> getKasittelija() {
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>          <strong class="jxr_keyword">return</strong> kasittelija;
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>      }
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>  
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>      <strong class="jxr_keyword">public</strong> String getGameOver() {
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>          <strong class="jxr_keyword">return</strong> gameOver;
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>      }
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>  }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2015. All rights reserved.</div>
+</body>
+</html>
