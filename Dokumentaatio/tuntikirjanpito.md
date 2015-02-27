@@ -36,5 +36,5 @@
 
 26.2.  klo 12-15 EnnätyksetIkkuna, ennätysten tulostaminen
 
-27.2. klo 17-24 Ennätysten tallentaminen toimii oikein, käyttöliittymä epäaktiivinen kun toinen ikkuna avattu. Testejä ja javadocia. JAR tiedosto. Viimeinen palautus.
+27.2. klo 17-24 Ennätysten tallentaminen toimii oikein, käyttöliittymä epäaktiivinen kun toinen ikkuna avattu. Testejä ja javadocia. Uudet grafiikat. JAR tiedosto. Viimeinen palautus.
 
