@@ -27,6 +27,7 @@ public final class EnnatystenKasittelija {
 
     public EnnatystenKasittelija() {
         tiedosto = new File("ennatykset/ennatykset.txt");
+        properties = new Properties();
         try {
             if (!tiedosto.isFile() && !tiedosto.canRead()) {
                 tiedosto.createNewFile();
@@ -35,7 +36,6 @@ public final class EnnatystenKasittelija {
             Logger.getLogger(EnnatystenKasittelija.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        properties = new Properties();
         try {
             input = new FileInputStream(tiedosto);
             properties.load(input);
@@ -78,7 +78,7 @@ public final class EnnatystenKasittelija {
         }
         for (int i = 0; i < loopsize; i++) {
             properties.put("" + i, ennatykset.get(i).toString());
-            System.out.println(ennatykset.get(i).toString());
+          //  System.out.println(ennatykset.get(i).toString());
         }
         try {
             properties.store(output, "Pelin ennatykset");
