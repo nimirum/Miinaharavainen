@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
  */
 public class KuvienLataaja {
 
+    private BufferedImage icon;
     private BufferedImage ulkoRuutu;
     private BufferedImage liputettuRuutu;
     private BufferedImage miinaRuutu;
@@ -31,6 +32,7 @@ public class KuvienLataaja {
      */
     public KuvienLataaja() {
         try {
+            ulkoRuutu = ImageIO.read(new File("graphics/icon24x24.png"));
             ulkoRuutu = ImageIO.read(new File("graphics/tile24x24.png"));
             miinaRuutu = ImageIO.read(new File("graphics/mine24x24.png"));
             miinaRuutuRikki = ImageIO.read(new File("graphics/brokenMine24x24.png"));
@@ -40,10 +42,10 @@ public class KuvienLataaja {
             numeroRuutuKaksi = ImageIO.read(new File("graphics/two24x24.png"));
             numeroRuutuKolme = ImageIO.read(new File("graphics/three24x24.png"));
             numeroRuutuNelja = ImageIO.read(new File("graphics/four24x24.png"));
-            numeroRuutuViisi = ImageIO.read(new File("graphics/four24x24.png"));
-            numeroRuutuKuusi = ImageIO.read(new File("graphics/four24x24.png"));
-            numeroRuutuSeitseman = ImageIO.read(new File("graphics/four24x24.png"));
-            numeroRuutuKahdeksan = ImageIO.read(new File("graphics/four24x24.png"));
+            numeroRuutuViisi = ImageIO.read(new File("graphics/five24x24.png"));
+            numeroRuutuKuusi = ImageIO.read(new File("graphics/six24x24.png"));
+            numeroRuutuSeitseman = ImageIO.read(new File("graphics/seven24x24.png"));
+            numeroRuutuKahdeksan = ImageIO.read(new File("graphics/eight24x24.png"));
         } catch (IOException ex) {
             System.out.println("Kuvien lataus epäonnistui");
         }
@@ -57,6 +59,8 @@ public class KuvienLataaja {
      */
     public BufferedImage getImage(String name) {
         switch (name) {
+            case "Icon":
+                return icon;
             case "Tile":
                 return ulkoRuutu;
             case "Mine":

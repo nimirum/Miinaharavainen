@@ -37,7 +37,7 @@ public class EnnatyksetIkkuna implements Runnable {
     }
 
     private void prepareGUI() {
-        frame = new JFrame("Ennatykset");
+        frame = new JFrame("");
         frame.setSize(200, 300);
         frame.setLayout(new GridLayout(1, 1));
         frame.addWindowListener(new WindowAdapter() {
@@ -62,7 +62,7 @@ public class EnnatyksetIkkuna implements Runnable {
     private void setIconImage() {
         BufferedImage miinaRuutu = null;
         try {
-            miinaRuutu = ImageIO.read(new File("graphics/mine24x24.png"));
+            miinaRuutu = ImageIO.read(new File("graphics/icon24x24.png"));
         } catch (IOException ex) {
             System.out.println("Kuvan lataus epäonnistui");
         }

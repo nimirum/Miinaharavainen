@@ -151,7 +151,7 @@ public class Kayttoliittyma implements Runnable {
     private void setIconImage() {
         BufferedImage miinaRuutu = null;
         try {
-            miinaRuutu = ImageIO.read(new File("graphics/mine24x24.png"));
+            miinaRuutu = ImageIO.read(new File("graphics/icon24x24.png"));
         } catch (IOException ex) {
             System.out.println("Kuvien lataus epäonnistui");
         }
