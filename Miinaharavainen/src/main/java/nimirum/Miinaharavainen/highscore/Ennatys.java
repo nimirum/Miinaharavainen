@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nimirum.Miinaharavainen.highscore;
 
 /**
+ * Ennätyksessa on tallessa pelaajan antama nimi, aika jolloin peli päättyi ja
+ * pelilaudan koko
  *
  * @author nimirum
  */
@@ -15,6 +12,12 @@ public class Ennatys implements Comparable<Ennatys> {
     private final int aika;
     private final String pelilauta;
 
+    /**
+     *
+     * @param pelaaja
+     * @param aika
+     * @param pelilauta
+     */
     public Ennatys(String pelaaja, int aika, String pelilauta) {
         this.pelaaja = pelaaja;
         this.aika = aika;
@@ -43,10 +46,18 @@ public class Ennatys implements Comparable<Ennatys> {
         return getPelaaja() + " - " + getAika() + " - " + getPelilauta();
     }
 
+    /**
+     *
+     * @return Ennätys toString muodossa EnnatyksetIkkuna luokkaa varten
+     */
     public String tulostaEnnatys() {
         return getPelaaja() + " - " + kellonAika() + " - " + getPelilauta();
     }
 
+    /**
+     *
+     * @return Muotoilee kellon ajan kolmen numeron muotoon
+     */
     public String kellonAika() {
         if (getAika() < 10) {
             return "00" + getAika();

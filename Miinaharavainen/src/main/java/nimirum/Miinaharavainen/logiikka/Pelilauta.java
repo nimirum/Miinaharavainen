@@ -38,8 +38,8 @@ public class Pelilauta {
 
     /**
      *
-     * @param x leveys koordinaatti
-     * @param y korkeus koordinaatti
+     * @param x Leveys koordinaatti
+     * @param y Korkeus koordinaatti
      * @return Ruutu
      */
     public Ruutu getRuutu(int x, int y) {
@@ -73,7 +73,7 @@ public class Pelilauta {
      */
     public void setMiina(int x, int y) {
         Ruutu ruutu = getRuutu(x, y);
-        ruutu.setOnkoMiina(true);
+        ruutu.setOnkoRuudussaMiina(true);
     }
 
     /**
@@ -91,15 +91,15 @@ public class Pelilauta {
         int maxX = this.x - 1;
         int maxY = this.y - 1;
 
-        for (int i = 0; i < miinojenMaara; i++) {
+        int laskuri = 0;
+
+        while (laskuri < miinojenMaara) {
             int randomNumX = random.nextInt((maxX - min) + 1) + min;
             int randomNumY = random.nextInt((maxY - min) + 1) + min;
             Ruutu ruutu = getRuutu(randomNumX, randomNumY);
-            if (!ruutu.getOnkoMiina() && ruutu.getX() != ekaKlikkaus.getX() && ruutu.getY() != ekaKlikkaus.getY() && viereisetRuudutEiMiinoitetaTarkitus(ruutu.getX(), ruutu.getY(), ekaKlikkaus)) {
-                ruutu.setOnkoMiina(true);
-            } else {
-                //jos ehdot ei toteudu, arpominen toistetaan uudestaan
-                i--;
+            if (!ruutu.getOnkoRuudussaMiina() && ruutu.getX() != ekaKlikkaus.getX() && ruutu.getY() != ekaKlikkaus.getY() && viereisetRuudutEiMiinoitetaTarkitus(ruutu.getX(), ruutu.getY(), ekaKlikkaus)) {
+                ruutu.setOnkoRuudussaMiina(true);
+                laskuri++;
             }
         }
         laskeNumerot();
@@ -177,9 +177,13 @@ public class Pelilauta {
         for (int i = 0; i < this.x; i++) {
             for (int j = 0; j < this.y; j++) {
                 Ruutu ruutu = getRuutu(i, j);
-                ruutu.setOnkoRuutuNakyva(true);
+                ruutu.setOnkoRuutuAvattu(true);
             }
         }
+    }
+
+    public int getKlikatutRuudut() {
+        return klikatutRuudut;
     }
 
     /**
@@ -189,9 +193,8 @@ public class Pelilauta {
         this.klikatutRuudut = 0;
         for (int i = 0; i < this.x; i++) {
             for (int j = 0; j < this.y; j++) {
-
                 Ruutu ruutu = getRuutu(i, j);
-                if (ruutu.getOnkoRuutuNakyva()) {
+                if (ruutu.getOnkoRuutuAvattu()) {
                     klikatutRuudut++;
                 }
             }
@@ -200,10 +203,12 @@ public class Pelilauta {
 
     /**
      * Laskee klikatuista ruuduista onko peli voitettu
+     *
      * @return Onko klikattuja ruutuja riittävästi pelin voittamiseen
-     * 
+     *
      */
     public boolean onkoPeliPaattynyt() {
+        paivitaKlikatutRuudut();
         return (klikatutRuudut == (this.x * this.y - miinojenMaara));
     }
 
@@ -211,6 +216,4 @@ public class Pelilauta {
     public String toString() {
         return getX() + "x" + getY();
     }
-    
-    
 }

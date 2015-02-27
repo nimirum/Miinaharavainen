@@ -56,23 +56,23 @@ public class Piirtaja extends JPanel {
             for (int j = 0; j < miinaharava.getPelilauta().getY() * ruudunKoko; j = j + ruudunKoko) {
                 Ruutu ruutu = miinaharava.getPelilauta().getRuutu(i / ruudunKoko, j / ruudunKoko);
                 Image kuva = kuvat.getImage("Tile");
-                if (!ruutu.getOnkoRuutuNakyva()) { //eli kun ruutu on false niin ei piirretä
-                    if (!ruutu.isOnkoLiputettu()) {
+                if (!ruutu.getOnkoRuutuAvattu()) { //ruutu false
+                    if (!ruutu.isOnkoRuutuLiputettu()) {
                         kuva = kuvat.getImage("Tile");
                     } else {
                         kuva = kuvat.getImage("Flag");
                     }
                 } else { //ruutu true
-                    if (ruutu.getOnkoMiina() && ruutu.isKlikattuMiina()) {
+                    if (ruutu.getOnkoRuudussaMiina() && ruutu.isKlikattuMiina()) {
                         kuva = kuvat.getImage("BrokenMine");
                     }
-                    if (ruutu.getOnkoMiina() && !ruutu.isKlikattuMiina()) {
+                    if (ruutu.getOnkoRuudussaMiina() && !ruutu.isKlikattuMiina()) {
                         kuva = kuvat.getImage("Mine");
                     }
-                    if (!ruutu.getOnkoMiina() && ruutu.getViereistenMiinojenMaara() > 0) {
+                    if (!ruutu.getOnkoRuudussaMiina() && ruutu.getViereistenMiinojenMaara() > 0) {
                         kuva = kuvat.getImage(String.valueOf(ruutu.getViereistenMiinojenMaara()));
                     }
-                    if (!ruutu.getOnkoMiina() && ruutu.getViereistenMiinojenMaara() == 0) {
+                    if (!ruutu.getOnkoRuudussaMiina() && ruutu.getViereistenMiinojenMaara() == 0) {
                         kuva = kuvat.getImage("Empty");
                     }
                 }

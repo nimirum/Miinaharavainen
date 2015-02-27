@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package nimirum.Miinaharavainen.kuuntelijat;
 
 import java.awt.event.ActionEvent;
@@ -11,17 +6,19 @@ import nimirum.Miinaharavainen.gui.Kayttoliittyma;
 import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
 
 /**
- * Kuuntelee käyttöliittymän menu nappuloiden toimintaa
- * 
+ * Kuuntelee käyttöliittymän menu nappuloiden (Uusipeli, Asetukset, Ennätykset)
+ * klikkauksia ja toimii sen mukaan
+ *
  * @author nimirum
  */
 public class NappuloidenKuuntelija implements ActionListener {
 
-    private Kayttoliittyma kayttoliittyma;
-    private Miinaharavainen miinaharava;
+    private final Kayttoliittyma kayttoliittyma;
+    private final Miinaharavainen miinaharava;
 
     /**
      * Konstruktori
+     *
      * @param kayttoliittyma
      * @param miinaharava
      */

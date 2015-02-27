@@ -7,26 +7,22 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author nexu770
- */
 public class PelilautaTest {
+
+    Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
 
     public PelilautaTest() {
     }
 
     @Test
     public void miinanAsetusToimii() {
-        Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
         Pelilauta lauta = miinaharava.getPelilauta();
         lauta.setMiina(0, 0);
-        assertEquals(lauta.getRuutu(0, 0).getOnkoMiina(), true);
+        assertEquals(lauta.getRuutu(0, 0).getOnkoRuudussaMiina(), true);
     }
 
     @Test
     public void palauttaaOikeanKokoisenPelilaudan() {
-        Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
         Pelilauta lauta = miinaharava.getPelilauta();
         assertEquals(10, lauta.getX());
         assertEquals(10, lauta.getY());
@@ -34,7 +30,6 @@ public class PelilautaTest {
 
     @Test
     public void miinaVasenYlanurkkaLaskuriToimii() {
-        Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
         Pelilauta lauta = miinaharava.getPelilauta();
         lauta.setMiina(0, 0);
         lauta.laskeNumerot();
@@ -45,7 +40,6 @@ public class PelilautaTest {
 
     @Test
     public void miinaYlareunaLaskuriToimii() {
-        Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
         Pelilauta lauta = miinaharava.getPelilauta();
         lauta.setMiina(0, 5);
         lauta.laskeNumerot();
@@ -58,7 +52,6 @@ public class PelilautaTest {
 
     @Test
     public void miinaOikeaYlanurkkaLaskuriToimii() {
-        Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
         Pelilauta lauta = miinaharava.getPelilauta();
         lauta.setMiina(0, 9);
         lauta.laskeNumerot();
@@ -69,7 +62,6 @@ public class PelilautaTest {
 
     @Test
     public void miinaOikeaReunaLaskuriToimii() {
-        Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
         Pelilauta lauta = miinaharava.getPelilauta();
         lauta.setMiina(5, 9);
         lauta.laskeNumerot();
@@ -82,7 +74,6 @@ public class PelilautaTest {
 
     @Test
     public void miinaVasenAlanurkkaLaskuriToimii() {
-        Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
         Pelilauta lauta = miinaharava.getPelilauta();
         lauta.setMiina(9, 0);
         lauta.laskeNumerot();
@@ -93,7 +84,6 @@ public class PelilautaTest {
 
     @Test
     public void miinaVasenReunaLaskuriToimii() {
-        Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
         Pelilauta lauta = miinaharava.getPelilauta();
         lauta.setMiina(5, 0);
         lauta.laskeNumerot();
@@ -106,7 +96,6 @@ public class PelilautaTest {
 
     @Test
     public void miinaAlareunaLaskuriToimii() {
-        Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
         Pelilauta lauta = miinaharava.getPelilauta();
         lauta.setMiina(9, 5);
         lauta.laskeNumerot();
@@ -119,7 +108,6 @@ public class PelilautaTest {
 
     @Test
     public void kaksiMiinaaLaskuriToimii() {
-        Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
         Pelilauta lauta = miinaharava.getPelilauta();
         lauta.setMiina(4, 5);
         lauta.setMiina(6, 5);
@@ -129,7 +117,6 @@ public class PelilautaTest {
 
     @Test
     public void miinaKeskellaLaskuriToimii() {
-        Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
         Pelilauta lauta = miinaharava.getPelilauta();
         lauta.setMiina(5, 5);
         lauta.laskeNumerot();
@@ -145,13 +132,40 @@ public class PelilautaTest {
 
     @Test
     public void miinaOikeaAlanurkkaLaskuriToimii() {
-        Miinaharavainen miinaharava = new Miinaharavainen(10, 10);
         Pelilauta lauta = miinaharava.getPelilauta();
         lauta.setMiina(9, 9);
         lauta.laskeNumerot();
         assertEquals(lauta.getRuutu(8, 8).getViereistenMiinojenMaara(), 1);
         assertEquals(lauta.getRuutu(8, 9).getViereistenMiinojenMaara(), 1);
         assertEquals(lauta.getRuutu(9, 8).getViereistenMiinojenMaara(), 1);
+    }
+
+    @Test
+    public void viereisiaRuutujaEiMiinoiteta() {
+        Miinaharavainen harava = new Miinaharavainen(8, 8);
+        harava.miinoitaLauta(1, 1);
+        assertEquals(false, harava.getPelilauta().getRuutu(0, 0).getOnkoRuudussaMiina());
+        assertEquals(false, harava.getPelilauta().getRuutu(1, 0).getOnkoRuudussaMiina());
+        assertEquals(false, harava.getPelilauta().getRuutu(2, 0).getOnkoRuudussaMiina());
+        assertEquals(false, harava.getPelilauta().getRuutu(0, 1).getOnkoRuudussaMiina());
+        assertEquals(false, harava.getPelilauta().getRuutu(0, 2).getOnkoRuudussaMiina());
+        assertEquals(false, harava.getPelilauta().getRuutu(1, 2).getOnkoRuudussaMiina());
+        assertEquals(false, harava.getPelilauta().getRuutu(2, 2).getOnkoRuudussaMiina());
+    }
+    
+    @Test
+    public void klikattujenRuutujenMaaraOikein(){
+        Pelilauta lauta = miinaharava.getPelilauta();
+        miinaharava.miinoitaLauta(1, 1);
+        assertEquals(0, lauta.getKlikatutRuudut());
+        lauta.avaaKaikkiRuudut();
+        lauta.paivitaKlikatutRuudut();
+        assertEquals(100, lauta.getKlikatutRuudut());
+    }
+       @Test
+    public void tulostusToimii(){
+        Pelilauta lauta = miinaharava.getPelilauta();
+        assertEquals("10x10", lauta.toString());
     }
 
     @BeforeClass

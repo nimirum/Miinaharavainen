@@ -17,7 +17,7 @@ import javax.swing.*;
 import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
 
 /**
- * Luokka hallitsee käyttöliittymän elementtejä ja käynnistää pelin
+ * Luokka hallitsee käyttöliittymän ikkunoita ja käynnistää pelin
  *
  * @author nimirum
  */
@@ -29,12 +29,12 @@ public class Kayttoliittyma implements Runnable {
     private final int ruudunKorkeus;
 
     /**
-     * Kayttoliittyma luo 15x10 kokoisen Miinaharavan pelin
+     * Kayttoliittyma luo ensimmäisellä käynnistys kerralla 15x10 kokoisen
+     * Miinaharavan pelin
      *
      */
     public Kayttoliittyma() {
         this.miinaharava = new Miinaharavainen(15, 10);
-        miinaharava.setKayttoliittyma(this);
         ruudunLeveys = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunLeveys();
         ruudunKorkeus = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus();
     }
@@ -47,7 +47,6 @@ public class Kayttoliittyma implements Runnable {
      */
     public Kayttoliittyma(int x, int y) {
         this.miinaharava = new Miinaharavainen(x, y);
-        miinaharava.setKayttoliittyma(this);
         ruudunLeveys = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunLeveys();
         ruudunKorkeus = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus();
     }
@@ -58,12 +57,11 @@ public class Kayttoliittyma implements Runnable {
 
         int leveys = ((miinaharava.getPelilauta().getX()) * ruudunLeveys);
         int korkeus = ((miinaharava.getPelilauta().getY()) * ruudunKorkeus + 60);
-        //60 pikseliä tilaa kellolle
+        //60 pikseliä tilaa kellolle ja pelin päättymis tiedoille
 
         frame.setResizable(false);
         frame.setVisible(true);
         centreWindow();
-        //      frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
@@ -105,7 +103,7 @@ public class Kayttoliittyma implements Runnable {
     }
 
     private ArrayList luoTapahtumaAlueet() {
-        Sijainnit sijainnit = new Sijainnit(miinaharava);
+        Sijainnit sijainnit = new Sijainnit(miinaharava, this);
         ArrayList list = sijainnit.tapahtumaAlueet();
         return list;
     }
@@ -114,7 +112,6 @@ public class Kayttoliittyma implements Runnable {
         JMenuBar valikko = new JMenuBar();
         frame.setJMenuBar(valikko);
 
-        //JButton uusiPeli = new JButton("Uusi peli");
         JMenuItem uusiPeli = new JMenuItem("Uusi peli");
         JMenuItem ennatykset = new JMenuItem("Ennätykset");
         JMenuItem vaihdaKokoa = new JMenuItem("Asetukset");
@@ -128,11 +125,6 @@ public class Kayttoliittyma implements Runnable {
         ennatykset.addActionListener(kuuntelija);
     }
 
-    /**
-     * Palauttaa ikkunan
-     *
-     * @return JFrame
-     */
     public JFrame getFrame() {
         return frame;
     }
@@ -150,7 +142,6 @@ public class Kayttoliittyma implements Runnable {
     public void uusiPeli(int x, int y) {
         miinaharava.getKasittelija().suljeKasittelija();
         this.miinaharava = new Miinaharavainen(x, y);
-        miinaharava.setKayttoliittyma(this);
         Container c = frame.getContentPane();
         c.removeAll();
         luoKomponentit(c);
@@ -192,11 +183,12 @@ public class Kayttoliittyma implements Runnable {
         SwingUtilities.invokeLater((Runnable) new EnnatyksetIkkuna(miinaharava, this));
     }
 
+    /**
+     * Pelin voittamisen jälkeen avautuu ikkuna, missä voi tallentaa tuloksensa
+     */
     public void ennatyksenTallentaminen() {
         frame.setEnabled(false);
-
         SwingUtilities.invokeLater((Runnable) new EnnatyksenTallentaminen(miinaharava, this));
-        // SwingUtilities.invokeLater((Runnable) new EnnatyksenTallentaminen(h, this));
     }
 
 }

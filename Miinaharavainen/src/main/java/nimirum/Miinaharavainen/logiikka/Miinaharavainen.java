@@ -1,7 +1,5 @@
 package nimirum.Miinaharavainen.logiikka;
 
-import javax.swing.SwingUtilities;
-import nimirum.Miinaharavainen.gui.EnnatyksenTallentaminen;
 import nimirum.Miinaharavainen.gui.Kayttoliittyma;
 import nimirum.Miinaharavainen.highscore.EnnatystenKasittelija;
 
@@ -12,39 +10,28 @@ import nimirum.Miinaharavainen.highscore.EnnatystenKasittelija;
  */
 public final class Miinaharavainen {
 
-    private Pelilauta pelilauta;
+    private final Pelilauta pelilauta;
     private int miinojenMaara = 0;
     private boolean miinoitettu = false;
     private final Kello pelikello;
     private String gameOver = null;
     private final EnnatystenKasittelija kasittelija;
-    private Kayttoliittyma kayttoliittyma;
 
     /**
-     * Miinaharavan konstruktori, missä luodaan pelilauta annetuista arvoista
+     * Miinaharavan konstruktori, missä luodaan pelilauta annetuista arvoista.
+     * Pelilaudan mittojen pitää olla väliltä 8-40, muuten luo 10x10 pelilaudan.
      *
      * @param leveys Pelilaudan leveys
      * @param korkeus Pelilaudan korkeus
      */
     public Miinaharavainen(int leveys, int korkeus) {
-        luoPelilauta(leveys, korkeus);
-        pelikello = new Kello();
-        kasittelija = new EnnatystenKasittelija();
-    }
-
-    /**
-     * Pelilaudan koko pitää olla väliltä 8-50 korkeus- ja leveyssuunnassa. Jos
-     * koko on väärä, niin luodaan automaattisesti 10*10 pelilauta.
-     *
-     * @param x Pelilaudan leveys
-     * @param y Pelilaudan korkeus
-     */
-    public void luoPelilauta(int x, int y) {
-        if (8 <= x && x <= 50 && 8 <= y && y <= 50) {
-            pelilauta = new Pelilauta(x, y);
+        if (8 <= leveys && leveys <= 40 && 8 <= korkeus && korkeus <= 40) {
+            pelilauta = new Pelilauta(leveys, korkeus);
         } else {
             pelilauta = new Pelilauta(10, 10);
         }
+        pelikello = new Kello();
+        kasittelija = new EnnatystenKasittelija();
     }
 
     /**
@@ -52,12 +39,12 @@ public final class Miinaharavainen {
      * jälkeen. Asetttaa miinojen määrän muistiin, jota tarvitsee pelin
      * voittamiseen. Ajanoton pitäisi alkaa tämän metodin käynnistämisen jälkeen
      *
-     * @param x Ensimmäisen klikkauksen x koordinaatti
-     * @param y Ensimmäisen klikkauksen y koordinaatti
+     * @param klikkausX Ensimmäisen klikkauksen x koordinaatti
+     * @param klikkausY Ensimmäisen klikkauksen y koordinaatti
      */
-    public void miinoitaLauta(int x, int y) {
+    public void miinoitaLauta(int klikkausX, int klikkausY) {
         if (!miinoitettu) {
-            pelilauta.miinoita(x, y);
+            pelilauta.miinoita(klikkausX, klikkausY);
             miinojenMaara = pelilauta.getMiinojenMaara();
             miinoitettu = true;
             pelikello.run();
@@ -80,28 +67,16 @@ public final class Miinaharavainen {
         return pelilauta;
     }
 
-    public void setKayttoliittyma(Kayttoliittyma kayttoliittyma) {
-        this.kayttoliittyma = kayttoliittyma;
-    }
-
     /**
      * Pelin päättyminen, kello pysähtyy, kentän koko ja aika tallennetaan
-     * ennätyksiin jos voittaminen
+     * ennätyksiin jos kyseessä voittaminen
      *
      * @param tapaus Voitto tai häviö
      */
     public void gameOver(String tapaus) {
         gameOver = tapaus;
-        switch (tapaus) {
-            case "Voitto":
-                pelikello.stop();
-                getPelilauta().avaaKaikkiRuudut();
-                kayttoliittyma.ennatyksenTallentaminen();
-            case "Havio":
-                pelikello.stop();
-                getPelilauta().avaaKaikkiRuudut();
-                kayttoliittyma.ennatyksenTallentaminen();
-        }
+        pelikello.stop();
+        getPelilauta().avaaKaikkiRuudut();
     }
 
     public EnnatystenKasittelija getKasittelija() {

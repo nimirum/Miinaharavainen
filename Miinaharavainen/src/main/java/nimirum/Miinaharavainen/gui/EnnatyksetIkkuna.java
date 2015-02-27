@@ -19,6 +19,8 @@ import nimirum.Miinaharavainen.highscore.Ennatys;
 import nimirum.Miinaharavainen.logiikka.Miinaharavainen;
 
 /**
+ * Näyttää ikkunan, jossa 0-10 kpl tallennettuja ennätyksiä parhaus
+ * järjestyksessä
  *
  * @author nimirum
  */
@@ -27,16 +29,16 @@ public class EnnatyksetIkkuna implements Runnable {
     private JFrame frame;
     private JPanel controlPanel;
     private final Miinaharavainen miinaharavainen;
-    private Kayttoliittyma kayttoliittyma;
+    private final Kayttoliittyma kayttoliittyma;
 
-    public EnnatyksetIkkuna(Miinaharavainen miinaharavainen, Kayttoliittyma k) {
+    public EnnatyksetIkkuna(Miinaharavainen miinaharavainen, Kayttoliittyma kayttoliittyma) {
         this.miinaharavainen = miinaharavainen;
-        kayttoliittyma = k;
+        this.kayttoliittyma = kayttoliittyma;
     }
 
     private void prepareGUI() {
         frame = new JFrame("Ennatykset");
-        frame.setSize(200, 320);
+        frame.setSize(200, 300);
         frame.setLayout(new GridLayout(1, 1));
         frame.addWindowListener(new WindowAdapter() {
             @Override
@@ -78,7 +80,7 @@ public class EnnatyksetIkkuna implements Runnable {
         ArrayList<Ennatys> list = miinaharavainen.getKasittelija().getEnnatykset();
         if (list.size() > 0) {
             for (Ennatys ennatys : list) {
-                controlPanel.add(new JLabel((list.indexOf(ennatys) + 1)+": " + ennatys.tulostaEnnatys()));
+                controlPanel.add(new JLabel((list.indexOf(ennatys) + 1) + ": " + ennatys.tulostaEnnatys()));
                 //indexit alkaa nollasta, joten +1
             }
         } else {
@@ -92,5 +94,4 @@ public class EnnatyksetIkkuna implements Runnable {
         prepareGUI();
         showText();
     }
-
 }

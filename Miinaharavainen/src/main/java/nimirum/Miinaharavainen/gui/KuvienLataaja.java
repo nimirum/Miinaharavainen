@@ -20,6 +20,10 @@ public class KuvienLataaja {
     private BufferedImage numeroRuutuKaksi;
     private BufferedImage numeroRuutuKolme;
     private BufferedImage numeroRuutuNelja;
+    private BufferedImage numeroRuutuViisi;
+    private BufferedImage numeroRuutuKuusi;
+    private BufferedImage numeroRuutuSeitseman;
+    private BufferedImage numeroRuutuKahdeksan;
     private BufferedImage tyhjaRuutu;
 
     /**
@@ -35,7 +39,11 @@ public class KuvienLataaja {
             numeroRuutuYksi = ImageIO.read(new File("graphics/one24x24.png"));
             numeroRuutuKaksi = ImageIO.read(new File("graphics/two24x24.png"));
             numeroRuutuKolme = ImageIO.read(new File("graphics/three24x24.png"));
-            numeroRuutuNelja = ImageIO.read(new File("graphics/four24x24.png")); 
+            numeroRuutuNelja = ImageIO.read(new File("graphics/four24x24.png"));
+            numeroRuutuViisi = ImageIO.read(new File("graphics/four24x24.png"));
+            numeroRuutuKuusi = ImageIO.read(new File("graphics/four24x24.png"));
+            numeroRuutuSeitseman = ImageIO.read(new File("graphics/four24x24.png"));
+            numeroRuutuKahdeksan = ImageIO.read(new File("graphics/four24x24.png"));
         } catch (IOException ex) {
             System.out.println("Kuvien lataus epäonnistui");
         }
@@ -66,9 +74,17 @@ public class KuvienLataaja {
             case "3":
                 return numeroRuutuKolme;
             case "4":
-                return numeroRuutuNelja;            
+                return numeroRuutuNelja;
+            case "5":
+                return numeroRuutuViisi;
+            case "6":
+                return numeroRuutuKuusi;
+            case "7":
+                return numeroRuutuSeitseman;
+            case "8":
+                return numeroRuutuKahdeksan;
             default:
-                return numeroRuutuYksi;
+                return tyhjaRuutu;
         }
 
     }

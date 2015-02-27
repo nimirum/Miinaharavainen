@@ -4,7 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Pelin ajanotto
+ * Pelin ajanotto Timerin ja TimerTaskin avulla
  *
  * @author nimirum
  */
@@ -76,6 +76,10 @@ public class Kello implements Runnable {
         return laskuri;
     }
 
+    /**
+     * Pysäyttää kellon käymisen
+     *
+     */
     public void stop() {
         timer.cancel();
     }

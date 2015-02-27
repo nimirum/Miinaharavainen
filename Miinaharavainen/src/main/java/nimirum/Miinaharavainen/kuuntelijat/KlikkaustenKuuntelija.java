@@ -8,13 +8,13 @@ import nimirum.Miinaharavainen.gui.Piirtaja;
 import nimirum.Miinaharavainen.gui.TapahtumaAlue;
 
 /**
- * Kuuntelee käyttäjän hiirenklikkauksia
+ * Kuuntelee käyttäjän hiirenklikkauksia tapahtumaAlueiden päällä
  *
  * @author nimirum
  */
 public class KlikkaustenKuuntelija extends MouseInputAdapter {
 
-    private Piirtaja piirtaja;
+    private final Piirtaja piirtaja;
     private final ArrayList<TapahtumaAlue> tapahtumaalueet;
 
     /**

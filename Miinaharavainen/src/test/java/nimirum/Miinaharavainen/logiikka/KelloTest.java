@@ -8,10 +8,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author nimirum
- */
 public class KelloTest {
     
     Kello kello = new Kello();

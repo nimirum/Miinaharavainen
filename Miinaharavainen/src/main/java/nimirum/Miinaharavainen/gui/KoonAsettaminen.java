@@ -31,13 +31,13 @@ public class KoonAsettaminen implements Runnable {
     /**
      * Konstruktori
      *
-     * @param x
-     * @param y
+     * @param pelilaudanLeveys
+     * @param pelilaudanKorkeus
      * @param kayttoliittyma
      */
-    public KoonAsettaminen(int x, int y, Kayttoliittyma kayttoliittyma) {
-        this.x = x;
-        this.y = y;
+    public KoonAsettaminen(int pelilaudanLeveys, int pelilaudanKorkeus, Kayttoliittyma kayttoliittyma) {
+        this.x = pelilaudanLeveys;
+        this.y = pelilaudanKorkeus;
         this.kayttoliittyma = kayttoliittyma;
     }
 
@@ -83,7 +83,7 @@ public class KoonAsettaminen implements Runnable {
 
     private void showText() {
 
-        JLabel ohje = new JLabel("Aseta uuden pelin koko (8-50)");
+        JLabel ohje = new JLabel("Aseta uuden pelin koko (8-40)");
         JLabel leveyslaatikko = new JLabel("Leveys: ", JLabel.RIGHT);
         JLabel korkeuslaatikko = new JLabel("Korkeus: ", JLabel.CENTER);
         final JTextField leveysText = new JTextField("" + x, 6);
@@ -99,8 +99,13 @@ public class KoonAsettaminen implements Runnable {
                 try {
                     leveys = Integer.parseInt(leveysText.getText());
                     korkeus = Integer.parseInt(korkeusText.getText());
-                    arvotKelpaavat = true;
+                    if (8 <= leveys && leveys <= 40 && 8 <= korkeus && korkeus <= 40) {
+                        arvotKelpaavat = true;
+                    } else {
+                        arvotKelpaavat = false;
+                    }
                 } catch (NumberFormatException ex) {
+                    //Jos syötetyt arvot eivät ole numeroita tai ei täytä vaadittuja ehtoja, tekstikentät tyhjenevät
                     leveysText.setText("");
                     korkeusText.setText("");
                 }

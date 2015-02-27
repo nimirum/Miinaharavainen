@@ -1,0 +1,3 @@
+#Rakennekuvaus
+
+Peli käynnistyy Käyttöliittymästä. Se luo Miinaharava pelin, jonka luokkia ovat Pelilauta, Ruutu ja Kello. Käyttöliittymä hoitaa menun toiminnallisuuden, eli uuden pelin käynnistyksen, asetus ikkunan avaaminen, ennätyksen lisääminen ja niiden katselun. Kun miinaharava peli on luotu, käyttöliittymä luo Sijainnit luokan, joka luo pelin perusteella klikattavia Tapahtumaalueita ruuduille. Itse pelin ulkoasun hoitaa Käyttöliittymän Piirtäjä, joka saa KuvienLataajalta kuvatiedostot joita se kyselee ruutujen tietojen perusteella.

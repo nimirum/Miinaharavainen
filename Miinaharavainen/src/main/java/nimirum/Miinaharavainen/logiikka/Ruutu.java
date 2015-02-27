@@ -11,13 +11,13 @@ import java.util.ArrayList;
 public class Ruutu {
 
     private int viereistenMiinojenMaara = 0; //8 lähintä ruutua
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
     private final int ruudunLeveys = 24;
     private final int ruudunKorkeus = 24;
     private ArrayList viereisetRuudut;
     private boolean onkoMiina = false;
-    private boolean onkoRuutuNakyva = false;
+    private boolean onkoRuutuAvattu = false;
     private boolean klikattuMiina = false;
     private boolean onkoLiputettu = false;
 
@@ -33,71 +33,41 @@ public class Ruutu {
         this.y = y;
     }
 
-    /**
-     * Asettaa ruudun viereiset ruudut muistiin
-     *
-     * @param list ArrayList
-     */
     public void setViereisetRuudut(ArrayList<Ruutu> list) {
         this.viereisetRuudut = list;
     }
 
-    /**
-     *
-     * @return ArrayList viereisistä ruuduista
-     */
     public ArrayList<Ruutu> getViereisetRuudut() {
         return viereisetRuudut;
     }
 
-    /**
-     * Ruudulle voi asettaa tai poistaa miinan
-     *
-     * @param onkoMiina
-     */
-    public void setOnkoMiina(boolean onkoMiina) {
+    public void setOnkoRuudussaMiina(boolean onkoMiina) {
         this.onkoMiina = onkoMiina;
     }
 
-    /**
-     *
-     * @return Onko ruutu näkyvä, eli onko se klikattava
-     */
-    public boolean getOnkoRuutuNakyva() {
-        return onkoRuutuNakyva;
+    public boolean getOnkoRuutuAvattu() {
+        return onkoRuutuAvattu;
     }
 
     /**
      * Asettaa ruudnu näkyvyysarvon Piirtäjää varten False arvolla piirtää
      * päällimmäisen ruudun True arvolla piirtää mitä ruutu on oikeasti
      *
-     * @param onkoRuutuNakyva
+     * @param onkoRuutuKlikattava
      */
-    public void setOnkoRuutuNakyva(boolean onkoRuutuNakyva) {
-        this.onkoRuutuNakyva = onkoRuutuNakyva;
+    public void setOnkoRuutuAvattu(boolean onkoRuutuKlikattava) {
+        this.onkoRuutuAvattu = onkoRuutuKlikattava;
     }
 
-    /**
-     *
-     * @return Ruudun sijainti x suunnassa
-     */
     public int getX() {
         return x;
     }
 
-    /**
-     *
-     * @return Ruudun sijainti y suunnassa
-     */
     public int getY() {
         return y;
     }
 
-    /**
-     *
-     * @return onkoMiina
-     */
-    public boolean getOnkoMiina() {
+    public boolean getOnkoRuudussaMiina() {
         return onkoMiina;
     }
 
@@ -114,7 +84,7 @@ public class Ruutu {
     }
 
     /**
-     * Ruudulle asetetan viereisten miinojen määrä, arvo voi olla väliltä 0-8
+     * Ruudulle asetetaan viereisten miinojen määrä, arvo voi olla väliltä 0-8
      *
      * @param viereistenMiinojenMaara
      */
@@ -135,10 +105,6 @@ public class Ruutu {
         return viereistenMiinojenMaara;
     }
 
-    /**
-     *
-     * @return onko ruudussa miina ja onko sitä klikattu, piirtäjää varten
-     */
     public boolean isKlikattuMiina() {
         return klikattuMiina;
     }
@@ -149,20 +115,8 @@ public class Ruutu {
      * @param klikattuMiina
      */
     public void setKlikattuMiina(boolean klikattuMiina) {
-        if (getOnkoMiina()) {
+        if (getOnkoRuudussaMiina()) {
             this.klikattuMiina = klikattuMiina;
-        }
-    }
-
-    @Override
-    public String toString() {
-        if (onkoMiina) {
-            return " x";
-        } //Jos on miina niin miinojenmäärä ei tulostu
-        if (viereistenMiinojenMaara > 0) {
-            return " " + viereistenMiinojenMaara;
-        } else { //Tyhja ruutu 
-            return " .";
         }
     }
 
@@ -174,11 +128,7 @@ public class Ruutu {
         return ruudunLeveys;
     }
 
-    /**
-     *
-     * @return onko ruutu liputetu
-     */
-    public boolean isOnkoLiputettu() {
+    public boolean isOnkoRuutuLiputettu() {
         return onkoLiputettu;
     }
 
@@ -187,8 +137,8 @@ public class Ruutu {
      *
      * @param onkoLiputettu
      */
-    public void setOnkoLiputettu(boolean onkoLiputettu) {
-        if (!getOnkoRuutuNakyva()) {
+    public void setOnkoRuutuLiputettu(boolean onkoLiputettu) {
+        if (!getOnkoRuutuAvattu()) {
             this.onkoLiputettu = onkoLiputettu;
         }
     }
@@ -198,14 +148,13 @@ public class Ruutu {
      * numeroruudut
      */
     public void avaaViereisetRuudut() {
-
         for (Ruutu viereinen : getViereisetRuudut()) {
-            if (viereinen.onkoRuutuNakyva == false) {
+            if (viereinen.onkoRuutuAvattu == false) {
                 if (viereinen.getViereistenMiinojenMaara() == 0) {
-                    viereinen.setOnkoRuutuNakyva(true);
+                    viereinen.setOnkoRuutuAvattu(true);
                     viereinen.avaaViereisetRuudut();
                 } else {
-                    viereinen.setOnkoRuutuNakyva(true);
+                    viereinen.setOnkoRuutuAvattu(true);
                 }
             }
         }
