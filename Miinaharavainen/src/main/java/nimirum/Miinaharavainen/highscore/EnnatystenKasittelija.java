@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author nimirum
  */
-public final class EnnatystenKasittelija {
+public class EnnatystenKasittelija {
 
     private File tiedosto;
     private Properties properties;
@@ -40,6 +40,7 @@ public final class EnnatystenKasittelija {
             input = new FileInputStream(tiedosto);
             properties.load(input);
             output = new FileOutputStream(tiedosto);
+            input.close();
         } catch (Exception ex) {
             Logger.getLogger(EnnatystenKasittelija.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -50,17 +51,22 @@ public final class EnnatystenKasittelija {
     public void lisaaEnnatys(String nimi, int aika, String pelilauta) {
         ennatykset.add(new Ennatys(nimi, aika, pelilauta));
         Collections.sort(ennatykset);
+        if (ennatykset.size() > 10) {
+            for (int i = 10; ennatykset.size() > i; i++) {
+                ennatykset.remove(i);
+            }
+        }
         lisaaEnnatyksetMuistiin();
     }
 
-    public ArrayList<Ennatys> ennatyksetArrayListiin() {
+    private ArrayList<Ennatys> ennatyksetArrayListiin() {
         ArrayList<Ennatys> list = new ArrayList<>();
         for (String key : properties.stringPropertyNames()) {
             String value = properties.getProperty(key);
             String[] osat = value.split(" - ");
             list.add(new Ennatys(osat[0], Integer.parseInt(osat[1]), osat[2]));
         }
-        Collections.sort(list);
+
         ennatykset = list;
         return list;
     }
@@ -78,10 +84,11 @@ public final class EnnatystenKasittelija {
         }
         for (int i = 0; i < loopsize; i++) {
             properties.put("" + i, ennatykset.get(i).toString());
-          //  System.out.println(ennatykset.get(i).toString());
+            //  System.out.println(ennatykset.get(i).toString());
         }
         try {
-            properties.store(output, "Pelin ennatykset");
+            properties.store(output, null);
+            //   properties.store(output, "Pelin ennatykset");
             output.flush();
         } catch (IOException ex) {
             Logger.getLogger(EnnatystenKasittelija.class.getName()).log(Level.SEVERE, null, ex);
@@ -89,9 +96,8 @@ public final class EnnatystenKasittelija {
     }
 
     public void suljeKasittelija() {
+        lisaaEnnatyksetMuistiin();
         try {
-            lisaaEnnatyksetMuistiin();
-            input.close();
             output.close();
         } catch (IOException ex) {
             Logger.getLogger(EnnatystenKasittelija.class.getName()).log(Level.SEVERE, null, ex);

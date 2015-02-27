@@ -34,6 +34,7 @@ public class Kayttoliittyma implements Runnable {
      */
     public Kayttoliittyma() {
         this.miinaharava = new Miinaharavainen(15, 10);
+        miinaharava.setKayttoliittyma(this);
         ruudunLeveys = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunLeveys();
         ruudunKorkeus = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus();
     }
@@ -46,6 +47,7 @@ public class Kayttoliittyma implements Runnable {
      */
     public Kayttoliittyma(int x, int y) {
         this.miinaharava = new Miinaharavainen(x, y);
+        miinaharava.setKayttoliittyma(this);
         ruudunLeveys = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunLeveys();
         ruudunKorkeus = miinaharava.getPelilauta().getRuutu(0, 0).getRuudunKorkeus();
     }
@@ -142,10 +144,13 @@ public class Kayttoliittyma implements Runnable {
     /**
      * Luo uuden tyhjän Miinaharava pelin
      *
-     * @param miinaharavainen Miinaharavainen
+     * @param x
+     * @param y
      */
-    public void uusiPeli(Miinaharavainen miinaharavainen) {
-        this.miinaharava = miinaharavainen;
+    public void uusiPeli(int x, int y) {
+        miinaharava.getKasittelija().suljeKasittelija();
+        this.miinaharava = new Miinaharavainen(x, y);
+        miinaharava.setKayttoliittyma(this);
         Container c = frame.getContentPane();
         c.removeAll();
         luoKomponentit(c);
@@ -166,20 +171,32 @@ public class Kayttoliittyma implements Runnable {
      * Sulkee käyttöliittymän ikkunan
      */
     public void sulje() {
+        miinaharava.getKasittelija().suljeKasittelija();
         frame.setVisible(false);
         frame.dispose();
-        miinaharava.getKasittelija().suljeKasittelija();
     }
 
     /**
      * "Asetukset" nappulan komento joka avaa kokoa kysyvän ikkunan
      */
     public void kysyKokoa() {
+        frame.setEnabled(false);
         SwingUtilities.invokeLater((Runnable) new KoonAsettaminen(miinaharava.getPelilauta().getX(), miinaharava.getPelilauta().getY(), this));
     }
 
+    /**
+     * "Enätykset" nappulan komento joka avaa ennätykset näyttävän ikkunan
+     */
     public void avaaEnnatykset() {
-        SwingUtilities.invokeLater((Runnable) new EnnatyksetIkkuna(miinaharava));
+        frame.setEnabled(false);
+        SwingUtilities.invokeLater((Runnable) new EnnatyksetIkkuna(miinaharava, this));
+    }
+
+    public void ennatyksenTallentaminen() {
+        frame.setEnabled(false);
+
+        SwingUtilities.invokeLater((Runnable) new EnnatyksenTallentaminen(miinaharava, this));
+        // SwingUtilities.invokeLater((Runnable) new EnnatyksenTallentaminen(h, this));
     }
 
 }

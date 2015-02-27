@@ -2,6 +2,7 @@ package nimirum.Miinaharavainen.logiikka;
 
 import javax.swing.SwingUtilities;
 import nimirum.Miinaharavainen.gui.EnnatyksenTallentaminen;
+import nimirum.Miinaharavainen.gui.Kayttoliittyma;
 import nimirum.Miinaharavainen.highscore.EnnatystenKasittelija;
 
 /**
@@ -17,6 +18,7 @@ public final class Miinaharavainen {
     private final Kello pelikello;
     private String gameOver = null;
     private final EnnatystenKasittelija kasittelija;
+    private Kayttoliittyma kayttoliittyma;
 
     /**
      * Miinaharavan konstruktori, missä luodaan pelilauta annetuista arvoista
@@ -78,6 +80,10 @@ public final class Miinaharavainen {
         return pelilauta;
     }
 
+    public void setKayttoliittyma(Kayttoliittyma kayttoliittyma) {
+        this.kayttoliittyma = kayttoliittyma;
+    }
+
     /**
      * Pelin päättyminen, kello pysähtyy, kentän koko ja aika tallennetaan
      * ennätyksiin jos voittaminen
@@ -90,12 +96,11 @@ public final class Miinaharavainen {
             case "Voitto":
                 pelikello.stop();
                 getPelilauta().avaaKaikkiRuudut();
-                SwingUtilities.invokeLater((Runnable) new EnnatyksenTallentaminen(this));
+                kayttoliittyma.ennatyksenTallentaminen();
             case "Havio":
                 pelikello.stop();
                 getPelilauta().avaaKaikkiRuudut();
-            SwingUtilities.invokeLater((Runnable) new EnnatyksenTallentaminen(this));
-
+                kayttoliittyma.ennatyksenTallentaminen();
         }
     }
 

@@ -30,23 +30,27 @@ public class EnnatyksenTallentaminen implements Runnable {
     private JFrame frame;
     private JPanel controlPanel;
     private final Miinaharavainen miinaharavainen;
+    private final Kayttoliittyma kayttoliittyma;
 
     /**
      * Konstruktori
      *
      * @param miinaharavainen
+     * @param kayttoliittyma
      */
-    public EnnatyksenTallentaminen(Miinaharavainen miinaharavainen) {
+    public EnnatyksenTallentaminen(Miinaharavainen miinaharavainen, Kayttoliittyma kayttoliittyma) {
         this.miinaharavainen = miinaharavainen;
+        this.kayttoliittyma = kayttoliittyma;
     }
 
     private void prepareGUI() {
-        frame = new JFrame("Ennatys");
+        frame = new JFrame("Tallenna ennätys");
         frame.setSize(200, 160);
         frame.setLayout(new GridLayout(1, 1));
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent windowEvent) {
+                kayttoliittyma.getFrame().setEnabled(true);
                 frame.setVisible(false);
                 frame.dispose();
             }
@@ -57,7 +61,6 @@ public class EnnatyksenTallentaminen implements Runnable {
         controlPanel = new JPanel();
         controlPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
         controlPanel.setLayout(new FlowLayout());
-
         frame.add(controlPanel);
         frame.setVisible(true);
     }
@@ -90,9 +93,12 @@ public class EnnatyksenTallentaminen implements Runnable {
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                kayttoliittyma.getFrame().setEnabled(true);
                 frame.setVisible(false);
                 frame.dispose();
-                miinaharavainen.getKasittelija().lisaaEnnatys(nimitext.getText(), miinaharavainen.getKello().getAika(), miinaharavainen.getPelilauta().toString());
+                if (miinaharavainen != null) {
+                    miinaharavainen.getKasittelija().lisaaEnnatys(nimitext.getText(), miinaharavainen.getKello().getAika(), miinaharavainen.getPelilauta().toString());
+                }
             }
         });
         controlPanel.add(ohje);

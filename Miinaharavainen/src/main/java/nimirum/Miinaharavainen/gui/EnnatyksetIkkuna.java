@@ -27,18 +27,21 @@ public class EnnatyksetIkkuna implements Runnable {
     private JFrame frame;
     private JPanel controlPanel;
     private final Miinaharavainen miinaharavainen;
+    private Kayttoliittyma kayttoliittyma;
 
-    public EnnatyksetIkkuna(Miinaharavainen miinaharavainen) {
+    public EnnatyksetIkkuna(Miinaharavainen miinaharavainen, Kayttoliittyma k) {
         this.miinaharavainen = miinaharavainen;
+        kayttoliittyma = k;
     }
 
     private void prepareGUI() {
         frame = new JFrame("Ennatykset");
-        frame.setSize(200, 160);
+        frame.setSize(200, 320);
         frame.setLayout(new GridLayout(1, 1));
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent windowEvent) {
+                kayttoliittyma.getFrame().setEnabled(true);
                 frame.setVisible(false);
                 frame.dispose();
             }

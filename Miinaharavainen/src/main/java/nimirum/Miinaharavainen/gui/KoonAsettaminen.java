@@ -48,6 +48,7 @@ public class KoonAsettaminen implements Runnable {
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent windowEvent) {
+                kayttoliittyma.getFrame().setEnabled(true);
                 frame.setVisible(false);
                 frame.dispose();
             }
