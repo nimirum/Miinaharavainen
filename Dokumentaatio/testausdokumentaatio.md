@@ -1,0 +1,1 @@
+Pelin toimivuutta linuxilla ei testattu. 
